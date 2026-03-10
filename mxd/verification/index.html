@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verification</title>
+    <title>Verification — mxd</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };
@@ -18,56 +18,12 @@
                     fontFamily: {
                         "primary": ["JetBrains Mono", "monospace"],
                         "secondary": ["DM Serif Display", "serif"],
-                        "tertiary": ["Source Serif 4", "serif"],
-                        "display": ["Inter", "sans-serif"]
+                        "tertiary": ["Source Serif 4", "serif"]
                     }
                 }
             }
         };
     </script>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        ::-webkit-scrollbar { display: none; }
-        html, body { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        @keyframes shimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        .express-line {
-            animation: shimmer 8s ease-in-out infinite;
-            background-size: 200% 100%;
-        }
-        
-        .btn-primary {
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(197, 75, 42, 0.3);
-        }
-        
-        .btn-secondary {
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        
-        .btn-secondary:hover {
-            background-color: #c54b2a;
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        .card-hover {
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(18, 18, 31, 0.15);
-        }
-    </style>
     <link rel="icon" href="../assets/logo-mark.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../assets/site.css">
 </head>
@@ -99,18 +55,18 @@
   </div>
 </section>
 
-<div id="hero-section" class="relative bg-[#12121f] overflow-hidden" style="height: 480px;">
+<div id="hero-section" class="relative bg-[#12121f] overflow-hidden">
     <div class="mxd-pattern mxd-pattern--hero absolute inset-0 opacity-60" aria-hidden="true"></div>
     
-    <div class="absolute top-0 left-0 right-0 h-1 express-line bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
+    <div class="absolute top-0 left-0 right-0 h-1 mxd-express-line bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
     
-    <div class="relative max-w-[900px] mx-auto px-8 pt-24 pb-16">
+    <div class="relative max-w-[900px] mx-auto px-4 sm:px-8 pt-32 pb-20">
         <div class="inline-flex px-3 py-1 rounded-sm border border-[#c89430] mb-6">
             <div class="text-[#e8a838] text-[11.10px] font-bold font-primary uppercase tracking-[0.15em]">Docs · Verification</div>
         </div>
         
         <h1 class="mb-6">
-            <span class="text-[#f5e6d0] text-5xl sm:text-[68.80px] font-normal font-secondary leading-tight sm:leading-[72.24px]">Verification strategy</span>
+            <span class="text-[#f5e6d0] text-4xl sm:text-5xl md:text-[68.80px] font-normal font-secondary leading-tight sm:leading-[72.24px]">Verification strategy</span>
         </h1>
         
         <div class="text-[#e8d5b8] text-base font-normal font-tertiary leading-[27.20px] max-w-[700px]">
@@ -120,14 +76,14 @@
         </div>
     </div>
     
-    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#c54b2a]"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
 </div>
 
-<div id="section-tla-plus" class="relative border-t border-[#e8d5b8] py-20 overflow-hidden">
+<div id="section-tla-plus" class="relative border-t border-[#e8d5b8] py-16 sm:py-20 overflow-hidden">
     <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
     
     <div class="relative max-w-[900px] mx-auto px-4 sm:px-8">
-        <div class="bg-white rounded-lg border border-[#e8d5b8] p-6 sm:p-8 card-hover mb-8">
+        <div class="bg-white rounded-lg border border-[#e8d5b8] p-6 sm:p-8 mxd-card-hover mb-8">
             <div class="flex items-start gap-4 mb-6">
                 <div class="w-10 h-10 bg-[#c54b2a] rounded flex items-center justify-center flex-shrink-0">
                     <span class="text-white text-xl font-bold font-primary">T+</span>
@@ -140,7 +96,7 @@
             
             <div class="space-y-4">
                 <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px]">
-                    For state-machine progression and policy invariants. The handshake specification models Idle → AwaitingHandshake → Validating → Ready/Error transitions across multiple concurrent clients with discrete time ticks. TLC explores approximately 10⁶ states at <code class="text-[#12121f] text-xs font-normal font-display">MaxClients = 3</code> and <code class="text-[#12121f] text-xs font-normal font-display">TimeoutTicks = 5</code>.
+                    For state-machine progression and policy invariants. The handshake specification models Idle → AwaitingHandshake → Validating → Ready/Error transitions across multiple concurrent clients with discrete time ticks. TLC explores approximately 10⁶ states at <code class="text-[#12121f] text-xs font-normal font-primary">MaxClients = 3</code> and <code class="text-[#12121f] text-xs font-normal font-primary">TimeoutTicks = 5</code>.
                 </p>
                 
                 <div class="bg-[#12121f] rounded-lg shadow-[0px_8px_32px_0px_rgba(18,18,31,0.18)] overflow-hidden">
@@ -153,14 +109,14 @@
                         </div>
                     </div>
                     <div class="px-6 py-6 overflow-x-auto">
-                        <pre class="text-[#f5e6d0] text-xs sm:text-sm font-normal font-display leading-[21.32px]"><span class="text-[#e8a838]">INVARIANT</span> NoClientStuckInValidating ==
+                        <pre class="text-[#f5e6d0] text-xs sm:text-sm font-normal font-primary leading-[21.32px]"><span class="text-[#e8a838]">INVARIANT</span> NoClientStuckInValidating ==
   <span class="text-[#e8a838]">\A</span> c <span class="text-[#e8a838]">\in</span> Clients:
     (clientState[c] = <span class="text-[#4a8c5c]">"Validating"</span>) =&gt;
       (<span class="text-[#e8a838]">\E</span> t <span class="text-[#e8a838]">\in</span> Nat: t &lt;= TimeoutTicks)</pre>
                     </div>
                 </div>
                 
-                <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-2 border-[#c54b2a]">
+                <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a]">
                     <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
                         <span class="text-[#9a3a1f] font-semibold">Model checking:</span> TLC verifies that no client remains in the Validating state beyond the timeout threshold, that all successful handshakes reach Ready, and that protocol violations transition to Error without hanging.
                     </p>
@@ -170,9 +126,9 @@
     </div>
 </div>
 
-<div id="section-stateright" class="border-t border-[#e8d5b8] py-20">
+<div id="section-stateright" class="border-t border-[#e8d5b8] py-16 sm:py-20">
     <div class="max-w-[900px] mx-auto px-4 sm:px-8">
-        <div class="bg-white rounded-lg border border-[#e8d5b8] p-6 sm:p-8 card-hover mb-8">
+        <div class="bg-white rounded-lg border border-[#e8d5b8] p-6 sm:p-8 mxd-card-hover mb-8">
             <div class="flex items-start gap-4 mb-6">
                 <div class="w-10 h-10 bg-[#e8a838] rounded flex items-center justify-center flex-shrink-0">
                     <span class="text-[#12121f] text-xl font-bold font-primary">Sr</span>
@@ -198,7 +154,7 @@
                         </div>
                     </div>
                     <div class="px-6 py-6 overflow-x-auto">
-                        <pre class="text-[#f5e6d0] text-xs sm:text-sm font-normal font-display leading-[21.32px]"><span class="text-[#e8a838]">fn</span> <span class="text-[#f5e6d0]">check_privilege_invariant</span>(state: &amp;<span class="text-[#4a58b0]">SessionState</span>) {
+                        <pre class="text-[#f5e6d0] text-xs sm:text-sm font-normal font-primary leading-[21.32px]"><span class="text-[#e8a838]">fn</span> <span class="text-[#f5e6d0]">check_privilege_invariant</span>(state: &amp;<span class="text-[#4a58b0]">SessionState</span>) {
     <span class="text-[#e8a838]">for</span> session <span class="text-[#e8a838]">in</span> &amp;state.sessions {
         <span class="text-[#e8a838]">if</span> session.privileged_action_attempted {
             <span class="text-[#3a3a55]">// Must be authenticated first</span>
@@ -209,7 +165,7 @@
                     </div>
                 </div>
                 
-                <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-2 border-[#c54b2a]">
+                <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a]">
                     <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
                         <span class="text-[#9a3a1f] font-semibold">Interleaving exploration:</span> Stateright systematically explores all possible orderings of concurrent operations. If any sequence allows a privilege escalation or silent failure, the model checker produces a minimal counterexample trace.
                     </p>
@@ -219,11 +175,11 @@
     </div>
 </div>
 
-<div id="section-kani" class="relative border-t border-[#e8d5b8] py-20 overflow-hidden">
+<div id="section-kani" class="relative border-t border-[#e8d5b8] py-16 sm:py-20 overflow-hidden">
     <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
     
     <div class="relative max-w-[900px] mx-auto px-4 sm:px-8">
-        <div class="bg-white rounded-lg border border-[#e8d5b8] p-6 sm:p-8 card-hover mb-8">
+        <div class="bg-white rounded-lg border border-[#e8d5b8] p-6 sm:p-8 mxd-card-hover mb-8">
             <div class="flex items-start gap-4 mb-6">
                 <div class="w-10 h-10 bg-[#2d3a8c] rounded flex items-center justify-center flex-shrink-0">
                     <span class="text-white text-xl font-bold font-primary">Kn</span>
@@ -249,7 +205,7 @@
                         </div>
                     </div>
                     <div class="px-6 py-6 overflow-x-auto">
-                        <pre class="text-[#f5e6d0] text-xs sm:text-sm font-normal font-display leading-[21.32px]"><span class="text-[#3a3a55]">#[kani::proof]</span>
+                        <pre class="text-[#f5e6d0] text-xs sm:text-sm font-normal font-primary leading-[21.32px]"><span class="text-[#3a3a55]">#[kani::proof]</span>
 <span class="text-[#e8a838]">fn</span> <span class="text-[#f5e6d0]">xor_roundtrip</span>() {
     <span class="text-[#e8a838]">let</span> data: [<span class="text-[#4a58b0]">u8</span>; <span class="text-[#d4714f]">32</span>] = kani::any();
     <span class="text-[#e8a838]">let</span> encoded = xor_encode(&amp;data);
@@ -297,12 +253,12 @@
     </div>
 </div>
 
-<div id="section-regression" class="border-t border-[#e8d5b8] py-20">
+<div id="section-regression" class="border-t border-[#e8d5b8] py-16 sm:py-20">
     <div class="max-w-[900px] mx-auto px-4 sm:px-8">
         <h2 class="text-[#12121f] text-3xl sm:text-[39.80px] font-normal font-secondary mb-6">Regression test integration</h2>
         
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8">
-            Any counterexample trace produced by these tools becomes a regression test that replays the failing sequence through the domain's <code class="text-[#12121f] text-xs font-normal font-display">step</code> function. The verifier finds the bug. The regression test prevents it from coming back.
+            Any counterexample trace produced by these tools becomes a regression test that replays the failing sequence through the domain's <code class="text-[#12121f] text-xs font-normal font-primary">step</code> function. The verifier finds the bug. The regression test prevents it from coming back.
         </p>
         
         <div class="bg-white rounded-lg border border-[#e8d5b8] overflow-hidden mb-8">
@@ -352,15 +308,15 @@
             </div>
         </div>
         
-        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-2 border-[#c54b2a]">
+        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a]">
             <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
-                <span class="text-[#9a3a1f] font-semibold">Test suite location:</span> Regression tests from verification tools live in <code class="text-[#12121f] text-xs font-normal font-display">tests/regression/</code> with a comment header citing the original model checker output. This maintains traceability from formal proof to implementation.
+                <span class="text-[#9a3a1f] font-semibold">Test suite location:</span> Regression tests from verification tools live in <code class="text-[#12121f] text-xs font-normal font-primary">tests/regression/</code> with a comment header citing the original model checker output. This maintains traceability from formal proof to implementation.
             </p>
         </div>
     </div>
 </div>
 
-<div id="section-verification-summary" class="relative border-t border-[#e8d5b8] py-20 overflow-hidden">
+<div id="section-verification-summary" class="relative border-t border-[#e8d5b8] py-16 sm:py-20 overflow-hidden">
     <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
     
     <div class="relative max-w-[900px] mx-auto px-4 sm:px-8">
@@ -398,7 +354,7 @@
     </div>
 </div>
 
-<div id="footer-cta" class="border-t border-[#e8d5b8] py-20 bg-white">
+<div id="footer-cta" class="border-t border-[#e8d5b8] py-16 sm:py-20 bg-white">
     <div class="max-w-[900px] mx-auto px-4 sm:px-8 text-center">
         <h2 class="text-[#12121f] text-3xl sm:text-[39.80px] font-normal font-secondary mb-4">Verification specifications</h2>
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8 max-w-[600px] mx-auto">
@@ -406,10 +362,10 @@
         </p>
         
         <div class="flex flex-wrap justify-center gap-3">
-            <a class="btn-primary px-6 py-3 bg-[#c54b2a] text-white text-sm font-bold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="#section-verification-summary">
+            <a class="mxd-btn--primary px-6 py-3 bg-[#c54b2a] text-white text-sm font-semibold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="#section-verification-summary">
                 View Specifications
             </a>
-            <a class="btn-secondary px-6 py-3 text-[#c54b2a] text-sm font-bold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="#section-regression">
+            <a class="mxd-btn--outline px-6 py-3 text-[#c54b2a] text-sm font-semibold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="#section-regression">
                 CI Pipeline
             </a>
         </div>
