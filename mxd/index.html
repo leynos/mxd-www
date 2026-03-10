@@ -1,0 +1,475 @@
+<!DOCTYPE html><html lang="en"><head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800;900&amp;family=DM+Serif+Display:ital,wght@0,400;1,400&amp;family=Source+Serif+4:ital,wght@200;300;400;600;700;900&amp;family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        "primary": ["JetBrains Mono", "monospace"],
+                        "secondary": ["DM Serif Display", "serif"],
+                        "tertiary": ["Source Serif 4", "serif"],
+                        "display": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        ::-webkit-scrollbar { display: none; }
+        html, body { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .express-line {
+            animation: shimmer 8s ease-in-out infinite;
+            background-size: 200% 100%;
+        }
+        
+        .btn-primary {
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(197, 75, 42, 0.3);
+        }
+        
+        .btn-secondary {
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #c54b2a;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .btn-tertiary {
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        
+        .btn-tertiary:hover {
+            border-color: #3a3a55;
+            color: #12121f;
+            transform: translateY(-2px);
+        }
+        
+        .card-feature {
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        
+        .card-feature:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(18, 18, 31, 0.15);
+        }
+    </style>
+    <link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/site.css">
+</head>
+<body class="bg-[#fdf8f0]">
+<a class="mxd-skip-link" href="#hero-section">Skip to content</a>
+<header class="mxd-site-header">
+  <div class="mxd-site-header__inner">
+    <a class="mxd-brand" href="./">
+      <img src="assets/logo-mark.svg" alt="">
+      <span>
+        <span class="mxd-brand__eyebrow">df12 Productions</span>
+        <span class="mxd-brand__title">Marrakesh Express Daemon</span>
+      </span>
+    </a>
+    <nav class="mxd-site-nav" aria-label="Primary">
+      <a href="./" aria-current="page">Home</a><a href="quickstart/">Quickstart</a><a href="installation/">Installation</a><a href="deployment/">Deployment</a><a href="architecture/">Architecture</a><a href="protocol/">Protocol</a><a href="configuration/">Configuration</a><a href="database-backends/">Databases</a><a href="compatibility/">Compatibility</a><a href="verification/">Verification</a><a href="roadmap/">Roadmap</a><a href="changelog/">Changelog</a>
+    </nav>
+  </div>
+</header>
+<section class="mxd-page-toc" aria-labelledby="mxd-toc-title">
+  <div class="mxd-page-toc__inner">
+    <div>
+      <div class="mxd-page-toc__label">Route map</div>
+      <div class="mxd-page-toc__title" id="mxd-toc-title">Marrakesh Express Daemon</div>
+    </div>
+    <div class="mxd-page-toc__links">
+      <a href="#section-overview">The Hotline protocol, treated seriously</a><a href="#section-architecture">Built to be reasoned about</a><a href="#section-wire">Every byte accounted for</a><a href="#section-operational">Configuration without ceremony</a><a href="#section-testing">Tested at every layer</a>
+    </div>
+  </div>
+</section>
+
+<div id="hero-section" class="relative bg-[#12121f] overflow-hidden" style="height: 639px;">
+    <div class="mxd-pattern mxd-pattern--hero absolute inset-0 opacity-60" aria-hidden="true"></div>
+    
+    <div class="absolute top-0 left-0 right-0 h-1 express-line bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
+    
+    <div class="relative max-w-[900px] mx-auto px-8 pt-32 pb-20">
+        <div class="inline-flex px-3 py-1 rounded-sm border border-[#c89430] mb-8">
+            <div class="text-[#e8a838] text-[11.10px] font-bold font-primary uppercase tracking-[0.15em]">df12 Productions — Hotline server daemon</div>
+        </div>
+        
+        <h1 class="mb-6">
+            <span class="text-[#f5e6d0] text-[68.80px] font-normal font-secondary leading-[72.24px]">Marrakesh<br>Express </span>
+            <span class="text-[#d4714f] text-[68.80px] font-normal font-secondary italic leading-[72.24px]">Daemon</span>
+        </h1>
+        
+        <p class="text-[#e8d5b8] text-[23px] font-light font-tertiary leading-[39.17px] mb-12 max-w-[600px]">
+            A Hotline protocol server in Rust. Hexagonal architecture, dual-database support, formally verified invariants. The protocol is the product.
+        </p>
+        
+        <div class="inline-flex px-4 py-3 bg-[#1a1a2e] rounded border border-[#2a2a42] mb-12">
+            <span class="text-[#3a3a55] text-[11.10px] font-normal font-primary">protocol_id: </span>
+            <span class="text-[#d4714f] text-[11.10px] font-normal font-primary">0x54 52 54 50</span>
+            <span class="text-[#3a3a55] text-[11.10px] font-normal font-primary"> · version: </span>
+            <span class="text-[#e8a838] text-[11.10px] font-normal font-primary">0x0001</span>
+            <span class="text-[#3a3a55] text-[11.10px] font-normal font-primary"> · status: </span>
+            <span class="text-[#e8a838] text-[11.10px] font-normal font-primary">READY</span>
+        </div>
+        
+        <div class="flex flex-wrap gap-3">
+            <a class="btn-primary px-6 py-3 bg-[#c54b2a] text-white text-sm font-normal font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="quickstart/">
+                Get Started
+            </a>
+            <a class="btn-secondary px-6 py-3 text-[#c54b2a] text-sm font-normal font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="https://github.com/leynos/mxd" target="_blank" rel="noreferrer">
+                View Source
+            </a>
+            <a class="btn-tertiary px-6 py-3 text-[#3a3a55] text-sm font-normal font-primary rounded border-2 border-[#e8d5b8] mxd-site-button" href="protocol/">
+                Read the Protocol
+            </a>
+        </div>
+    </div>
+    
+    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#c54b2a]"></div>
+</div>
+
+<section class="mxd-route-guide" aria-labelledby="site-map-title">
+  <div class="mxd-route-guide__inner">
+    <div class="mxd-route-guide__eyebrow">Site map</div>
+    <div class="mxd-route-guide__header">
+      <h2 id="site-map-title">One export, now with routes.</h2>
+      <p>Twelve standalone mock-ups became a browsable prototype. The copy stayed. The dead ends did not.</p>
+    </div>
+    <div class="mxd-route-grid">
+<a class="mxd-route-card" href="quickstart/">
+  <div class="mxd-route-card__eyebrow">Five minutes</div>
+  <div class="mxd-route-card__title">Quickstart</div>
+  <div class="mxd-route-card__copy">Clone, build, create a user, and start the daemon without guesswork.</div>
+  <div class="mxd-route-card__cta">Open route</div>
+</a>
+<a class="mxd-route-card" href="installation/">
+  <div class="mxd-route-card__eyebrow">Build inputs</div>
+  <div class="mxd-route-card__title">Installation</div>
+  <div class="mxd-route-card__copy">Toolchains, backend toggles, and build targets for each variant.</div>
+  <div class="mxd-route-card__cta">Open route</div>
+</a>
+<a class="mxd-route-card" href="deployment/">
+  <div class="mxd-route-card__eyebrow">Operators</div>
+  <div class="mxd-route-card__title">Deployment</div>
+  <div class="mxd-route-card__copy">systemd, containers, restart rules, and backup concerns.</div>
+  <div class="mxd-route-card__cta">Open route</div>
+</a>
+<a class="mxd-route-card" href="architecture/">
+  <div class="mxd-route-card__eyebrow">Boundaries</div>
+  <div class="mxd-route-card__title">Architecture</div>
+  <div class="mxd-route-card__copy">Hexagonal layers, compatibility guardrails, and adapter responsibilities.</div>
+  <div class="mxd-route-card__cta">Open route</div>
+</a>
+<a class="mxd-route-card" href="protocol/">
+  <div class="mxd-route-card__eyebrow">Wire format</div>
+  <div class="mxd-route-card__title">Protocol</div>
+  <div class="mxd-route-card__copy">Handshake rules, frame headers, parameter encoding, and transaction catalogue.</div>
+  <div class="mxd-route-card__cta">Open route</div>
+</a>
+<a class="mxd-route-card" href="configuration/">
+  <div class="mxd-route-card__eyebrow">Runtime shape</div>
+  <div class="mxd-route-card__title">Configuration</div>
+  <div class="mxd-route-card__copy">Fields, precedence, TOML examples, and deployment-facing defaults.</div>
+  <div class="mxd-route-card__cta">Open route</div>
+</a>
+<a class="mxd-route-card" href="database-backends/">
+  <div class="mxd-route-card__eyebrow">Storage</div>
+  <div class="mxd-route-card__title">Databases</div>
+  <div class="mxd-route-card__copy">SQLite and PostgreSQL trade-offs, startup checks, and selection criteria.</div>
+  <div class="mxd-route-card__cta">Open route</div>
+</a>
+<a class="mxd-route-card" href="compatibility/">
+  <div class="mxd-route-card__eyebrow">Client truth</div>
+  <div class="mxd-route-card__title">Compatibility</div>
+  <div class="mxd-route-card__copy">Support status, verification requirements, and release-note discipline.</div>
+  <div class="mxd-route-card__cta">Open route</div>
+</a>
+<a class="mxd-route-card" href="verification/">
+  <div class="mxd-route-card__eyebrow">Proof work</div>
+  <div class="mxd-route-card__title">Verification</div>
+  <div class="mxd-route-card__copy">TLA+, Stateright, Kani, and the path from counterexample to regression test.</div>
+  <div class="mxd-route-card__cta">Open route</div>
+</a>
+<a class="mxd-route-card" href="roadmap/">
+  <div class="mxd-route-card__eyebrow">Not yet done</div>
+  <div class="mxd-route-card__title">Roadmap</div>
+  <div class="mxd-route-card__copy">Delivery phases, current constraints, and what remains unfinished.</div>
+  <div class="mxd-route-card__cta">Open route</div>
+</a>
+<a class="mxd-route-card" href="changelog/">
+  <div class="mxd-route-card__eyebrow">Release log</div>
+  <div class="mxd-route-card__title">Changelog</div>
+  <div class="mxd-route-card__copy">Versioned notes with compatibility language and QA sign-off context.</div>
+  <div class="mxd-route-card__cta">Open route</div>
+</a>
+    </div>
+  </div>
+</section>
+
+<div id="section-overview" class="border-t border-[#e8d5b8] py-20">
+    <div class="max-w-[900px] mx-auto px-8">
+        <div class="text-[#c54b2a] text-[11.10px] font-normal font-primary uppercase mb-2">01 — Overview</div>
+        <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-4">The Hotline protocol, treated seriously</h2>
+        <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-4">
+            mxd implements Hotline server protocol v1.8.5: login, chat, threaded news, hierarchical file sharing, and private messaging. It speaks the binary wire format — 20-byte frame headers, big-endian integers, multi-fragment reassembly — so vintage Hotline clients and modern alternatives like SynHX connect without shims or translation layers.
+        </p>
+        <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px]">
+            The name is a train reference. The architecture is not.
+        </p>
+    </div>
+</div>
+
+<div id="section-architecture" class="border-t border-[#e8d5b8] py-20">
+    <div class="max-w-[900px] mx-auto px-8">
+        <div class="text-[#c54b2a] text-[11.10px] font-normal font-primary uppercase mb-2">02 — Architecture</div>
+        <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-8">Built to be reasoned about</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="card-feature bg-white rounded-lg border border-[#e8d5b8] p-6">
+                <div class="w-10 h-10 bg-[#c54b2a] rounded flex items-center justify-center mb-6">
+                    <span class="text-white text-xl font-normal font-primary">Hx</span>
+                </div>
+                <h3 class="text-[#12121f] text-[27.60px] font-normal font-secondary leading-[34.56px] mb-3"><a href="architecture/" class="underline decoration-transparent hover:decoration-current">Hexagonal Architecture</a></h3>
+                <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[21.32px]">
+                    Domain logic sits behind ports. The Wireframe transport adapter handles framing and routing; Diesel handles persistence. Neither leaks into the other. Swap the database. Swap the transport. The domain doesn't notice.
+                </p>
+            </div>
+            
+            <div class="card-feature bg-white rounded-lg border border-[#e8d5b8] p-6">
+                <div class="w-10 h-10 bg-[#2d3a8c] rounded flex items-center justify-center mb-6">
+                    <span class="text-white text-xl font-normal font-primary">Db</span>
+                </div>
+                <h3 class="text-[#12121f] text-[27.60px] font-normal font-secondary leading-[34.56px] mb-3"><a href="database-backends/" class="underline decoration-transparent hover:decoration-current">Dual Database</a></h3>
+                <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[21.32px]">
+                    SQLite for a single-file deployment you can carry in your pocket. PostgreSQL when you need concurrent access at scale. One codebase, dual migration trees, compile-time backend selection. Recursive CTEs work on both.
+                </p>
+            </div>
+            
+            <div class="card-feature bg-white rounded-lg border border-[#e8d5b8] p-6">
+                <div class="w-10 h-10 bg-[#e8a838] rounded flex items-center justify-center mb-6">
+                    <span class="text-[#12121f] text-xl font-normal font-primary">Cx</span>
+                </div>
+                <h3 class="text-[#12121f] text-[27.60px] font-normal font-secondary leading-[34.56px] mb-3"><a href="compatibility/" class="underline decoration-transparent hover:decoration-current">Client Compatibility</a></h3>
+                <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[21.32px]">
+                    Hotline 1.8.5, Hotline 1.9, and SynHX. Banner field augmentation, XOR text obfuscation detection, sub-version gating — all handled at the adapter boundary. A compatibility matrix tracks what works, what's partial, and what remains roadmap work. No over-claiming.
+                </p>
+            </div>
+            
+            <div class="card-feature bg-white rounded-lg border border-[#e8d5b8] p-6">
+                <div class="w-10 h-10 bg-[#4a8c5c] rounded flex items-center justify-center mb-6">
+                    <span class="text-white text-xl font-normal font-primary">Kn</span>
+                </div>
+                <h3 class="text-[#12121f] text-[27.60px] font-normal font-secondary leading-[34.56px] mb-3"><a href="verification/" class="underline decoration-transparent hover:decoration-current">Verified Correct</a></h3>
+                <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[21.32px]">
+                    TLA+ specifications model the handshake state machine. Stateright explores concurrent session interleavings. Kani proves bounded invariants for XOR round-trips and frame validation. Protocol correctness is not left to hope.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="section-wire" class="relative border-t border-[#e8d5b8] py-20 overflow-hidden">
+    <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
+    
+    <div class="relative max-w-[900px] mx-auto px-8">
+        <div class="text-[#c54b2a] text-[11.10px] font-normal font-primary uppercase mb-2">03 — The Wire</div>
+        <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-4">Every byte accounted for</h2>
+        
+        <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-4">
+            The Hotline transaction frame is 20 bytes: flags, reply bit, transaction type, ID, error code, total size, data size. When data_size &lt; total_size, continuation frames follow until the payload is fully assembled. Each continuation must echo the original header's flags, type, ID, error, and total size.
+        </p>
+        
+        <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8">
+            mxd's codec validates all of this in a single decoding pass. Payloads exceeding 1 MiB are rejected. Fragment sizes are clamped to 32 KiB. Outbound encoding produces byte-for-byte parity with the legacy runtime.
+        </p>
+        
+        <div class="mb-8 rounded-lg overflow-hidden">
+            <div class="flex flex-wrap">
+                <div class="px-2 py-3 bg-[#c54b2a] flex flex-col items-center gap-1 min-w-[81.79px]">
+                    <span class="text-white text-xl font-bold font-primary">00</span>
+                    <span class="text-white text-[9.60px] font-normal font-primary uppercase opacity-70 tracking-[0.05em]">Flags</span>
+                </div>
+                <div class="px-2 py-3 bg-[#9a3a1f] flex flex-col items-center gap-1 min-w-[81.79px]">
+                    <span class="text-white text-xl font-bold font-primary">00</span>
+                    <span class="text-white text-[9.60px] font-normal font-primary uppercase opacity-70 tracking-[0.05em]">Reply</span>
+                </div>
+                <div class="px-2 py-3 bg-[#e8a838] flex flex-col items-center gap-1 min-w-[85.89px]">
+                    <span class="text-[#12121f] text-xl font-bold font-primary">00</span>
+                    <span class="text-[#12121f] text-[10.10px] font-normal font-primary uppercase opacity-70 tracking-[0.05em]">Type</span>
+                </div>
+                <div class="px-2 py-3 bg-[#e8a838] flex flex-col items-center gap-1 min-w-[85.89px]">
+                    <span class="text-[#12121f] text-xl font-bold font-primary">6B</span>
+                    <span class="text-[#12121f] text-[10.10px] font-normal font-primary uppercase opacity-70 tracking-[0.05em]">Type</span>
+                </div>
+                <div class="px-2 py-3 bg-[#c89430] flex flex-col items-center gap-1 min-w-[81.79px]">
+                    <span class="text-white text-xl font-bold font-primary">00</span>
+                    <span class="text-white text-[9.60px] font-normal font-primary uppercase opacity-70 tracking-[0.05em]">ID</span>
+                </div>
+                <div class="px-2 py-3 bg-[#c89430] flex flex-col items-center gap-1 min-w-[81.79px]">
+                    <span class="text-white text-xl font-bold font-primary">00</span>
+                    <span class="text-white text-[9.60px] font-normal font-primary uppercase opacity-70 tracking-[0.05em]">ID</span>
+                </div>
+                <div class="px-2 py-3 bg-[#c89430] flex flex-col items-center gap-1 min-w-[81.79px]">
+                    <span class="text-white text-xl font-bold font-primary">00</span>
+                    <span class="text-white text-[9.60px] font-normal font-primary uppercase opacity-70 tracking-[0.05em]">ID</span>
+                </div>
+                <div class="px-2 py-3 bg-[#c89430] flex flex-col items-center gap-1 min-w-[81.79px]">
+                    <span class="text-white text-xl font-bold font-primary">01</span>
+                    <span class="text-white text-[9.60px] font-normal font-primary uppercase opacity-70 tracking-[0.05em]">ID</span>
+                </div>
+                <div class="px-2 py-3 bg-[#2d3a8c] flex flex-col items-center gap-1 min-w-[81.79px]">
+                    <span class="text-white text-xl font-bold font-primary">00</span>
+                    <span class="text-white text-[9.60px] font-normal font-primary uppercase opacity-70 tracking-[0.05em]">Error</span>
+                </div>
+                <div class="px-2 py-3 bg-[#2d3a8c] flex flex-col items-center gap-1 min-w-[81.79px]">
+                    <span class="text-white text-xl font-bold font-primary">00</span>
+                    <span class="text-white text-[9.60px] font-normal font-primary uppercase opacity-70 tracking-[0.05em]">Error</span>
+                </div>
+                <div class="px-2 py-3 bg-[#2d3a8c] flex flex-col items-center gap-1 min-w-[81.79px]">
+                    <span class="text-white text-xl font-bold font-primary">00</span>
+                    <span class="text-white text-[9.60px] font-normal font-primary uppercase opacity-70 tracking-[0.05em]">Error</span>
+                </div>
+                <div class="px-2 py-3 bg-[#2d3a8c] flex flex-col items-center gap-1 min-w-[81.79px]">
+                    <span class="text-white text-xl font-bold font-primary">00</span>
+                    <span class="text-white text-[9.60px] font-normal font-primary uppercase opacity-70 tracking-[0.05em]">Error</span>
+                </div>
+                <div class="px-2 py-3 bg-[#1e2760] flex flex-col items-center gap-1 min-w-[81.79px]">
+                    <span class="text-[#f5e6d0] text-xl font-bold font-primary">00</span>
+                    <span class="text-[#f5e6d0] text-[9.60px] font-normal font-primary uppercase opacity-70 tracking-[0.05em]">Total</span>
+                </div>
+                <div class="px-2 py-3 bg-[#1e2760] flex flex-col items-center gap-1 min-w-[81.79px]">
+                    <span class="text-[#f5e6d0] text-xl font-bold font-primary">00</span>
+                    <span class="text-[#f5e6d0] text-[9.60px] font-normal font-primary uppercase opacity-70 tracking-[0.05em]">Total</span>
+                </div>
+                <div class="px-2 py-3 bg-[#1e2760] flex flex-col items-center gap-1 min-w-[81.79px]">
+                    <span class="text-[#f5e6d0] text-xl font-bold font-primary">00</span>
+                    <span class="text-[#f5e6d0] text-[9.60px] font-normal font-primary uppercase opacity-70 tracking-[0.05em]">Total</span>
+                </div>
+                <div class="px-2 py-3 bg-[#1e2760] flex flex-col items-center gap-1 min-w-[81.79px]">
+                    <span class="text-[#f5e6d0] text-xl font-bold font-primary">24</span>
+                    <span class="text-[#f5e6d0] text-[9.60px] font-normal font-primary uppercase opacity-70 tracking-[0.05em]">Total</span>
+                </div>
+                <div class="px-2 py-3 bg-[#2a2a42] flex flex-col items-center gap-1 min-w-[81.79px]">
+                    <span class="text-[#f5e6d0] text-xl font-bold font-primary">00</span>
+                    <span class="text-[#f5e6d0] text-[9.60px] font-normal font-primary uppercase opacity-70 tracking-[0.05em]">Data</span>
+                </div>
+                <div class="px-2 py-3 bg-[#2a2a42] flex flex-col items-center gap-1 min-w-[81.79px]">
+                    <span class="text-[#f5e6d0] text-xl font-bold font-primary">00</span>
+                    <span class="text-[#f5e6d0] text-[9.60px] font-normal font-primary uppercase opacity-70 tracking-[0.05em]">Data</span>
+                </div>
+                <div class="px-2 py-3 bg-[#2a2a42] flex flex-col items-center gap-1 min-w-[81.79px]">
+                    <span class="text-[#f5e6d0] text-xl font-bold font-primary">00</span>
+                    <span class="text-[#f5e6d0] text-[9.60px] font-normal font-primary uppercase opacity-70 tracking-[0.05em]">Data</span>
+                </div>
+                <div class="px-2 py-3 bg-[#2a2a42] flex flex-col items-center gap-1 min-w-[81.79px]">
+                    <span class="text-[#f5e6d0] text-xl font-bold font-primary">24</span>
+                    <span class="text-[#f5e6d0] text-[9.60px] font-normal font-primary uppercase opacity-70 tracking-[0.05em]">Data</span>
+                </div>
+            </div>
+        </div>
+        
+        <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px]">
+            Property tests confirm it. Kani proves it. AFL++ fuzzes it nightly.
+        </p>
+    </div>
+</div>
+
+<div id="section-operational" class="border-t border-[#e8d5b8] py-20">
+    <div class="max-w-[900px] mx-auto px-8">
+        <div class="text-[#c54b2a] text-[11.10px] font-normal font-primary uppercase mb-2">04 — Running it</div>
+        <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-4">Configuration without ceremony</h2>
+        
+        <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-4">
+            CLI flags, environment variables, and TOML config files. OrthoConfig merges them in that order: defaults &lt; file &lt; env &lt; CLI. Set MXD_DATABASE to a Postgres connection string. Set MXD_BIND to a socket address. Drop a .mxd.toml for persistent defaults. Run mxd create-user to provision accounts. Migrations apply automatically.
+        </p>
+        
+        <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px]">
+            systemd integration includes sd_notify readiness signalling, watchdog heartbeats, and structured journald logging with per-connection trace spans. Socket activation is supported for zero-downtime restarts.
+        </p>
+    </div>
+</div>
+
+<div id="section-testing" class="relative border-t border-[#e8d5b8] py-20 overflow-hidden">
+    <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
+    
+    <div class="relative max-w-[900px] mx-auto px-8">
+        <div class="text-[#c54b2a] text-[11.10px] font-normal font-primary uppercase mb-2">05 — Confidence</div>
+        <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-4">Tested at every layer</h2>
+        
+        <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-4">
+            Unit tests with rstest fixtures. BDD scenarios in Gherkin via rstest-bdd. Property tests with proptest. Integration tests that start the wireframe binary, complete the handshake over TCP, and exercise login, file listing, and news flows. Expect-based protocol conformance tests against the SynHX client binary.
+        </p>
+        
+        <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-4">
+            AFL++ fuzzes parse_transaction nightly in CI. Crashes are uploaded as artefacts and become regression tests. The seed corpus is generated from protocol examples.
+        </p>
+        
+        <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px]">
+            Embedded PostgreSQL test fixtures spin up isolated clusters per test. No external database required. No root access required.
+        </p>
+    </div>
+</div>
+
+<div id="footer-cta" class="border-t border-[#e8d5b8] py-20 bg-white">
+    <div class="max-w-[900px] mx-auto px-8 text-center">
+        <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-4">Get the daemon running</h2>
+        <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8">
+            mxd is open source. The protocol documentation, architecture decisions, and verification artefacts ship with the code.
+        </p>
+        
+        <div class="flex flex-wrap justify-center gap-3">
+            <a class="btn-primary px-6 py-3 bg-[#c54b2a] text-white text-sm font-normal font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="quickstart/">
+                Quickstart Guide
+            </a>
+            <a class="btn-secondary px-6 py-3 text-[#c54b2a] text-sm font-normal font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="https://github.com/leynos/mxd" target="_blank" rel="noreferrer">
+                GitHub
+            </a>
+        </div>
+    </div>
+</div>
+
+<div id="footer" class="bg-[#12121f] relative">
+    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
+    
+    <div class="max-w-[900px] mx-auto px-8 py-12 text-center">
+        <div class="mb-6 opacity-40">
+            <span class="text-[#e8d5b8] text-[23px] font-normal font-primary">◆</span>
+        </div>
+        
+        <p class="text-[#3a3a55] text-[11.10px] font-normal font-secondary leading-[18.88px] mb-2">
+            Protocol Souk — Design System for <span class="text-[#e8a838]">mxd</span>
+        </p>
+        
+        <p class="text-[#3a3a55] text-[11.10px] font-normal font-secondary leading-[18.88px]">
+            A <span class="text-[#e8a838]">df12 Productions</span> artefact · Edinburgh · 2026
+        </p>
+    </div>
+</div>
+
+
+</body></html>

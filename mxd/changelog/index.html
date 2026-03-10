@@ -1,0 +1,446 @@
+<!DOCTYPE html><html lang="en"><head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changelog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800;900&amp;family=DM+Serif+Display:ital,wght@0,400;1,400&amp;family=Source+Serif+4:ital,wght@200;300;400;600;700;900&amp;family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        "primary": ["JetBrains Mono", "monospace"],
+                        "secondary": ["DM Serif Display", "serif"],
+                        "tertiary": ["Source Serif 4", "serif"],
+                        "display": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        ::-webkit-scrollbar { display: none; }
+        html, body { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .express-line {
+            animation: shimmer 8s ease-in-out infinite;
+            background-size: 200% 100%;
+        }
+        
+        .btn-primary {
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(197, 75, 42, 0.3);
+        }
+        
+        .btn-secondary {
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #c54b2a;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(18, 18, 31, 0.15);
+        }
+        
+        .release-card {
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        
+        .release-card:hover {
+            border-color: #c54b2a;
+            transform: translateY(-2px);
+        }
+    </style>
+    <link rel="icon" href="../assets/logo-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body class="bg-[#fdf8f0]">
+<a class="mxd-skip-link" href="#hero-section">Skip to content</a>
+<header class="mxd-site-header">
+  <div class="mxd-site-header__inner">
+    <a class="mxd-brand" href="../">
+      <img src="../assets/logo-mark.svg" alt="">
+      <span>
+        <span class="mxd-brand__eyebrow">df12 Productions</span>
+        <span class="mxd-brand__title">Marrakesh Express Daemon</span>
+      </span>
+    </a>
+    <nav class="mxd-site-nav" aria-label="Primary">
+      <a href="../">Home</a><a href="../quickstart/">Quickstart</a><a href="../installation/">Installation</a><a href="../deployment/">Deployment</a><a href="../architecture/">Architecture</a><a href="../protocol/">Protocol</a><a href="../configuration/">Configuration</a><a href="../database-backends/">Databases</a><a href="../compatibility/">Compatibility</a><a href="../verification/">Verification</a><a href="../roadmap/">Roadmap</a><a href="./" aria-current="page">Changelog</a>
+    </nav>
+  </div>
+</header>
+<section class="mxd-page-toc" aria-labelledby="mxd-toc-title">
+  <div class="mxd-page-toc__inner">
+    <div>
+      <div class="mxd-page-toc__label">Route map</div>
+      <div class="mxd-page-toc__title" id="mxd-toc-title">Changelog</div>
+    </div>
+    <div class="mxd-page-toc__links">
+      <a href="#section-v0-4-0">Version 0.4.0</a><a href="#section-v0-3-2">Version 0.3.2</a><a href="#section-v0-3-0">Version 0.3.0</a><a href="#section-v0-2-1">Version 0.2.1</a><a href="#section-governance">Release Governance</a>
+    </div>
+  </div>
+</section>
+
+<div id="hero-section" class="relative bg-[#12121f] overflow-hidden" style="height: 400px;">
+    <div class="mxd-pattern mxd-pattern--hero absolute inset-0 opacity-60" aria-hidden="true"></div>
+    
+    <div class="absolute top-0 left-0 right-0 h-1 express-line bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
+    
+    <div class="relative max-w-[900px] mx-auto px-4 sm:px-8 pt-20 pb-12">
+        <div class="inline-flex px-3 py-1 rounded-sm border border-[#c89430] mb-6">
+            <div class="text-[#e8a838] text-[11.10px] font-bold font-primary uppercase tracking-[0.15em]">Changelog</div>
+        </div>
+        
+        <h1 class="mb-6">
+            <span class="text-[#f5e6d0] text-4xl sm:text-5xl md:text-[68.80px] font-normal font-secondary leading-tight sm:leading-[72.24px]">Changelog</span>
+        </h1>
+        
+        <div class="text-[#e8d5b8] text-base sm:text-lg font-light font-tertiary leading-[27.20px] sm:leading-[39.17px] max-w-[700px]">
+            <p>Release notes follow the compatibility matrix governance process: every release that touches client-facing behaviour includes a QA sign-off statement linking to the internal compatibility matrix. If the release introduces a new compatibility quirk, the deviation is recorded in both the release notes and the matrix.</p>
+        </div>
+    </div>
+    
+    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#c54b2a]"></div>
+</div>
+
+<div id="section-v0-4-0" class="relative border-t border-[#e8d5b8] py-16 sm:py-20 overflow-hidden">
+    <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
+    
+    <div class="relative max-w-[900px] mx-auto px-4 sm:px-8">
+        <div class="release-card bg-white rounded-lg border-2 border-[#e8d5b8] p-6 sm:p-8 mb-8">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-[#c54b2a] rounded flex items-center justify-center flex-shrink-0">
+                        <span class="text-white text-xl font-bold font-primary">v0.4</span>
+                    </div>
+                    <div>
+                        <h2 class="text-[#12121f] text-2xl sm:text-3xl font-normal font-secondary">Version 0.4.0</h2>
+                        <p class="text-[#3a3a55] text-sm font-normal font-primary mt-1">2026-03-10</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-2.5 py-1 bg-[#e8eaf6] rounded-full border border-[#c4e5cc]">
+                        <span class="text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-wide">Stable</span>
+                    </span>
+                    <span class="px-2.5 py-1 bg-[#c54b2a] rounded-full">
+                        <span class="text-white text-[10.40px] font-bold font-primary uppercase tracking-wide">Breaking</span>
+                    </span>
+                </div>
+            </div>
+            
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-[#12121f] text-xl font-normal font-secondary mb-3">Added</h3>
+                    <ul class="space-y-2 pl-5">
+                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">Transaction routing layer for Login (0x006B) with full XOR detection and decoding</li>
+                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">Hexagonal architecture implementation with ports and adapters for protocol boundary isolation</li>
+                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">Property-based testing suite using <code class="text-xs font-display bg-[#f5e6d0] px-2 py-1 rounded">proptest</code> for frame validation</li>
+                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">TLA+ specification for handshake state machine with liveness proofs</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-[#12121f] text-xl font-normal font-secondary mb-3">Changed</h3>
+                    <ul class="space-y-2 pl-5">
+                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc"><strong class="font-semibold">Breaking:</strong> Codec API now returns <code class="text-xs font-display bg-[#f5e6d0] px-2 py-1 rounded">Result<frame, codecerror=""></frame,></code> instead of <code class="text-xs font-display bg-[#f5e6d0] px-2 py-1 rounded">Option</code></li>
+                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">Handshake validation now rejects protocol ID mismatches before allocating session state</li>
+                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">Multi-fragment reassembly buffer now uses bounded capacity with explicit overflow handling</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-[#12121f] text-xl font-normal font-secondary mb-3">Fixed</h3>
+                    <ul class="space-y-2 pl-5">
+                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">Byte order handling for transaction ID field on big-endian systems</li>
+                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">XOR decoding now correctly handles zero-length text fields</li>
+                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">Frame header validation no longer panics on malformed total-size field</li>
+                    </ul>
+                </div>
+                
+                <div class="pt-4 border-t border-[#e8d5b8]">
+                    <div class="flex items-start gap-3">
+                        <div class="w-6 h-6 bg-[#2d3a8c] rounded flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fa-solid fa-check text-white text-xs"></i>
+                        </div>
+                        <div>
+                            <p class="text-[#12121f] text-sm font-semibold font-tertiary mb-1">QA Sign-off</p>
+                            <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[21.32px]">
+                                Compatibility matrix updated with XOR detection quirk for Hotline Client 1.2.3. All regression tests pass against reference client implementations. See <a href="../architecture/#section-authentication" class="text-[#2d3a8c] underline">ADR-004</a> for codec error handling rationale.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="section-v0-3-2" class="border-t border-[#e8d5b8] py-16 sm:py-20 bg-white">
+    <div class="max-w-[900px] mx-auto px-4 sm:px-8">
+        <div class="release-card bg-[#fdf8f0] rounded-lg border-2 border-[#e8d5b8] p-6 sm:p-8 mb-8">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-[#e8a838] rounded flex items-center justify-center flex-shrink-0">
+                        <span class="text-[#12121f] text-xl font-bold font-primary">v0.3</span>
+                    </div>
+                    <div>
+                        <h2 class="text-[#12121f] text-2xl sm:text-3xl font-normal font-secondary">Version 0.3.2</h2>
+                        <p class="text-[#3a3a55] text-sm font-normal font-primary mt-1">2026-02-18</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-2.5 py-1 bg-[#e8eaf6] rounded-full border border-[#c4e5cc]">
+                        <span class="text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-wide">Stable</span>
+                    </span>
+                </div>
+            </div>
+            
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-[#12121f] text-xl font-normal font-secondary mb-3">Added</h3>
+                    <ul class="space-y-2 pl-5">
+                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">Dual database support with compile-time backend selection via Cargo features</li>
+                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">SQLite migration tree for embedded deployment</li>
+                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">PostgreSQL migration tree for scale deployment</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-[#12121f] text-xl font-normal font-secondary mb-3">Changed</h3>
+                    <ul class="space-y-2 pl-5">
+                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">Repository layer now uses trait abstraction for database operations</li>
+                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">Session storage migrated from in-memory HashMap to persistent database</li>
+                    </ul>
+                </div>
+                
+                <div class="pt-4 border-t border-[#e8d5b8]">
+                    <div class="flex items-start gap-3">
+                        <div class="w-6 h-6 bg-[#2d3a8c] rounded flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fa-solid fa-check text-white text-xs"></i>
+                        </div>
+                        <div>
+                            <p class="text-[#12121f] text-sm font-semibold font-tertiary mb-1">QA Sign-off</p>
+                            <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[21.32px]">
+                                No client-facing behaviour changes. Database abstraction verified through integration tests against both backends. Migration compatibility confirmed.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="section-v0-3-0" class="relative border-t border-[#e8d5b8] py-16 sm:py-20 overflow-hidden">
+    <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
+    
+    <div class="relative max-w-[900px] mx-auto px-4 sm:px-8">
+        <div class="release-card bg-white rounded-lg border-2 border-[#e8d5b8] p-6 sm:p-8 mb-8">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-[#2d3a8c] rounded flex items-center justify-center flex-shrink-0">
+                        <span class="text-white text-xl font-bold font-primary">v0.3</span>
+                    </div>
+                    <div>
+                        <h2 class="text-[#12121f] text-2xl sm:text-3xl font-normal font-secondary">Version 0.3.0</h2>
+                        <p class="text-[#3a3a55] text-sm font-normal font-primary mt-1">2026-01-22</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-2.5 py-1 bg-[#e8eaf6] rounded-full border border-[#c4e5cc]">
+                        <span class="text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-wide">Stable</span>
+                    </span>
+                    <span class="px-2.5 py-1 bg-[#c54b2a] rounded-full">
+                        <span class="text-white text-[10.40px] font-bold font-primary uppercase tracking-wide">Breaking</span>
+                    </span>
+                </div>
+            </div>
+            
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-[#12121f] text-xl font-normal font-secondary mb-3">Added</h3>
+                    <ul class="space-y-2 pl-5">
+                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">Handshake preamble validation with protocol ID and version checks</li>
+                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">Frame header parsing with big-endian integer support</li>
+                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">Kani bounded verification for frame validation invariants</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-[#12121f] text-xl font-normal font-secondary mb-3">Changed</h3>
+                    <ul class="space-y-2 pl-5">
+                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc"><strong class="font-semibold">Breaking:</strong> Connection handling moved from synchronous to async/await with Tokio runtime</li>
+                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">TCP listener now uses bounded channel for connection backpressure</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-[#12121f] text-xl font-normal font-secondary mb-3">Fixed</h3>
+                    <ul class="space-y-2 pl-5">
+                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">Handshake timeout now correctly closes connection after 30 seconds</li>
+                    </ul>
+                </div>
+                
+                <div class="pt-4 border-t border-[#e8d5b8]">
+                    <div class="flex items-start gap-3">
+                        <div class="w-6 h-6 bg-[#2d3a8c] rounded flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fa-solid fa-check text-white text-xs"></i>
+                        </div>
+                        <div>
+                            <p class="text-[#12121f] text-sm font-semibold font-tertiary mb-1">QA Sign-off</p>
+                            <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[21.32px]">
+                                Compatibility matrix confirms handshake acceptance for Hotline Client 1.2.3, 1.8.6, and 1.9.2. Rejection behaviour verified for malformed protocol identifiers. See <a href="../compatibility/#section-matrix" class="text-[#2d3a8c] underline">compatibility matrix v0.3.0</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="section-v0-2-1" class="border-t border-[#e8d5b8] py-16 sm:py-20 bg-white">
+    <div class="max-w-[900px] mx-auto px-4 sm:px-8">
+        <div class="release-card bg-[#fdf8f0] rounded-lg border-2 border-[#e8d5b8] p-6 sm:p-8 mb-8">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-[#4a8c5c] rounded flex items-center justify-center flex-shrink-0">
+                        <span class="text-white text-xl font-bold font-primary">v0.2</span>
+                    </div>
+                    <div>
+                        <h2 class="text-[#12121f] text-2xl sm:text-3xl font-normal font-secondary">Version 0.2.1</h2>
+                        <p class="text-[#3a3a55] text-sm font-normal font-primary mt-1">2025-12-15</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-2.5 py-1 bg-[#e8eaf6] rounded-full border border-[#c4e5cc]">
+                        <span class="text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-wide">Stable</span>
+                    </span>
+                </div>
+            </div>
+            
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-[#12121f] text-xl font-normal font-secondary mb-3">Fixed</h3>
+                    <ul class="space-y-2 pl-5">
+                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">TCP listener panic on port bind failure now returns proper error</li>
+                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">Configuration file parsing now handles missing optional fields gracefully</li>
+                    </ul>
+                </div>
+                
+                <div class="pt-4 border-t border-[#e8d5b8]">
+                    <div class="flex items-start gap-3">
+                        <div class="w-6 h-6 bg-[#2d3a8c] rounded flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fa-solid fa-check text-white text-xs"></i>
+                        </div>
+                        <div>
+                            <p class="text-[#12121f] text-sm font-semibold font-tertiary mb-1">QA Sign-off</p>
+                            <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[21.32px]">
+                                No client-facing protocol changes. Internal error handling improvements only.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="section-governance" class="relative border-t border-[#e8d5b8] py-16 sm:py-20 overflow-hidden">
+    <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
+    
+    <div class="relative max-w-[900px] mx-auto px-4 sm:px-8">
+        <h2 class="text-[#12121f] text-2xl sm:text-3xl md:text-[39.80px] font-normal font-secondary mb-8">Release Governance</h2>
+        
+        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-2 border-[#c54b2a] mb-8">
+            <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-4">
+                Every release that modifies client-facing behaviour requires a QA sign-off statement. The statement must:
+            </p>
+            <ul class="space-y-2 pl-5">
+                <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">Link to the updated compatibility matrix</li>
+                <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">Identify all reference clients tested against the release</li>
+                <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">Document any new compatibility quirks or deviations</li>
+                <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">Reference relevant ADRs for architectural decisions</li>
+            </ul>
+        </div>
+        
+        <div class="space-y-4">
+            <h3 class="text-[#12121f] text-xl font-normal font-secondary">Version Numbering</h3>
+            <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px]">
+                mxd follows semantic versioning with the following interpretation:
+            </p>
+            <ul class="space-y-2 pl-5">
+                <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc"><strong class="font-semibold">Major (0.x.0):</strong> Breaking changes to codec API or protocol implementation</li>
+                <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc"><strong class="font-semibold">Minor (0.x.0):</strong> New transaction types or feature additions</li>
+                <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc"><strong class="font-semibold">Patch (0.0.x):</strong> Bug fixes and internal refactoring</li>
+            </ul>
+        </div>
+        
+        <div class="mt-12 text-center">
+            <h3 class="text-[#12121f] text-2xl font-normal font-secondary mb-6">Changelog Sources</h3>
+            <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8 max-w-[600px] mx-auto">
+                Release notes are generated from Git tags and maintained in <code class="text-xs font-display bg-white px-2 py-1 rounded">CHANGELOG.md</code>. The compatibility matrix lives in <code class="text-xs font-display bg-white px-2 py-1 rounded">docs/compatibility/</code> and is versioned alongside releases.
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-3">
+                <a class="btn-primary px-6 py-3 bg-[#c54b2a] text-white text-sm font-bold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="../compatibility/">
+                    View Compatibility Matrix
+                </a>
+                <a class="btn-secondary px-6 py-3 text-[#c54b2a] text-sm font-bold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="../roadmap/">
+                    Release Process
+                </a>
+                <a class="btn-secondary px-6 py-3 text-[#3a3a55] text-sm font-bold font-primary rounded border-2 border-[#e8d5b8] mxd-site-button" href="./">
+                    All Releases
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="footer" class="bg-[#12121f] relative">
+    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
+    
+    <div class="max-w-[900px] mx-auto px-4 sm:px-8 py-12 text-center">
+        <div class="mb-6 opacity-40">
+            <span class="text-[#e8d5b8] text-[23px] font-normal font-primary">◆</span>
+        </div>
+        
+        <p class="text-[#3a3a55] text-[11.10px] font-normal font-secondary leading-[18.88px] mb-2">
+            Protocol Souk — Design System for <span class="text-[#e8a838]">mxd</span>
+        </p>
+        
+        <p class="text-[#3a3a55] text-[11.10px] font-normal font-secondary leading-[18.88px]">
+            A <span class="text-[#e8a838]">df12 Productions</span> artefact · Edinburgh · 2026
+        </p>
+    </div>
+</div>
+
+
+</body></html>
