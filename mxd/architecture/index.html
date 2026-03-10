@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Architecture</title>
+    <title>Architecture — mxd</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };
@@ -18,56 +18,12 @@
                     fontFamily: {
                         "primary": ["JetBrains Mono", "monospace"],
                         "secondary": ["DM Serif Display", "serif"],
-                        "tertiary": ["Source Serif 4", "serif"],
-                        "display": ["Inter", "sans-serif"]
+                        "tertiary": ["Source Serif 4", "serif"]
                     }
                 }
             }
         };
     </script>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        ::-webkit-scrollbar { display: none; }
-        html, body { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        @keyframes shimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        .express-line {
-            animation: shimmer 8s ease-in-out infinite;
-            background-size: 200% 100%;
-        }
-        
-        .btn-primary {
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(197, 75, 42, 0.3);
-        }
-        
-        .btn-secondary {
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        
-        .btn-secondary:hover {
-            background-color: #c54b2a;
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        .card-hover {
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(18, 18, 31, 0.15);
-        }
-    </style>
     <link rel="icon" href="../assets/logo-mark.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../assets/site.css">
 </head>
@@ -99,18 +55,18 @@
   </div>
 </section>
 
-<div id="hero-section" class="relative bg-[#12121f] overflow-hidden" style="height: 480px;">
+<div id="hero-section" class="relative bg-[#12121f] overflow-hidden">
     <div class="mxd-pattern mxd-pattern--hero absolute inset-0 opacity-60" aria-hidden="true"></div>
     
-    <div class="absolute top-0 left-0 right-0 h-1 express-line bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
+    <div class="absolute top-0 left-0 right-0 h-1 mxd-express-line bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
     
-    <div class="relative max-w-[900px] mx-auto px-8 pt-24 pb-16">
+    <div class="relative max-w-[900px] mx-auto px-4 sm:px-8 pt-32 pb-20">
         <div class="inline-flex px-3 py-1 rounded-sm border border-[#c89430] mb-6">
             <div class="text-[#e8a838] text-[11.10px] font-bold font-primary uppercase tracking-[0.15em]">Docs · Architecture</div>
         </div>
         
         <h1 class="mb-6">
-            <span class="text-[#f5e6d0] text-[68.80px] font-normal font-secondary leading-[72.24px]">Hexagonal, not by accident</span>
+            <span class="text-[#f5e6d0] text-4xl sm:text-5xl md:text-[68.80px] font-normal font-secondary leading-tight sm:leading-[72.24px]">Hexagonal, not by accident</span>
         </h1>
         
         <div class="text-[#e8d5b8] text-base font-normal font-tertiary leading-[27.20px] max-w-[700px] space-y-4">
@@ -123,11 +79,11 @@
         </div>
     </div>
     
-    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#c54b2a]"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
 </div>
 
-<div id="section-overview" class="border-t border-[#e8d5b8] py-20">
-    <div class="max-w-[900px] mx-auto px-8">
+<div id="section-overview" class="border-t border-[#e8d5b8] py-16 sm:py-20">
+    <div class="max-w-[900px] mx-auto px-4 sm:px-8">
         <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-6">Domain core and adapters</h2>
         
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8">
@@ -135,7 +91,7 @@
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div class="card-hover bg-white rounded-lg border border-[#e8d5b8] overflow-hidden">
+            <div class="mxd-card-hover bg-white rounded-lg border border-[#e8d5b8] overflow-hidden">
                 <div class="px-6 py-6">
                     <div class="w-10 h-10 bg-[#c54b2a] rounded flex items-center justify-center mb-4">
                         <span class="text-white text-xl font-bold font-primary">Wf</span>
@@ -147,7 +103,7 @@
                 </div>
             </div>
             
-            <div class="card-hover bg-white rounded-lg border border-[#e8d5b8] overflow-hidden">
+            <div class="mxd-card-hover bg-white rounded-lg border border-[#e8d5b8] overflow-hidden">
                 <div class="px-6 py-6">
                     <div class="w-10 h-10 bg-[#2d3a8c] rounded flex items-center justify-center mb-4">
                         <span class="text-white text-xl font-bold font-primary">Db</span>
@@ -160,22 +116,22 @@
             </div>
         </div>
         
-        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-2 border-[#c54b2a]">
+        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a]">
             <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
-                <span class="text-[#9a3a1f] font-semibold">Structural enforcement:</span> The <span class="text-[#12121f] text-xs font-normal font-display">WireframeRouter</span> is the sole public routing entrypoint; internal routing functions are <span class="text-[#12121f] text-xs font-normal font-display">pub(crate)</span>. New routes cannot accidentally bypass compatibility hooks because there is no public surface through which to do so.
+                <span class="text-[#9a3a1f] font-semibold">Structural enforcement:</span> The <span class="text-[#12121f] text-xs font-normal font-primary">WireframeRouter</span> is the sole public routing entrypoint; internal routing functions are <span class="text-[#12121f] text-xs font-normal font-primary">pub(crate)</span>. New routes cannot accidentally bypass compatibility hooks because there is no public surface through which to do so.
             </p>
         </div>
     </div>
 </div>
 
-<div id="section-compatibility" class="relative border-t border-[#e8d5b8] py-20 overflow-hidden">
+<div id="section-compatibility" class="relative border-t border-[#e8d5b8] py-16 sm:py-20 overflow-hidden">
     <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
-    
-    <div class="relative max-w-[900px] mx-auto px-8">
+
+    <div class="relative max-w-[900px] mx-auto px-4 sm:px-8">
         <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-6">Compatibility guardrails</h2>
         
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8">
-            <span class="text-[#12121f] text-base font-normal font-display">WireframeRouter</span> embeds a <span class="text-[#12121f] text-base font-normal font-display">CompatibilityLayer</span> that orchestrates request-side and reply-side hooks on every routed transaction. On the request path, it decodes XOR-encoded payloads and records the login version. On the reply path, it augments responses with client-specific extras — banner fields for Hotline 1.8.5 and 1.9 clients, omission of those fields for SynHX.
+            <span class="text-[#12121f] text-base font-normal font-primary">WireframeRouter</span> embeds a <span class="text-[#12121f] text-base font-normal font-primary">CompatibilityLayer</span> that orchestrates request-side and reply-side hooks on every routed transaction. On the request path, it decodes XOR-encoded payloads and records the login version. On the reply path, it augments responses with client-specific extras — banner fields for Hotline 1.8.5 and 1.9 clients, omission of those fields for SynHX.
         </p>
         
         <div class="bg-[#12121f] rounded-lg shadow-[0px_8px_32px_0px_rgba(18,18,31,0.18)] overflow-hidden mb-8 transition-all duration-300 hover:shadow-[0px_12px_32px_0px_rgba(18,18,31,0.24)]">
@@ -188,7 +144,7 @@
                 </div>
             </div>
             <div class="px-6 py-6">
-                <pre class="text-[#f5e6d0] text-sm font-normal font-display leading-[21.32px]"><span class="text-[#3a3a55]">// Request → Compatibility hooks → Domain → Reply hooks</span>
+                <pre class="text-[#f5e6d0] text-sm font-normal font-primary leading-[21.32px]"><span class="text-[#3a3a55]">// Request → Compatibility hooks → Domain → Reply hooks</span>
 <span class="text-[#e8a838]">impl</span> <span class="text-[#2d3a8c]">CompatibilityLayer</span> {
     <span class="text-[#e8a838]">fn</span> <span class="text-[#f5e6d0]">on_request</span>(&amp;<span class="text-[#e8a838]">mut</span> <span class="text-[#e8a838]">self</span>, frame: &amp;<span class="text-[#e8a838]">mut</span> <span class="text-[#2d3a8c]">Frame</span>) {
         <span class="text-[#e8a838]">if</span> frame.is_xor_encoded() {
@@ -207,17 +163,17 @@
         </div>
         
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8">
-            Hook ordering is verified by a spy-based test: <span class="text-[#12121f] text-base font-normal font-display">on_request</span> → dispatch → <span class="text-[#12121f] text-base font-normal font-display">on_reply</span>, asserted for both login and non-login transactions. This is the kind of property that looks obvious until someone adds a new route and forgets to wire it through the router. The test exists so that "forgets" becomes "gets a failing CI run."
+            Hook ordering is verified by a spy-based test: <span class="text-[#12121f] text-base font-normal font-primary">on_request</span> → dispatch → <span class="text-[#12121f] text-base font-normal font-primary">on_reply</span>, asserted for both login and non-login transactions. This is the kind of property that looks obvious until someone adds a new route and forgets to wire it through the router. The test exists so that "forgets" becomes "gets a failing CI run."
         </p>
     </div>
 </div>
 
-<div id="section-authentication" class="border-t border-[#e8d5b8] py-20">
-    <div class="max-w-[900px] mx-auto px-8">
+<div id="section-authentication" class="border-t border-[#e8d5b8] py-16 sm:py-20">
+    <div class="max-w-[900px] mx-auto px-4 sm:px-8">
         <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-6">Authentication and reply augmentation</h2>
         
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8">
-            Login handling splits into two responsibilities. <span class="text-[#12121f] text-base font-normal font-display">AuthStrategy</span> owns request validation and credential checking. <span class="text-[#12121f] text-base font-normal font-display">LoginReplyAugmenter</span> decorates the reply with fields determined by client compatibility metadata. Both are selected by <span class="text-[#12121f] text-base font-normal font-display">ClientKind</span> and orchestrated by the compatibility layer.
+            Login handling splits into two responsibilities. <span class="text-[#12121f] text-base font-normal font-primary">AuthStrategy</span> owns request validation and credential checking. <span class="text-[#12121f] text-base font-normal font-primary">LoginReplyAugmenter</span> decorates the reply with fields determined by client compatibility metadata. Both are selected by <span class="text-[#12121f] text-base font-normal font-primary">ClientKind</span> and orchestrated by the compatibility layer.
         </p>
         
         <div class="bg-white rounded-lg border border-[#e8d5b8] overflow-hidden mb-8">
@@ -228,7 +184,7 @@
                 <div class="px-6 py-4">
                     <div class="flex items-baseline gap-3 mb-2">
                         <span class="text-[#e8a838] text-sm font-bold font-primary">Default Hotline</span>
-                        <span class="px-2.5 py-1 bg-[#e8eaf6] rounded-full border border-[#c4e5cc]">
+                        <span class="px-2.5 py-1 bg-[#e8f5ec] rounded-full border border-[#c4e5cc]">
                             <span class="text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Supported</span>
                         </span>
                     </div>
@@ -239,7 +195,7 @@
                 <div class="px-6 py-4">
                     <div class="flex items-baseline gap-3 mb-2">
                         <span class="text-[#e8a838] text-sm font-bold font-primary">SynHX</span>
-                        <span class="px-2.5 py-1 bg-[#e8eaf6] rounded-full border border-[#c4e5cc]">
+                        <span class="px-2.5 py-1 bg-[#e8f5ec] rounded-full border border-[#c4e5cc]">
                             <span class="text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Supported</span>
                         </span>
                     </div>
@@ -250,7 +206,7 @@
                 <div class="px-6 py-4">
                     <div class="flex items-baseline gap-3 mb-2">
                         <span class="text-[#e8a838] text-sm font-bold font-primary">Hotline 1.8.5 and 1.9</span>
-                        <span class="px-2.5 py-1 bg-[#e8eaf6] rounded-full border border-[#c4e5cc]">
+                        <span class="px-2.5 py-1 bg-[#e8f5ec] rounded-full border border-[#c4e5cc]">
                             <span class="text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Supported</span>
                         </span>
                     </div>
@@ -261,7 +217,7 @@
             </div>
         </div>
         
-        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-2 border-[#c54b2a]">
+        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a]">
             <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
                 <span class="text-[#9a3a1f] font-semibold">Extensibility:</span> The split exists to give HOPE extensions and SynHX hashed authentication a place to land without reopening the core login handler.
             </p>
@@ -269,14 +225,14 @@
     </div>
 </div>
 
-<div id="section-diagrams" class="relative border-t border-[#e8d5b8] py-20 overflow-hidden">
+<div id="section-diagrams" class="relative border-t border-[#e8d5b8] py-16 sm:py-20 overflow-hidden">
     <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
-    
-    <div class="relative max-w-[900px] mx-auto px-8">
+
+    <div class="relative max-w-[900px] mx-auto px-4 sm:px-8">
         <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-6">Architecture diagrams</h2>
         
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8">
-            The architecture page is generated from <span class="text-[#12121f] text-base font-normal font-display">docs/design.md</span> and the three ADRs. The detailed diagrams and class relationships are pulled from the source documents.
+            The architecture page is generated from <span class="text-[#12121f] text-base font-normal font-primary">docs/design.md</span> and the three ADRs. The detailed diagrams and class relationships are pulled from the source documents.
         </p>
         
         <div class="bg-white rounded-lg border border-[#e8d5b8] p-8 mb-8">
@@ -320,7 +276,7 @@
             </div>
         </div>
         
-        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-2 border-[#c54b2a]">
+        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a]">
             <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
                 <span class="text-[#9a3a1f] font-semibold">Dependency direction:</span> Domain depends on nothing. Adapters depend on domain. Application wires adapters to domain through dependency injection.
             </p>
@@ -328,18 +284,18 @@
     </div>
 </div>
 
-<div id="footer-cta" class="border-t border-[#e8d5b8] py-20 bg-white">
-    <div class="max-w-[900px] mx-auto px-8 text-center">
+<div id="footer-cta" class="border-t border-[#e8d5b8] py-16 sm:py-20 bg-white">
+    <div class="max-w-[900px] mx-auto px-4 sm:px-8 text-center">
         <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-4">Verification artefacts</h2>
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8 max-w-[600px] mx-auto">
             Explore the formal methods, property-based tests, and compatibility matrices that verify this architecture.
         </p>
         
         <div class="flex flex-wrap justify-center gap-3">
-            <a class="btn-primary px-6 py-3 bg-[#c54b2a] text-white text-sm font-normal font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="../verification/">
+            <a class="mxd-btn--primary px-6 py-3 bg-[#c54b2a] text-white text-sm font-semibold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="../verification/">
                 Verification
             </a>
-            <a class="btn-secondary px-6 py-3 text-[#c54b2a] text-sm font-normal font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="../protocol/">
+            <a class="mxd-btn--outline px-6 py-3 text-[#c54b2a] text-sm font-semibold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="../protocol/">
                 Protocol Reference
             </a>
         </div>
@@ -349,7 +305,7 @@
 <div id="footer" class="bg-[#12121f] relative">
     <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
     
-    <div class="max-w-[900px] mx-auto px-8 py-12 text-center">
+    <div class="max-w-[900px] mx-auto px-4 sm:px-8 py-12 text-center">
         <div class="mb-6 opacity-40">
             <span class="text-[#e8d5b8] text-[23px] font-normal font-primary">◆</span>
         </div>
