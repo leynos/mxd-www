@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Database Backends</title>
+    <title>Database Backends — mxd</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };
@@ -18,56 +18,12 @@
                     fontFamily: {
                         "primary": ["JetBrains Mono", "monospace"],
                         "secondary": ["DM Serif Display", "serif"],
-                        "tertiary": ["Source Serif 4", "serif"],
-                        "display": ["Inter", "sans-serif"]
+                        "tertiary": ["Source Serif 4", "serif"]
                     }
                 }
             }
         };
     </script>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        ::-webkit-scrollbar { display: none; }
-        html, body { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        @keyframes shimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        .express-line {
-            animation: shimmer 8s ease-in-out infinite;
-            background-size: 200% 100%;
-        }
-        
-        .btn-primary {
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(197, 75, 42, 0.3);
-        }
-        
-        .btn-secondary {
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        
-        .btn-secondary:hover {
-            background-color: #c54b2a;
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        .card-hover {
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(18, 18, 31, 0.15);
-        }
-    </style>
     <link rel="icon" href="../assets/logo-mark.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../assets/site.css">
 </head>
@@ -99,10 +55,10 @@
   </div>
 </section>
 
-<div id="hero-section" class="relative bg-[#12121f] overflow-hidden" style="height: 400px;">
+<div id="hero-section" class="relative bg-[#12121f] overflow-hidden">
     <div class="mxd-pattern mxd-pattern--hero absolute inset-0 opacity-60" aria-hidden="true"></div>
     
-    <div class="absolute top-0 left-0 right-0 h-1 express-line bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
+    <div class="absolute top-0 left-0 right-0 h-1 mxd-express-line bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
     
     <div class="relative max-w-[900px] mx-auto px-4 sm:px-8 pt-20 pb-12">
         <div class="inline-flex px-3 py-1 rounded-sm border border-[#c89430] mb-6">
@@ -118,16 +74,16 @@
         </div>
     </div>
     
-    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#c54b2a]"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
 </div>
 
 <div id="section-compile-time" class="relative border-t border-[#e8d5b8] py-16 sm:py-20 overflow-hidden">
     <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
     
     <div class="relative max-w-[900px] mx-auto px-4 sm:px-8">
-        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-2 border-[#c54b2a] mb-8">
+        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a] mb-8">
             <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
-                mxd compiles for exactly one backend at a time. The choice is made via Cargo features: <code class="text-xs font-display bg-white px-2 py-1 rounded">sqlite</code> (default) or <code class="text-xs font-display bg-white px-2 py-1 rounded">postgres</code>. Enabling both is a compile error. Enabling neither is also a compile error.
+                mxd compiles for exactly one backend at a time. The choice is made via Cargo features: <code class="text-xs font-primary bg-white px-2 py-1 rounded">sqlite</code> (default) or <code class="text-xs font-primary bg-white px-2 py-1 rounded">postgres</code>. Enabling both is a compile error. Enabling neither is also a compile error.
             </p>
         </div>
     </div>
@@ -143,10 +99,10 @@
             </p>
             
             <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px]">
-                Recursive CTEs and <code class="text-[#12121f] text-xs font-normal font-display bg-[#faf3ea] px-2 py-1 rounded">json_each</code> are used for news path resolution. mxd verifies at startup that the bundled SQLite supports both features; if it doesn't, the daemon exits with a diagnostic message rather than producing wrong results silently.
+                Recursive CTEs and <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">json_each</code> are used for news path resolution. mxd verifies at startup that the bundled SQLite supports both features; if it doesn't, the daemon exits with a diagnostic message rather than producing wrong results silently.
             </p>
             
-            <div class="bg-white rounded-lg border border-[#e8d5b8] p-6 card-hover">
+            <div class="bg-white rounded-lg border border-[#e8d5b8] p-6 mxd-card-hover">
                 <div class="flex items-start gap-4 mb-4">
                     <div class="w-10 h-10 bg-[#e8a838] rounded flex items-center justify-center flex-shrink-0">
                         <i class="fa-solid fa-file-code text-[#12121f] text-lg"></i>
@@ -160,7 +116,7 @@
                 </div>
             </div>
             
-            <div class="bg-white rounded-lg border border-[#e8d5b8] overflow-hidden card-hover">
+            <div class="bg-white rounded-lg border border-[#e8d5b8] overflow-hidden mxd-card-hover">
                 <div class="bg-[#12121f] overflow-hidden">
                     <div class="px-4 py-3 bg-[#1a1a2e] border-b border-[#2a2a42] flex items-center gap-3">
                         <div class="w-2 h-2 bg-[#c43a3a] rounded"></div>
@@ -171,7 +127,7 @@
                         </div>
                     </div>
                     <div class="px-6 py-6 overflow-x-auto">
-                        <pre class="text-[#f5e6d0] text-sm font-normal font-display leading-[21.32px]"><span class="text-[#e8a838]">cargo</span> build --release
+                        <pre class="text-[#f5e6d0] text-sm font-normal font-primary leading-[21.32px]"><span class="text-[#e8a838]">cargo</span> build --release
 <span class="text-[#e8a838]">./target/release/mxd</span> --database mxd.db</pre>
                     </div>
                 </div>
@@ -188,10 +144,10 @@
         
         <div class="space-y-6">
             <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px]">
-                For concurrent access, connection pooling, and the ability to share the database between multiple processes. Build with <code class="text-[#12121f] text-xs font-normal font-display bg-[#faf3ea] px-2 py-1 rounded">--no-default-features --features postgres</code>. Migrations are embedded and run automatically, same as SQLite.
+                For concurrent access, connection pooling, and the ability to share the database between multiple processes. Build with <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">--no-default-features --features postgres</code>. Migrations are embedded and run automatically, same as SQLite.
             </p>
             
-            <div class="bg-white rounded-lg border border-[#e8d5b8] overflow-hidden card-hover">
+            <div class="bg-white rounded-lg border border-[#e8d5b8] overflow-hidden mxd-card-hover">
                 <div class="bg-[#12121f] overflow-hidden">
                     <div class="px-4 py-3 bg-[#1a1a2e] border-b border-[#2a2a42] flex items-center gap-3">
                         <div class="w-2 h-2 bg-[#c43a3a] rounded"></div>
@@ -202,13 +158,13 @@
                         </div>
                     </div>
                     <div class="px-6 py-6 overflow-x-auto">
-                        <pre class="text-[#f5e6d0] text-sm font-normal font-display leading-[21.32px]"><span class="text-[#e8a838]">cargo</span> build --release --no-default-features --features postgres
+                        <pre class="text-[#f5e6d0] text-sm font-normal font-primary leading-[21.32px]"><span class="text-[#e8a838]">cargo</span> build --release --no-default-features --features postgres
 <span class="text-[#e8a838]">./target/release/mxd</span> --database <span class="text-[#4a8c5c]">postgres://user:pass@localhost/mxd</span></pre>
                     </div>
                 </div>
             </div>
             
-            <div class="bg-white rounded-lg border border-[#e8d5b8] p-6 card-hover">
+            <div class="bg-white rounded-lg border border-[#e8d5b8] p-6 mxd-card-hover">
                 <div class="flex items-start gap-4">
                     <div class="w-10 h-10 bg-[#2d3a8c] rounded flex items-center justify-center flex-shrink-0">
                         <i class="fa-solid fa-flask text-white text-lg"></i>
@@ -216,7 +172,7 @@
                     <div class="flex-1">
                         <h3 class="text-[#12121f] text-xl font-normal font-secondary mb-3">Development helper</h3>
                         <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[21.32px] mb-4">
-                            The <code class="text-xs font-display bg-[#faf3ea] px-2 py-1 rounded">pg-embed-setup-unpriv</code> helper stages a PostgreSQL distribution with unprivileged ownership for development and testing. It requires no root access.
+                            The <code class="text-xs font-primary bg-[#faf3ea] px-2 py-1 rounded">pg-embed-setup-unpriv</code> helper stages a PostgreSQL distribution with unprivileged ownership for development and testing. It requires no root access.
                         </p>
                         <div class="bg-[#12121f] rounded-lg overflow-hidden">
                             <div class="px-4 py-3 bg-[#1a1a2e] border-b border-[#2a2a42] flex items-center gap-3">
@@ -225,13 +181,13 @@
                                 <div class="w-2 h-2 bg-[#4a8c5c] rounded"></div>
                             </div>
                             <div class="px-4 py-4">
-                                <pre class="text-[#f5e6d0] text-sm font-normal font-display leading-[21.32px]"><span class="text-[#e8a838]">cargo</span> install --locked pg-embed-setup-unpriv
+                                <pre class="text-[#f5e6d0] text-sm font-normal font-primary leading-[21.32px]"><span class="text-[#e8a838]">cargo</span> install --locked pg-embed-setup-unpriv
 <span class="text-[#e8a838]">pg_embedded_setup_unpriv</span>
 <span class="text-[#e8a838]">make</span> test</pre>
                             </div>
                         </div>
                         <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[21.32px] mt-3">
-                            Install it once, run the setup, then <code class="text-xs font-display bg-[#faf3ea] px-2 py-1 rounded">make test</code> will exercise both SQLite and PostgreSQL suites.
+                            Install it once, run the setup, then <code class="text-xs font-primary bg-[#faf3ea] px-2 py-1 rounded">make test</code> will exercise both SQLite and PostgreSQL suites.
                         </p>
                     </div>
                 </div>
@@ -321,13 +277,13 @@
         </p>
         
         <div class="flex flex-wrap justify-center gap-3">
-            <a class="btn-primary px-6 py-3 bg-[#c54b2a] text-white text-sm font-bold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="../deployment/">
+            <a class="mxd-btn--primary px-6 py-3 bg-[#c54b2a] text-white text-sm font-semibold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="../deployment/">
                 Deployment Guide
             </a>
-            <a class="btn-secondary px-6 py-3 text-[#c54b2a] text-sm font-bold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="../roadmap/">
+            <a class="mxd-btn--outline px-6 py-3 text-[#c54b2a] text-sm font-semibold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="../roadmap/">
                 Migration Reference
             </a>
-            <a class="btn-secondary px-6 py-3 text-[#3a3a55] text-sm font-bold font-primary rounded border-2 border-[#e8d5b8] mxd-site-button" href="../configuration/">
+            <a class="mxd-btn--outline px-6 py-3 text-[#3a3a55] text-sm font-semibold font-primary rounded border-2 border-[#e8d5b8] mxd-site-button" href="../configuration/">
                 Configuration Guide
             </a>
         </div>

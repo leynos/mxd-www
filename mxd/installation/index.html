@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Installation</title>
+    <title>Installation — mxd</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };
@@ -18,56 +18,12 @@
                     fontFamily: {
                         "primary": ["JetBrains Mono", "monospace"],
                         "secondary": ["DM Serif Display", "serif"],
-                        "tertiary": ["Source Serif 4", "serif"],
-                        "display": ["Inter", "sans-serif"]
+                        "tertiary": ["Source Serif 4", "serif"]
                     }
                 }
             }
         };
     </script>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        ::-webkit-scrollbar { display: none; }
-        html, body { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        @keyframes shimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        .express-line {
-            animation: shimmer 8s ease-in-out infinite;
-            background-size: 200% 100%;
-        }
-        
-        .btn-primary {
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(197, 75, 42, 0.3);
-        }
-        
-        .btn-secondary {
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        
-        .btn-secondary:hover {
-            background-color: #c54b2a;
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        .card-hover {
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(18, 18, 31, 0.15);
-        }
-    </style>
     <link rel="icon" href="../assets/logo-mark.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../assets/site.css">
 </head>
@@ -99,10 +55,10 @@
   </div>
 </section>
 
-<div id="hero-section" class="relative bg-[#12121f] overflow-hidden" style="height: 400px;">
+<div id="hero-section" class="relative bg-[#12121f] overflow-hidden">
     <div class="mxd-pattern mxd-pattern--hero absolute inset-0 opacity-60" aria-hidden="true"></div>
     
-    <div class="absolute top-0 left-0 right-0 h-1 express-line bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
+    <div class="absolute top-0 left-0 right-0 h-1 mxd-express-line bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
     
     <div class="relative max-w-[900px] mx-auto px-4 sm:px-8 pt-20 pb-12">
         <div class="inline-flex px-3 py-1 rounded-sm border border-[#c89430] mb-6">
@@ -118,7 +74,7 @@
         </div>
     </div>
     
-    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#c54b2a]"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
 </div>
 
 <div id="section-prerequisites" class="relative border-t border-[#e8d5b8] py-16 sm:py-20 overflow-hidden">
@@ -129,7 +85,7 @@
         
         <div class="space-y-6">
             <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px]">
-                The Rust toolchain version is pinned by <code class="text-[#12121f] text-xs font-normal font-display bg-[#faf3ea] px-2 py-1 rounded">rust-toolchain.toml</code> in the repository root. <code class="text-[#12121f] text-xs font-normal font-display bg-[#faf3ea] px-2 py-1 rounded">cargo</code> and <code class="text-[#12121f] text-xs font-normal font-display bg-[#faf3ea] px-2 py-1 rounded">make</code> must be on your <code class="text-[#12121f] text-xs font-normal font-display bg-[#faf3ea] px-2 py-1 rounded">PATH</code>. Optionally, install <code class="text-[#12121f] text-xs font-normal font-display bg-[#faf3ea] px-2 py-1 rounded">pg-embed-setup-unpriv</code> if you want PostgreSQL-backed tests without a system-level database install.
+                The Rust toolchain version is pinned by <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">rust-toolchain.toml</code> in the repository root. <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">cargo</code> and <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">make</code> must be on your <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">PATH</code>. Optionally, install <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">pg-embed-setup-unpriv</code> if you want PostgreSQL-backed tests without a system-level database install.
             </p>
             
             <div class="bg-white rounded-lg border border-[#e8d5b8] p-6 sm:p-8">
@@ -140,7 +96,7 @@
                         </div>
                         <div>
                             <h3 class="text-[#12121f] text-base font-semibold font-tertiary mb-1">Rust toolchain</h3>
-                            <p class="text-[#3a3a55] text-sm font-normal font-tertiary">Version pinned via <code class="text-xs font-display">rust-toolchain.toml</code></p>
+                            <p class="text-[#3a3a55] text-sm font-normal font-tertiary">Version pinned via <code class="text-xs font-primary">rust-toolchain.toml</code></p>
                         </div>
                     </div>
                     
@@ -150,7 +106,7 @@
                         </div>
                         <div>
                             <h3 class="text-[#12121f] text-base font-semibold font-tertiary mb-1">Build tools</h3>
-                            <p class="text-[#3a3a55] text-sm font-normal font-tertiary"><code class="text-xs font-display">cargo</code> and <code class="text-xs font-display">make</code> required</p>
+                            <p class="text-[#3a3a55] text-sm font-normal font-tertiary"><code class="text-xs font-primary">cargo</code> and <code class="text-xs font-primary">make</code> required</p>
                         </div>
                     </div>
                     
@@ -160,7 +116,7 @@
                         </div>
                         <div>
                             <h3 class="text-[#12121f] text-base font-semibold font-tertiary mb-1">PostgreSQL (optional)</h3>
-                            <p class="text-[#3a3a55] text-sm font-normal font-tertiary">Install <code class="text-xs font-display">pg-embed-setup-unpriv</code> for PostgreSQL tests without system database</p>
+                            <p class="text-[#3a3a55] text-sm font-normal font-tertiary">Install <code class="text-xs font-primary">pg-embed-setup-unpriv</code> for PostgreSQL tests without system database</p>
                         </div>
                     </div>
                 </div>
@@ -174,7 +130,7 @@
         <h2 class="text-[#12121f] text-2xl sm:text-3xl md:text-[39.80px] font-normal font-secondary mb-6">Building</h2>
         
         <div class="space-y-8">
-            <div class="bg-white rounded-lg border border-[#e8d5b8] overflow-hidden card-hover">
+            <div class="bg-white rounded-lg border border-[#e8d5b8] overflow-hidden mxd-card-hover">
                 <div class="px-6 py-4 bg-[#faf3ea] border-b border-[#e8d5b8]">
                     <h3 class="text-[#2d3a8c] text-[11.10px] font-bold font-primary uppercase tracking-[0.10em]">For SQLite (the default)</h3>
                 </div>
@@ -189,13 +145,13 @@
                             </div>
                         </div>
                         <div class="px-6 py-6">
-                            <pre class="text-[#f5e6d0] text-sm font-normal font-display leading-[21.32px]"><span class="text-[#e8a838]">make</span> sqlite</pre>
+                            <pre class="text-[#f5e6d0] text-sm font-normal font-primary leading-[21.32px]"><span class="text-[#e8a838]">make</span> sqlite</pre>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="bg-white rounded-lg border border-[#e8d5b8] overflow-hidden card-hover">
+            <div class="bg-white rounded-lg border border-[#e8d5b8] overflow-hidden mxd-card-hover">
                 <div class="px-6 py-4 bg-[#faf3ea] border-b border-[#e8d5b8]">
                     <h3 class="text-[#2d3a8c] text-[11.10px] font-bold font-primary uppercase tracking-[0.10em]">For PostgreSQL</h3>
                 </div>
@@ -210,13 +166,13 @@
                             </div>
                         </div>
                         <div class="px-6 py-6">
-                            <pre class="text-[#f5e6d0] text-sm font-normal font-display leading-[21.32px]"><span class="text-[#e8a838]">make</span> postgres</pre>
+                            <pre class="text-[#f5e6d0] text-sm font-normal font-primary leading-[21.32px]"><span class="text-[#e8a838]">make</span> postgres</pre>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="bg-white rounded-lg border border-[#e8d5b8] overflow-hidden card-hover">
+            <div class="bg-white rounded-lg border border-[#e8d5b8] overflow-hidden mxd-card-hover">
                 <div class="px-6 py-4 bg-[#faf3ea] border-b border-[#e8d5b8]">
                     <h3 class="text-[#2d3a8c] text-[11.10px] font-bold font-primary uppercase tracking-[0.10em]">For the Wireframe server</h3>
                 </div>
@@ -231,7 +187,7 @@
                             </div>
                         </div>
                         <div class="px-6 py-6">
-                            <pre class="text-[#f5e6d0] text-sm font-normal font-display leading-[21.32px]"><span class="text-[#e8a838]">make</span> <span class="text-[#f5e6d0]">APP</span>=mxd-wireframe-server sqlite</pre>
+                            <pre class="text-[#f5e6d0] text-sm font-normal font-primary leading-[21.32px]"><span class="text-[#e8a838]">make</span> <span class="text-[#f5e6d0]">APP</span>=mxd-wireframe-server sqlite</pre>
                         </div>
                     </div>
                 </div>
@@ -248,7 +204,7 @@
         
         <div class="space-y-6">
             <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px]">
-                The <code class="text-[#12121f] text-xs font-normal font-display bg-[#faf3ea] px-2 py-1 rounded">legacy-networking</code> Cargo feature is enabled by default. To produce a Wireframe-only build that omits the legacy binary:
+                The <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">legacy-networking</code> Cargo feature is enabled by default. To produce a Wireframe-only build that omits the legacy binary:
             </p>
             
             <div class="bg-white rounded-lg border border-[#e8d5b8] overflow-hidden">
@@ -262,14 +218,14 @@
                         </div>
                     </div>
                     <div class="px-6 py-6 overflow-x-auto">
-                        <pre class="text-[#f5e6d0] text-sm font-normal font-display leading-[21.32px]"><span class="text-[#e8a838]">cargo</span> build --no-default-features --features <span class="text-[#4a8c5c]">"sqlite toml"</span></pre>
+                        <pre class="text-[#f5e6d0] text-sm font-normal font-primary leading-[21.32px]"><span class="text-[#e8a838]">cargo</span> build --no-default-features --features <span class="text-[#4a8c5c]">"sqlite toml"</span></pre>
                     </div>
                 </div>
             </div>
             
-            <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-2 border-[#c54b2a]">
+            <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a]">
                 <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
-                    <span class="text-[#9a3a1f] font-semibold">Feature flags:</span> This command disables all default features and explicitly enables only <code class="text-xs font-display">sqlite</code> and <code class="text-xs font-display">toml</code>, producing a minimal build without legacy networking code.
+                    <span class="text-[#9a3a1f] font-semibold">Feature flags:</span> This command disables all default features and explicitly enables only <code class="text-xs font-primary">sqlite</code> and <code class="text-xs font-primary">toml</code>, producing a minimal build without legacy networking code.
                 </p>
             </div>
         </div>
@@ -285,13 +241,13 @@
         </p>
         
         <div class="flex flex-wrap justify-center gap-3">
-            <a class="btn-primary px-6 py-3 bg-[#c54b2a] text-white text-sm font-bold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="../configuration/">
+            <a class="mxd-btn--primary px-6 py-3 bg-[#c54b2a] text-white text-sm font-semibold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="../configuration/">
                 Configuration Guide
             </a>
-            <a class="btn-secondary px-6 py-3 text-[#c54b2a] text-sm font-bold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="../protocol/">
+            <a class="mxd-btn--outline px-6 py-3 text-[#c54b2a] text-sm font-semibold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="../protocol/">
                 Protocol Reference
             </a>
-            <a class="btn-secondary px-6 py-3 text-[#3a3a55] text-sm font-bold font-primary rounded border-2 border-[#e8d5b8] mxd-site-button" href="https://github.com/leynos/mxd" target="_blank" rel="noreferrer">
+            <a class="mxd-btn--outline px-6 py-3 text-[#3a3a55] text-sm font-semibold font-primary rounded border-2 border-[#e8d5b8] mxd-site-button" href="https://github.com/leynos/mxd" target="_blank" rel="noreferrer">
                 View Source
             </a>
         </div>

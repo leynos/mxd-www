@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Home — mxd</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };
@@ -18,66 +18,12 @@
                     fontFamily: {
                         "primary": ["JetBrains Mono", "monospace"],
                         "secondary": ["DM Serif Display", "serif"],
-                        "tertiary": ["Source Serif 4", "serif"],
-                        "display": ["Inter", "sans-serif"]
+                        "tertiary": ["Source Serif 4", "serif"]
                     }
                 }
             }
         };
     </script>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        ::-webkit-scrollbar { display: none; }
-        html, body { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        @keyframes shimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        .express-line {
-            animation: shimmer 8s ease-in-out infinite;
-            background-size: 200% 100%;
-        }
-        
-        .btn-primary {
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(197, 75, 42, 0.3);
-        }
-        
-        .btn-secondary {
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        
-        .btn-secondary:hover {
-            background-color: #c54b2a;
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        .btn-tertiary {
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        
-        .btn-tertiary:hover {
-            border-color: #3a3a55;
-            color: #12121f;
-            transform: translateY(-2px);
-        }
-        
-        .card-feature {
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        
-        .card-feature:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(18, 18, 31, 0.15);
-        }
-    </style>
     <link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/site.css">
 </head>
@@ -109,25 +55,25 @@
   </div>
 </section>
 
-<div id="hero-section" class="relative bg-[#12121f] overflow-hidden" style="height: 639px;">
+<div id="hero-section" class="relative bg-[#12121f] overflow-hidden">
     <div class="mxd-pattern mxd-pattern--hero absolute inset-0 opacity-60" aria-hidden="true"></div>
-    
-    <div class="absolute top-0 left-0 right-0 h-1 express-line bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
-    
-    <div class="relative max-w-[900px] mx-auto px-8 pt-32 pb-20">
+
+    <div class="absolute top-0 left-0 right-0 h-1 mxd-express-line bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
+
+    <div class="relative max-w-[900px] mx-auto px-4 sm:px-8 pt-32 pb-20">
         <div class="inline-flex px-3 py-1 rounded-sm border border-[#c89430] mb-8">
-            <div class="text-[#e8a838] text-[11.10px] font-bold font-primary uppercase tracking-[0.15em]">df12 Productions — Hotline server daemon</div>
+            <div class="text-[#e8a838] text-[11.10px] font-semibold font-primary uppercase tracking-[0.15em]">df12 Productions — Hotline server daemon</div>
         </div>
-        
+
         <h1 class="mb-6">
-            <span class="text-[#f5e6d0] text-[68.80px] font-normal font-secondary leading-[72.24px]">Marrakesh<br>Express </span>
-            <span class="text-[#d4714f] text-[68.80px] font-normal font-secondary italic leading-[72.24px]">Daemon</span>
+            <span class="text-[#f5e6d0] text-4xl sm:text-5xl md:text-[68.80px] font-normal font-secondary leading-tight sm:leading-[72.24px]">Marrakesh<br>Express </span>
+            <span class="text-[#d4714f] text-4xl sm:text-5xl md:text-[68.80px] font-normal font-secondary italic leading-tight sm:leading-[72.24px]">Daemon</span>
         </h1>
-        
-        <p class="text-[#e8d5b8] text-[23px] font-light font-tertiary leading-[39.17px] mb-12 max-w-[600px]">
+
+        <p class="text-[#e8d5b8] text-lg sm:text-[23px] font-light font-tertiary leading-relaxed sm:leading-[39.17px] mb-12 max-w-[600px]">
             A Hotline protocol server in Rust. Hexagonal architecture, dual-database support, formally verified invariants. The protocol is the product.
         </p>
-        
+
         <div class="inline-flex px-4 py-3 bg-[#1a1a2e] rounded border border-[#2a2a42] mb-12">
             <span class="text-[#3a3a55] text-[11.10px] font-normal font-primary">protocol_id: </span>
             <span class="text-[#d4714f] text-[11.10px] font-normal font-primary">0x54 52 54 50</span>
@@ -136,21 +82,21 @@
             <span class="text-[#3a3a55] text-[11.10px] font-normal font-primary"> · status: </span>
             <span class="text-[#e8a838] text-[11.10px] font-normal font-primary">READY</span>
         </div>
-        
+
         <div class="flex flex-wrap gap-3">
-            <a class="btn-primary px-6 py-3 bg-[#c54b2a] text-white text-sm font-normal font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="quickstart/">
+            <a class="mxd-btn--primary px-6 py-3 bg-[#c54b2a] text-white text-sm font-semibold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="quickstart/">
                 Get Started
             </a>
-            <a class="btn-secondary px-6 py-3 text-[#c54b2a] text-sm font-normal font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="https://github.com/leynos/mxd" target="_blank" rel="noreferrer">
+            <a class="mxd-btn--outline px-6 py-3 text-[#c54b2a] text-sm font-semibold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="https://github.com/leynos/mxd" target="_blank" rel="noreferrer">
                 View Source
             </a>
-            <a class="btn-tertiary px-6 py-3 text-[#3a3a55] text-sm font-normal font-primary rounded border-2 border-[#e8d5b8] mxd-site-button" href="protocol/">
+            <a class="mxd-btn--ghost px-6 py-3 text-[#3a3a55] text-sm font-semibold font-primary rounded border-2 border-[#e8d5b8] mxd-site-button" href="protocol/">
                 Read the Protocol
             </a>
         </div>
     </div>
-    
-    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#c54b2a]"></div>
+
+    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
 </div>
 
 <section class="mxd-route-guide" aria-labelledby="site-map-title">
@@ -231,9 +177,9 @@
   </div>
 </section>
 
-<div id="section-overview" class="border-t border-[#e8d5b8] py-20">
-    <div class="max-w-[900px] mx-auto px-8">
-        <div class="text-[#c54b2a] text-[11.10px] font-normal font-primary uppercase mb-2">01 — Overview</div>
+<div id="section-overview" class="border-t border-[#e8d5b8] py-16 sm:py-20">
+    <div class="max-w-[900px] mx-auto px-4 sm:px-8">
+        <div class="mxd-section-label">01 — Overview</div>
         <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-4">The Hotline protocol, treated seriously</h2>
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-4">
             mxd implements Hotline server protocol v1.8.5: login, chat, threaded news, hierarchical file sharing, and private messaging. It speaks the binary wire format — 20-byte frame headers, big-endian integers, multi-fragment reassembly — so vintage Hotline clients and modern alternatives like SynHX connect without shims or translation layers.
@@ -244,13 +190,13 @@
     </div>
 </div>
 
-<div id="section-architecture" class="border-t border-[#e8d5b8] py-20">
-    <div class="max-w-[900px] mx-auto px-8">
-        <div class="text-[#c54b2a] text-[11.10px] font-normal font-primary uppercase mb-2">02 — Architecture</div>
+<div id="section-architecture" class="border-t border-[#e8d5b8] py-16 sm:py-20">
+    <div class="max-w-[900px] mx-auto px-4 sm:px-8">
+        <div class="mxd-section-label">02 — Architecture</div>
         <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-8">Built to be reasoned about</h2>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="card-feature bg-white rounded-lg border border-[#e8d5b8] p-6">
+            <div class="mxd-card-hover bg-white rounded-lg border border-[#e8d5b8] p-6">
                 <div class="w-10 h-10 bg-[#c54b2a] rounded flex items-center justify-center mb-6">
                     <span class="text-white text-xl font-normal font-primary">Hx</span>
                 </div>
@@ -259,8 +205,8 @@
                     Domain logic sits behind ports. The Wireframe transport adapter handles framing and routing; Diesel handles persistence. Neither leaks into the other. Swap the database. Swap the transport. The domain doesn't notice.
                 </p>
             </div>
-            
-            <div class="card-feature bg-white rounded-lg border border-[#e8d5b8] p-6">
+
+            <div class="mxd-card-hover bg-white rounded-lg border border-[#e8d5b8] p-6">
                 <div class="w-10 h-10 bg-[#2d3a8c] rounded flex items-center justify-center mb-6">
                     <span class="text-white text-xl font-normal font-primary">Db</span>
                 </div>
@@ -269,8 +215,8 @@
                     SQLite for a single-file deployment you can carry in your pocket. PostgreSQL when you need concurrent access at scale. One codebase, dual migration trees, compile-time backend selection. Recursive CTEs work on both.
                 </p>
             </div>
-            
-            <div class="card-feature bg-white rounded-lg border border-[#e8d5b8] p-6">
+
+            <div class="mxd-card-hover bg-white rounded-lg border border-[#e8d5b8] p-6">
                 <div class="w-10 h-10 bg-[#e8a838] rounded flex items-center justify-center mb-6">
                     <span class="text-[#12121f] text-xl font-normal font-primary">Cx</span>
                 </div>
@@ -279,8 +225,8 @@
                     Hotline 1.8.5, Hotline 1.9, and SynHX. Banner field augmentation, XOR text obfuscation detection, sub-version gating — all handled at the adapter boundary. A compatibility matrix tracks what works, what's partial, and what remains roadmap work. No over-claiming.
                 </p>
             </div>
-            
-            <div class="card-feature bg-white rounded-lg border border-[#e8d5b8] p-6">
+
+            <div class="mxd-card-hover bg-white rounded-lg border border-[#e8d5b8] p-6">
                 <div class="w-10 h-10 bg-[#4a8c5c] rounded flex items-center justify-center mb-6">
                     <span class="text-white text-xl font-normal font-primary">Kn</span>
                 </div>
@@ -293,21 +239,21 @@
     </div>
 </div>
 
-<div id="section-wire" class="relative border-t border-[#e8d5b8] py-20 overflow-hidden">
+<div id="section-wire" class="relative border-t border-[#e8d5b8] py-16 sm:py-20 overflow-hidden">
     <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
-    
-    <div class="relative max-w-[900px] mx-auto px-8">
-        <div class="text-[#c54b2a] text-[11.10px] font-normal font-primary uppercase mb-2">03 — The Wire</div>
+
+    <div class="relative max-w-[900px] mx-auto px-4 sm:px-8">
+        <div class="mxd-section-label">03 — The Wire</div>
         <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-4">Every byte accounted for</h2>
-        
+
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-4">
             The Hotline transaction frame is 20 bytes: flags, reply bit, transaction type, ID, error code, total size, data size. When data_size &lt; total_size, continuation frames follow until the payload is fully assembled. Each continuation must echo the original header's flags, type, ID, error, and total size.
         </p>
-        
+
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8">
             mxd's codec validates all of this in a single decoding pass. Payloads exceeding 1 MiB are rejected. Fragment sizes are clamped to 32 KiB. Outbound encoding produces byte-for-byte parity with the legacy runtime.
         </p>
-        
+
         <div class="mb-8 rounded-lg overflow-hidden">
             <div class="flex flex-wrap">
                 <div class="px-2 py-3 bg-[#c54b2a] flex flex-col items-center gap-1 min-w-[81.79px]">
@@ -392,61 +338,61 @@
                 </div>
             </div>
         </div>
-        
+
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px]">
             Property tests confirm it. Kani proves it. AFL++ fuzzes it nightly.
         </p>
     </div>
 </div>
 
-<div id="section-operational" class="border-t border-[#e8d5b8] py-20">
-    <div class="max-w-[900px] mx-auto px-8">
-        <div class="text-[#c54b2a] text-[11.10px] font-normal font-primary uppercase mb-2">04 — Running it</div>
+<div id="section-operational" class="border-t border-[#e8d5b8] py-16 sm:py-20">
+    <div class="max-w-[900px] mx-auto px-4 sm:px-8">
+        <div class="mxd-section-label">04 — Running it</div>
         <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-4">Configuration without ceremony</h2>
-        
+
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-4">
             CLI flags, environment variables, and TOML config files. OrthoConfig merges them in that order: defaults &lt; file &lt; env &lt; CLI. Set MXD_DATABASE to a Postgres connection string. Set MXD_BIND to a socket address. Drop a .mxd.toml for persistent defaults. Run mxd create-user to provision accounts. Migrations apply automatically.
         </p>
-        
+
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px]">
             systemd integration includes sd_notify readiness signalling, watchdog heartbeats, and structured journald logging with per-connection trace spans. Socket activation is supported for zero-downtime restarts.
         </p>
     </div>
 </div>
 
-<div id="section-testing" class="relative border-t border-[#e8d5b8] py-20 overflow-hidden">
+<div id="section-testing" class="relative border-t border-[#e8d5b8] py-16 sm:py-20 overflow-hidden">
     <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
-    
-    <div class="relative max-w-[900px] mx-auto px-8">
-        <div class="text-[#c54b2a] text-[11.10px] font-normal font-primary uppercase mb-2">05 — Confidence</div>
+
+    <div class="relative max-w-[900px] mx-auto px-4 sm:px-8">
+        <div class="mxd-section-label">05 — Confidence</div>
         <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-4">Tested at every layer</h2>
-        
+
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-4">
             Unit tests with rstest fixtures. BDD scenarios in Gherkin via rstest-bdd. Property tests with proptest. Integration tests that start the wireframe binary, complete the handshake over TCP, and exercise login, file listing, and news flows. Expect-based protocol conformance tests against the SynHX client binary.
         </p>
-        
+
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-4">
             AFL++ fuzzes parse_transaction nightly in CI. Crashes are uploaded as artefacts and become regression tests. The seed corpus is generated from protocol examples.
         </p>
-        
+
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px]">
             Embedded PostgreSQL test fixtures spin up isolated clusters per test. No external database required. No root access required.
         </p>
     </div>
 </div>
 
-<div id="footer-cta" class="border-t border-[#e8d5b8] py-20 bg-white">
-    <div class="max-w-[900px] mx-auto px-8 text-center">
+<div id="footer-cta" class="border-t border-[#e8d5b8] py-16 sm:py-20 bg-white">
+    <div class="max-w-[900px] mx-auto px-4 sm:px-8 text-center">
         <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-4">Get the daemon running</h2>
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8">
             mxd is open source. The protocol documentation, architecture decisions, and verification artefacts ship with the code.
         </p>
-        
+
         <div class="flex flex-wrap justify-center gap-3">
-            <a class="btn-primary px-6 py-3 bg-[#c54b2a] text-white text-sm font-normal font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="quickstart/">
+            <a class="mxd-btn--primary px-6 py-3 bg-[#c54b2a] text-white text-sm font-semibold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="quickstart/">
                 Quickstart Guide
             </a>
-            <a class="btn-secondary px-6 py-3 text-[#c54b2a] text-sm font-normal font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="https://github.com/leynos/mxd" target="_blank" rel="noreferrer">
+            <a class="mxd-btn--outline px-6 py-3 text-[#c54b2a] text-sm font-semibold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="https://github.com/leynos/mxd" target="_blank" rel="noreferrer">
                 GitHub
             </a>
         </div>
@@ -455,16 +401,16 @@
 
 <div id="footer" class="bg-[#12121f] relative">
     <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
-    
-    <div class="max-w-[900px] mx-auto px-8 py-12 text-center">
+
+    <div class="max-w-[900px] mx-auto px-4 sm:px-8 py-12 text-center">
         <div class="mb-6 opacity-40">
             <span class="text-[#e8d5b8] text-[23px] font-normal font-primary">◆</span>
         </div>
-        
+
         <p class="text-[#3a3a55] text-[11.10px] font-normal font-secondary leading-[18.88px] mb-2">
             Protocol Souk — Design System for <span class="text-[#e8a838]">mxd</span>
         </p>
-        
+
         <p class="text-[#3a3a55] text-[11.10px] font-normal font-secondary leading-[18.88px]">
             A <span class="text-[#e8a838]">df12 Productions</span> artefact · Edinburgh · 2026
         </p>

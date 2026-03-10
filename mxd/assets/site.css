@@ -1,14 +1,51 @@
 :root {
-  --mxd-paper: #fdf8f0;
-  --mxd-ink: #12121f;
-  --mxd-muted: #3a3a55;
+  /* Core palette — Marrakesh */
   --mxd-accent: #c54b2a;
+  --mxd-accent-light: #d4714f;
   --mxd-accent-dark: #9a3a1f;
   --mxd-gold: #e8a838;
+  --mxd-gold-light: #f2c96a;
+  --mxd-gold-muted: #c89430;
+  --mxd-indigo: #2d3a8c;
+  --mxd-indigo-light: #4a58b0;
+  --mxd-indigo-dark: #1e2760;
+
+  /* Neutrals — Kohl and Sandstone */
+  --mxd-ink: #12121f;
+  --mxd-ink-lighter: #1a1a2e;
+  --mxd-ink-mid: #2a2a42;
+  --mxd-muted: #3a3a55;
+  --mxd-sandstone: #f5e6d0;
+  --mxd-sandstone-light: #faf3ea;
   --mxd-border: #e8d5b8;
+  --mxd-paper: #fdf8f0;
+
+  /* Semantic — Protocol signals */
+  --mxd-mint: #4a8c5c;
+  --mxd-mint-light: #6aaf7a;
+  --mxd-amber: #ffb347;
+  --mxd-error: #c43a3a;
+  --mxd-magenta: #a855a0;
+
+  /* Badge backgrounds */
+  --mxd-badge-supported-bg: #e8f5ec;
+  --mxd-badge-supported-border: #c4e5cc;
+  --mxd-badge-partial-bg: #fff4e0;
+  --mxd-badge-partial-border: #f2dca8;
+  --mxd-badge-planned-bg: #e8eaf6;
+  --mxd-badge-planned-border: #c5cae9;
+
+  /* Composites */
   --mxd-panel: rgba(253, 248, 240, 0.92);
   --mxd-night: rgba(18, 18, 31, 0.92);
   --mxd-shadow: 0 18px 48px rgba(18, 18, 31, 0.12);
+  --mxd-shadow-card: 0 4px 16px rgba(18, 18, 31, 0.10);
+  --mxd-shadow-deep: 0 8px 32px rgba(18, 18, 31, 0.18);
+
+  /* Transitions */
+  --mxd-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --mxd-duration-fast: 150ms;
+  --mxd-duration-med: 300ms;
 }
 
 html {
@@ -332,3 +369,180 @@ body {
     padding: 3rem 1rem;
   }
 }
+
+/* ═══════════════════════════════════════════════════
+   EXPRESS LINE — shimmer animation
+   ═══════════════════════════════════════════════════ */
+@keyframes mxd-shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.mxd-express-line {
+  animation: mxd-shimmer 8s ease-in-out infinite;
+  background-size: 200% 100%;
+}
+
+/* ═══════════════════════════════════════════════════
+   BUTTONS — design system variants
+   ═══════════════════════════════════════════════════ */
+.mxd-btn--primary {
+  transition: all var(--mxd-duration-med) var(--mxd-ease);
+}
+
+.mxd-btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(197, 75, 42, 0.3);
+}
+
+.mxd-btn--outline {
+  transition: all var(--mxd-duration-med) var(--mxd-ease);
+}
+
+.mxd-btn--outline:hover {
+  background-color: var(--mxd-accent);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.mxd-btn--ghost {
+  transition: all var(--mxd-duration-med) var(--mxd-ease);
+}
+
+.mxd-btn--ghost:hover {
+  border-color: var(--mxd-muted);
+  color: var(--mxd-ink);
+  transform: translateY(-2px);
+}
+
+.mxd-btn--dark {
+  transition: all var(--mxd-duration-med) var(--mxd-ease);
+}
+
+.mxd-btn--dark:hover {
+  background-color: var(--mxd-ink-lighter);
+  transform: translateY(-2px);
+}
+
+/* ═══════════════════════════════════════════════════
+   CARD HOVER — shared lift effect
+   ═══════════════════════════════════════════════════ */
+.mxd-card-hover {
+  transition: all var(--mxd-duration-med) var(--mxd-ease);
+}
+
+.mxd-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--mxd-shadow-deep);
+}
+
+/* ═══════════════════════════════════════════════════
+   CODE BLOCK — terminal window hover
+   ═══════════════════════════════════════════════════ */
+.mxd-code-block {
+  transition: all var(--mxd-duration-med) var(--mxd-ease);
+}
+
+.mxd-code-block:hover {
+  box-shadow: 0 12px 32px rgba(18, 18, 31, 0.24);
+}
+
+/* ═══════════════════════════════════════════════════
+   SECTION LABEL — eyebrow above headings
+   ═══════════════════════════════════════════════════ */
+.mxd-section-label {
+  color: var(--mxd-accent);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.694rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+/* ═══════════════════════════════════════════════════
+   CALLOUT — left-bordered aside
+   ═══════════════════════════════════════════════════ */
+.mxd-callout {
+  border-left: 3px solid var(--mxd-accent);
+  padding: 1rem 1.5rem;
+  background: var(--mxd-sandstone-light);
+  border-radius: 0 4px 4px 0;
+}
+
+/* ═══════════════════════════════════════════════════
+   BADGES — status indicators
+   ═══════════════════════════════════════════════════ */
+.mxd-badge {
+  display: inline-block;
+  padding: 0.25rem 0.625rem;
+  border-radius: 999px;
+  border: 1px solid;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mxd-badge--supported {
+  background: var(--mxd-badge-supported-bg);
+  border-color: var(--mxd-badge-supported-border);
+  color: var(--mxd-mint);
+}
+
+.mxd-badge--partial {
+  background: var(--mxd-badge-partial-bg);
+  border-color: var(--mxd-badge-partial-border);
+  color: var(--mxd-gold-muted);
+}
+
+.mxd-badge--planned {
+  background: var(--mxd-badge-planned-bg);
+  border-color: var(--mxd-badge-planned-border);
+  color: var(--mxd-indigo);
+}
+
+/* ═══════════════════════════════════════════════════
+   PAGE-SPECIFIC HOVER EFFECTS
+   ═══════════════════════════════════════════════════ */
+
+/* Roadmap items */
+.mxd-roadmap-item {
+  transition: all var(--mxd-duration-med) var(--mxd-ease);
+}
+
+.mxd-roadmap-item:hover {
+  border-color: var(--mxd-accent);
+}
+
+/* Changelog release cards */
+.mxd-release-card {
+  transition: all var(--mxd-duration-med) var(--mxd-ease);
+}
+
+.mxd-release-card:hover {
+  border-color: var(--mxd-accent);
+  transform: translateY(-2px);
+}
+
+/* Compatibility table rows */
+.mxd-table-row {
+  transition: all 0.2s var(--mxd-ease);
+}
+
+.mxd-table-row:hover {
+  background-color: var(--mxd-sandstone-light);
+}
+
+/* ═══════════════════════════════════════════════════
+   RESET — shared across all pages
+   ═══════════════════════════════════════════════════ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+::-webkit-scrollbar { display: none; }
+html, body { -ms-overflow-style: none; scrollbar-width: none; }
