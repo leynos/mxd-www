@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roadmap</title>
+    <title>Roadmap — mxd</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };
@@ -18,64 +18,12 @@
                     fontFamily: {
                         "primary": ["JetBrains Mono", "monospace"],
                         "secondary": ["DM Serif Display", "serif"],
-                        "tertiary": ["Source Serif 4", "serif"],
-                        "display": ["Inter", "sans-serif"]
+                        "tertiary": ["Source Serif 4", "serif"]
                     }
                 }
             }
         };
     </script>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        ::-webkit-scrollbar { display: none; }
-        html, body { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        @keyframes shimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        .express-line {
-            animation: shimmer 8s ease-in-out infinite;
-            background-size: 200% 100%;
-        }
-        
-        .btn-primary {
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(197, 75, 42, 0.3);
-        }
-        
-        .btn-secondary {
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        
-        .btn-secondary:hover {
-            background-color: #c54b2a;
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        .card-hover {
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(18, 18, 31, 0.15);
-        }
-        
-        .roadmap-item {
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        
-        .roadmap-item:hover {
-            border-color: #c54b2a;
-        }
-    </style>
     <link rel="icon" href="../assets/logo-mark.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../assets/site.css">
 </head>
@@ -107,10 +55,10 @@
   </div>
 </section>
 
-<div id="hero-section" class="relative bg-[#12121f] overflow-hidden" style="height: 400px;">
+<div id="hero-section" class="relative bg-[#12121f] overflow-hidden">
     <div class="mxd-pattern mxd-pattern--hero absolute inset-0 opacity-60" aria-hidden="true"></div>
     
-    <div class="absolute top-0 left-0 right-0 h-1 express-line bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
+    <div class="absolute top-0 left-0 right-0 h-1 mxd-express-line bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
     
     <div class="relative max-w-[900px] mx-auto px-4 sm:px-8 pt-20 pb-12">
         <div class="inline-flex px-3 py-1 rounded-sm border border-[#c89430] mb-6">
@@ -126,7 +74,7 @@
         </div>
     </div>
     
-    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#c54b2a]"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
 </div>
 
 <div id="section-phase-1" class="relative border-t border-[#e8d5b8] py-16 sm:py-20 overflow-hidden">
@@ -145,7 +93,7 @@
         </p>
         
         <div class="space-y-4">
-            <div class="roadmap-item bg-white rounded-lg border-2 border-[#e8d5b8] p-6">
+            <div class="mxd-roadmap-item bg-white rounded-lg border-2 border-[#e8d5b8] p-6">
                 <div class="flex items-start gap-4">
                     <div class="w-8 h-8 bg-[#4a8c5c] rounded flex items-center justify-center flex-shrink-0">
                         <i class="fa-solid fa-check text-white text-sm"></i>
@@ -153,7 +101,7 @@
                     <div class="flex-1">
                         <div class="flex items-center gap-2 mb-2">
                             <h3 class="text-[#12121f] text-xl font-normal font-secondary">Transaction codec implementation</h3>
-                            <span class="px-2 py-0.5 bg-[#e8eaf6] rounded-full border border-[#c4e5cc]">
+                            <span class="px-2 py-0.5 bg-[#e8f5ec] rounded-full border border-[#c4e5cc]">
                                 <span class="text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-wide">Supported</span>
                             </span>
                         </div>
@@ -172,7 +120,7 @@
                 </div>
             </div>
             
-            <div class="roadmap-item bg-white rounded-lg border-2 border-[#e8d5b8] p-6">
+            <div class="mxd-roadmap-item bg-white rounded-lg border-2 border-[#e8d5b8] p-6">
                 <div class="flex items-start gap-4">
                     <div class="w-8 h-8 bg-[#4a8c5c] rounded flex items-center justify-center flex-shrink-0">
                         <i class="fa-solid fa-check text-white text-sm"></i>
@@ -180,7 +128,7 @@
                     <div class="flex-1">
                         <div class="flex items-center gap-2 mb-2">
                             <h3 class="text-[#12121f] text-xl font-normal font-secondary">Handshake validation</h3>
-                            <span class="px-2 py-0.5 bg-[#e8eaf6] rounded-full border border-[#c4e5cc]">
+                            <span class="px-2 py-0.5 bg-[#e8f5ec] rounded-full border border-[#c4e5cc]">
                                 <span class="text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-wide">Supported</span>
                             </span>
                         </div>
@@ -196,7 +144,7 @@
                 </div>
             </div>
             
-            <div class="roadmap-item bg-white rounded-lg border-2 border-[#e8d5b8] p-6">
+            <div class="mxd-roadmap-item bg-white rounded-lg border-2 border-[#e8d5b8] p-6">
                 <div class="flex items-start gap-4">
                     <div class="w-8 h-8 bg-[#c89430] rounded flex items-center justify-center flex-shrink-0">
                         <i class="fa-solid fa-wrench text-white text-sm"></i>
@@ -204,7 +152,7 @@
                     <div class="flex-1">
                         <div class="flex items-center gap-2 mb-2">
                             <h3 class="text-[#12121f] text-xl font-normal font-secondary">Login transaction routing</h3>
-                            <span class="px-2 py-0.5 bg-[#e8eaf6] rounded-full border border-[#f2dca8]">
+                            <span class="px-2 py-0.5 bg-[#fff4e0] rounded-full border border-[#f2dca8]">
                                 <span class="text-[#c89430] text-[10.40px] font-bold font-primary uppercase tracking-wide">Partial</span>
                             </span>
                         </div>
@@ -237,7 +185,7 @@
         </p>
         
         <div class="space-y-4">
-            <div class="roadmap-item bg-[#fdf8f0] rounded-lg border-2 border-[#e8d5b8] p-6">
+            <div class="mxd-roadmap-item bg-[#fdf8f0] rounded-lg border-2 border-[#e8d5b8] p-6">
                 <div class="flex items-start gap-4">
                     <div class="w-8 h-8 bg-[#2d3a8c] rounded flex items-center justify-center flex-shrink-0">
                         <i class="fa-solid fa-calendar text-white text-sm"></i>
@@ -261,7 +209,7 @@
                 </div>
             </div>
             
-            <div class="roadmap-item bg-[#fdf8f0] rounded-lg border-2 border-[#e8d5b8] p-6">
+            <div class="mxd-roadmap-item bg-[#fdf8f0] rounded-lg border-2 border-[#e8d5b8] p-6">
                 <div class="flex items-start gap-4">
                     <div class="w-8 h-8 bg-[#2d3a8c] rounded flex items-center justify-center flex-shrink-0">
                         <i class="fa-solid fa-calendar text-white text-sm"></i>
@@ -288,7 +236,7 @@
                 </div>
             </div>
             
-            <div class="roadmap-item bg-[#fdf8f0] rounded-lg border-2 border-[#e8d5b8] p-6">
+            <div class="mxd-roadmap-item bg-[#fdf8f0] rounded-lg border-2 border-[#e8d5b8] p-6">
                 <div class="flex items-start gap-4">
                     <div class="w-8 h-8 bg-[#2d3a8c] rounded flex items-center justify-center flex-shrink-0">
                         <i class="fa-solid fa-calendar text-white text-sm"></i>
@@ -331,7 +279,7 @@
         </p>
         
         <div class="space-y-4">
-            <div class="roadmap-item bg-white rounded-lg border-2 border-[#e8d5b8] p-6">
+            <div class="mxd-roadmap-item bg-white rounded-lg border-2 border-[#e8d5b8] p-6">
                 <div class="flex items-start gap-4">
                     <div class="w-8 h-8 bg-[#2d3a8c] rounded flex items-center justify-center flex-shrink-0">
                         <i class="fa-solid fa-calendar text-white text-sm"></i>
@@ -355,7 +303,7 @@
                 </div>
             </div>
             
-            <div class="roadmap-item bg-white rounded-lg border-2 border-[#e8d5b8] p-6">
+            <div class="mxd-roadmap-item bg-white rounded-lg border-2 border-[#e8d5b8] p-6">
                 <div class="flex items-start gap-4">
                     <div class="w-8 h-8 bg-[#2d3a8c] rounded flex items-center justify-center flex-shrink-0">
                         <i class="fa-solid fa-calendar text-white text-sm"></i>
@@ -379,7 +327,7 @@
                 </div>
             </div>
             
-            <div class="roadmap-item bg-white rounded-lg border-2 border-[#e8d5b8] p-6">
+            <div class="mxd-roadmap-item bg-white rounded-lg border-2 border-[#e8d5b8] p-6">
                 <div class="flex items-start gap-4">
                     <div class="w-8 h-8 bg-[#2d3a8c] rounded flex items-center justify-center flex-shrink-0">
                         <i class="fa-solid fa-calendar text-white text-sm"></i>
@@ -420,7 +368,7 @@
         </p>
         
         <div class="space-y-4">
-            <div class="roadmap-item bg-[#fdf8f0] rounded-lg border-2 border-[#e8d5b8] p-6">
+            <div class="mxd-roadmap-item bg-[#fdf8f0] rounded-lg border-2 border-[#e8d5b8] p-6">
                 <div class="flex items-start gap-4">
                     <div class="w-8 h-8 bg-[#2d3a8c] rounded flex items-center justify-center flex-shrink-0">
                         <i class="fa-solid fa-calendar text-white text-sm"></i>
@@ -444,7 +392,7 @@
                 </div>
             </div>
             
-            <div class="roadmap-item bg-[#fdf8f0] rounded-lg border-2 border-[#e8d5b8] p-6">
+            <div class="mxd-roadmap-item bg-[#fdf8f0] rounded-lg border-2 border-[#e8d5b8] p-6">
                 <div class="flex items-start gap-4">
                     <div class="w-8 h-8 bg-[#2d3a8c] rounded flex items-center justify-center flex-shrink-0">
                         <i class="fa-solid fa-calendar text-white text-sm"></i>
@@ -468,7 +416,7 @@
                 </div>
             </div>
             
-            <div class="roadmap-item bg-[#fdf8f0] rounded-lg border-2 border-[#e8d5b8] p-6">
+            <div class="mxd-roadmap-item bg-[#fdf8f0] rounded-lg border-2 border-[#e8d5b8] p-6">
                 <div class="flex items-start gap-4">
                     <div class="w-8 h-8 bg-[#2d3a8c] rounded flex items-center justify-center flex-shrink-0">
                         <i class="fa-solid fa-calendar text-white text-sm"></i>
@@ -499,7 +447,7 @@
     <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
     
     <div class="relative max-w-[900px] mx-auto px-4 sm:px-8">
-        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-2 border-[#c54b2a] mb-8">
+        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a] mb-8">
             <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px]">
                 Completed items retain their acceptance criteria and evidence references so the roadmap doubles as a decision log. If you want to know why something was built the way it was, start here and follow the links to the ADRs and verification artefacts.
             </p>
@@ -508,17 +456,17 @@
         <div class="text-center">
             <h3 class="text-[#12121f] text-2xl font-normal font-secondary mb-6">Contributing</h3>
             <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8 max-w-[600px] mx-auto">
-                The roadmap is maintained in <code class="text-xs font-display bg-white px-2 py-1 rounded">docs/roadmap.md</code>. Proposals for new features follow the ADR process. Implementations require property-based tests and formal verification where applicable.
+                The roadmap is maintained in <code class="text-xs font-primary bg-white px-2 py-1 rounded">docs/roadmap.md</code>. Proposals for new features follow the ADR process. Implementations require property-based tests and formal verification where applicable.
             </p>
             
             <div class="flex flex-wrap justify-center gap-3">
-                <a class="btn-primary px-6 py-3 bg-[#c54b2a] text-white text-sm font-bold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="https://github.com/leynos/mxd" target="_blank" rel="noreferrer">
+                <a class="mxd-btn--primary px-6 py-3 bg-[#c54b2a] text-white text-sm font-semibold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="https://github.com/leynos/mxd" target="_blank" rel="noreferrer">
                     View Source
                 </a>
-                <a class="btn-secondary px-6 py-3 text-[#c54b2a] text-sm font-bold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="../architecture/">
+                <a class="mxd-btn--outline px-6 py-3 text-[#c54b2a] text-sm font-semibold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="../architecture/">
                     ADR Process
                 </a>
-                <a class="btn-secondary px-6 py-3 text-[#3a3a55] text-sm font-bold font-primary rounded border-2 border-[#e8d5b8] mxd-site-button" href="../verification/">
+                <a class="mxd-btn--outline px-6 py-3 text-[#3a3a55] text-sm font-semibold font-primary rounded border-2 border-[#e8d5b8] mxd-site-button" href="../verification/">
                     Verification Guide
                 </a>
             </div>
