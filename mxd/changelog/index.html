@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Changelog</title>
+    <title>Changelog — mxd</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };
@@ -18,65 +18,12 @@
                     fontFamily: {
                         "primary": ["JetBrains Mono", "monospace"],
                         "secondary": ["DM Serif Display", "serif"],
-                        "tertiary": ["Source Serif 4", "serif"],
-                        "display": ["Inter", "sans-serif"]
+                        "tertiary": ["Source Serif 4", "serif"]
                     }
                 }
             }
         };
     </script>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        ::-webkit-scrollbar { display: none; }
-        html, body { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        @keyframes shimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        .express-line {
-            animation: shimmer 8s ease-in-out infinite;
-            background-size: 200% 100%;
-        }
-        
-        .btn-primary {
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(197, 75, 42, 0.3);
-        }
-        
-        .btn-secondary {
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        
-        .btn-secondary:hover {
-            background-color: #c54b2a;
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        .card-hover {
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(18, 18, 31, 0.15);
-        }
-        
-        .release-card {
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        
-        .release-card:hover {
-            border-color: #c54b2a;
-            transform: translateY(-2px);
-        }
-    </style>
     <link rel="icon" href="../assets/logo-mark.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../assets/site.css">
 </head>
@@ -108,10 +55,10 @@
   </div>
 </section>
 
-<div id="hero-section" class="relative bg-[#12121f] overflow-hidden" style="height: 400px;">
+<div id="hero-section" class="relative bg-[#12121f] overflow-hidden">
     <div class="mxd-pattern mxd-pattern--hero absolute inset-0 opacity-60" aria-hidden="true"></div>
     
-    <div class="absolute top-0 left-0 right-0 h-1 express-line bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
+    <div class="absolute top-0 left-0 right-0 h-1 mxd-express-line bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
     
     <div class="relative max-w-[900px] mx-auto px-4 sm:px-8 pt-20 pb-12">
         <div class="inline-flex px-3 py-1 rounded-sm border border-[#c89430] mb-6">
@@ -127,14 +74,14 @@
         </div>
     </div>
     
-    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#c54b2a]"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
 </div>
 
 <div id="section-v0-4-0" class="relative border-t border-[#e8d5b8] py-16 sm:py-20 overflow-hidden">
     <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
     
     <div class="relative max-w-[900px] mx-auto px-4 sm:px-8">
-        <div class="release-card bg-white rounded-lg border-2 border-[#e8d5b8] p-6 sm:p-8 mb-8">
+        <div class="mxd-release-card bg-white rounded-lg border-2 border-[#e8d5b8] p-6 sm:p-8 mb-8">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
                 <div class="flex items-center gap-4">
                     <div class="w-12 h-12 bg-[#c54b2a] rounded flex items-center justify-center flex-shrink-0">
@@ -146,7 +93,7 @@
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-2">
-                    <span class="px-2.5 py-1 bg-[#e8eaf6] rounded-full border border-[#c4e5cc]">
+                    <span class="px-2.5 py-1 bg-[#e8f5ec] rounded-full border border-[#c4e5cc]">
                         <span class="text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-wide">Stable</span>
                     </span>
                     <span class="px-2.5 py-1 bg-[#c54b2a] rounded-full">
@@ -161,7 +108,7 @@
                     <ul class="space-y-2 pl-5">
                         <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">Transaction routing layer for Login (0x006B) with full XOR detection and decoding</li>
                         <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">Hexagonal architecture implementation with ports and adapters for protocol boundary isolation</li>
-                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">Property-based testing suite using <code class="text-xs font-display bg-[#f5e6d0] px-2 py-1 rounded">proptest</code> for frame validation</li>
+                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">Property-based testing suite using <code class="text-xs font-primary bg-[#f5e6d0] px-2 py-1 rounded">proptest</code> for frame validation</li>
                         <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">TLA+ specification for handshake state machine with liveness proofs</li>
                     </ul>
                 </div>
@@ -169,7 +116,7 @@
                 <div>
                     <h3 class="text-[#12121f] text-xl font-normal font-secondary mb-3">Changed</h3>
                     <ul class="space-y-2 pl-5">
-                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc"><strong class="font-semibold">Breaking:</strong> Codec API now returns <code class="text-xs font-display bg-[#f5e6d0] px-2 py-1 rounded">Result<frame, codecerror=""></frame,></code> instead of <code class="text-xs font-display bg-[#f5e6d0] px-2 py-1 rounded">Option</code></li>
+                        <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc"><strong class="font-semibold">Breaking:</strong> Codec API now returns <code class="text-xs font-primary bg-[#f5e6d0] px-2 py-1 rounded">Result<frame, codecerror=""></frame,></code> instead of <code class="text-xs font-primary bg-[#f5e6d0] px-2 py-1 rounded">Option</code></li>
                         <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">Handshake validation now rejects protocol ID mismatches before allocating session state</li>
                         <li class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] list-disc">Multi-fragment reassembly buffer now uses bounded capacity with explicit overflow handling</li>
                     </ul>
@@ -204,7 +151,7 @@
 
 <div id="section-v0-3-2" class="border-t border-[#e8d5b8] py-16 sm:py-20 bg-white">
     <div class="max-w-[900px] mx-auto px-4 sm:px-8">
-        <div class="release-card bg-[#fdf8f0] rounded-lg border-2 border-[#e8d5b8] p-6 sm:p-8 mb-8">
+        <div class="mxd-release-card bg-[#fdf8f0] rounded-lg border-2 border-[#e8d5b8] p-6 sm:p-8 mb-8">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
                 <div class="flex items-center gap-4">
                     <div class="w-12 h-12 bg-[#e8a838] rounded flex items-center justify-center flex-shrink-0">
@@ -216,7 +163,7 @@
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-2">
-                    <span class="px-2.5 py-1 bg-[#e8eaf6] rounded-full border border-[#c4e5cc]">
+                    <span class="px-2.5 py-1 bg-[#e8f5ec] rounded-full border border-[#c4e5cc]">
                         <span class="text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-wide">Stable</span>
                     </span>
                 </div>
@@ -262,7 +209,7 @@
     <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
     
     <div class="relative max-w-[900px] mx-auto px-4 sm:px-8">
-        <div class="release-card bg-white rounded-lg border-2 border-[#e8d5b8] p-6 sm:p-8 mb-8">
+        <div class="mxd-release-card bg-white rounded-lg border-2 border-[#e8d5b8] p-6 sm:p-8 mb-8">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
                 <div class="flex items-center gap-4">
                     <div class="w-12 h-12 bg-[#2d3a8c] rounded flex items-center justify-center flex-shrink-0">
@@ -274,7 +221,7 @@
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-2">
-                    <span class="px-2.5 py-1 bg-[#e8eaf6] rounded-full border border-[#c4e5cc]">
+                    <span class="px-2.5 py-1 bg-[#e8f5ec] rounded-full border border-[#c4e5cc]">
                         <span class="text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-wide">Stable</span>
                     </span>
                     <span class="px-2.5 py-1 bg-[#c54b2a] rounded-full">
@@ -328,7 +275,7 @@
 
 <div id="section-v0-2-1" class="border-t border-[#e8d5b8] py-16 sm:py-20 bg-white">
     <div class="max-w-[900px] mx-auto px-4 sm:px-8">
-        <div class="release-card bg-[#fdf8f0] rounded-lg border-2 border-[#e8d5b8] p-6 sm:p-8 mb-8">
+        <div class="mxd-release-card bg-[#fdf8f0] rounded-lg border-2 border-[#e8d5b8] p-6 sm:p-8 mb-8">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
                 <div class="flex items-center gap-4">
                     <div class="w-12 h-12 bg-[#4a8c5c] rounded flex items-center justify-center flex-shrink-0">
@@ -340,7 +287,7 @@
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-2">
-                    <span class="px-2.5 py-1 bg-[#e8eaf6] rounded-full border border-[#c4e5cc]">
+                    <span class="px-2.5 py-1 bg-[#e8f5ec] rounded-full border border-[#c4e5cc]">
                         <span class="text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-wide">Stable</span>
                     </span>
                 </div>
@@ -379,7 +326,7 @@
     <div class="relative max-w-[900px] mx-auto px-4 sm:px-8">
         <h2 class="text-[#12121f] text-2xl sm:text-3xl md:text-[39.80px] font-normal font-secondary mb-8">Release Governance</h2>
         
-        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-2 border-[#c54b2a] mb-8">
+        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a] mb-8">
             <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-4">
                 Every release that modifies client-facing behaviour requires a QA sign-off statement. The statement must:
             </p>
@@ -406,17 +353,17 @@
         <div class="mt-12 text-center">
             <h3 class="text-[#12121f] text-2xl font-normal font-secondary mb-6">Changelog Sources</h3>
             <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8 max-w-[600px] mx-auto">
-                Release notes are generated from Git tags and maintained in <code class="text-xs font-display bg-white px-2 py-1 rounded">CHANGELOG.md</code>. The compatibility matrix lives in <code class="text-xs font-display bg-white px-2 py-1 rounded">docs/compatibility/</code> and is versioned alongside releases.
+                Release notes are generated from Git tags and maintained in <code class="text-xs font-primary bg-white px-2 py-1 rounded">CHANGELOG.md</code>. The compatibility matrix lives in <code class="text-xs font-primary bg-white px-2 py-1 rounded">docs/compatibility/</code> and is versioned alongside releases.
             </p>
             
             <div class="flex flex-wrap justify-center gap-3">
-                <a class="btn-primary px-6 py-3 bg-[#c54b2a] text-white text-sm font-bold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="../compatibility/">
+                <a class="mxd-btn--primary px-6 py-3 bg-[#c54b2a] text-white text-sm font-semibold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="../compatibility/">
                     View Compatibility Matrix
                 </a>
-                <a class="btn-secondary px-6 py-3 text-[#c54b2a] text-sm font-bold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="../roadmap/">
+                <a class="mxd-btn--outline px-6 py-3 text-[#c54b2a] text-sm font-semibold font-primary rounded border-2 border-[#c54b2a] mxd-site-button" href="../roadmap/">
                     Release Process
                 </a>
-                <a class="btn-secondary px-6 py-3 text-[#3a3a55] text-sm font-bold font-primary rounded border-2 border-[#e8d5b8] mxd-site-button" href="./">
+                <a class="mxd-btn--outline px-6 py-3 text-[#3a3a55] text-sm font-semibold font-primary rounded border-2 border-[#e8d5b8] mxd-site-button" href="./">
                     All Releases
                 </a>
             </div>
