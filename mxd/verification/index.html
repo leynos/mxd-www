@@ -75,10 +75,55 @@
       <div class="mxd-page-toc__title" id="mxd-toc-title">Verification strategy</div>
     </div>
     <div class="mxd-page-toc__links">
-      <a href="#section-tla-plus">TLA+/TLC</a><a href="#section-stateright">Stateright</a><a href="#section-kani">Kani</a><a href="#section-regression">Regression test integration</a><a href="#section-verification-summary">Three layers, one goal</a>
+      <a href="#section-boundary">Verification boundary</a><a href="#section-tla-plus">TLA+/TLC</a><a href="#section-stateright">Stateright</a><a href="#section-kani">Kani</a><a href="#section-regression">Regression workflow</a><a href="#section-local-workflow">Local commands and CI</a>
     </div>
   </div>
 </section>
+
+<div id="section-boundary" class="border-t border-[#e8d5b8] py-16 sm:py-20">
+    <div class="max-w-[900px] mx-auto px-4 sm:px-8">
+        <h2 class="text-[#12121f] text-3xl sm:text-[39.80px] font-normal font-secondary mb-6">Verification boundary</h2>
+
+        <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8">
+            Verification assumes the domain core is a deterministic transition
+            system:
+            <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">step(state, event) -&gt; (state', effects)</code>.
+            Wireframe framing, persistence, and object storage live on the
+            adapter side. That keeps proofs focused on protocol semantics
+            rather than on incidental I/O mechanics.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-white rounded-lg border border-[#e8d5b8] p-6">
+                <h3 class="text-[#12121f] text-[27.60px] font-normal font-secondary mb-4">Domain side</h3>
+                <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px]">
+                    Server-wide and per-session state, semantic inputs, and
+                    semantic effects. This is where handshake gating, privilege
+                    rules, drop-box hiding, and news-thread linkage belong.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-lg border border-[#e8d5b8] p-6">
+                <h3 class="text-[#12121f] text-[27.60px] font-normal font-secondary mb-4">Adapter side</h3>
+                <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px]">
+                    Wireframe framing, transport timeouts, persistence wiring,
+                    and object-store interactions are validated with focused
+                    integration tests and harnesses, not treated as the domain's
+                    semantic source of truth.
+                </p>
+            </div>
+        </div>
+
+        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a]">
+            <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
+                <span class="text-[#9a3a1f] font-semibold">Tool-choice rule:</span>
+                use TLA+ for state-machine progression and policy invariants,
+                Stateright for concurrent interleavings and ordering, and Kani
+                for bounded pure-function invariants and panic freedom.
+            </p>
+        </div>
+    </div>
+</div>
 
 <div id="section-tla-plus" class="relative border-t border-[#e8d5b8] py-16 sm:py-20 overflow-hidden">
     <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
@@ -119,7 +164,13 @@
                 
                 <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a]">
                     <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
-                        <span class="text-[#9a3a1f] font-semibold">Model checking:</span> TLC verifies that no client remains in the Validating state beyond the timeout threshold, that all successful handshakes reach Ready, and that protocol violations transition to Error without hanging.
+                        <span class="text-[#9a3a1f] font-semibold">Model checking:</span>
+                        TLC verifies that no client remains in the Validating
+                        state beyond the timeout threshold, that all successful
+                        handshakes reach Ready, and that protocol violations
+                        transition to Error without hanging. The same tool class
+                        also carries policy invariants such as permissions,
+                        drop-box visibility, and news-thread sequencing.
                     </p>
                 </div>
             </div>
@@ -193,7 +244,12 @@
             
             <div class="space-y-4">
                 <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px]">
-                    For bounded invariants in pure Rust functions. Current harnesses prove XOR encode/decode round-trips, header validation predicates, fragment sizing coverage, and transaction ID echoing. These run in CI on every pull request.
+                    For bounded invariants in pure Rust functions. Current
+                    harnesses prove XOR encode/decode round-trips, header
+                    validation predicates, fragment sizing coverage, and
+                    transaction ID echoing. This is also the intended home for
+                    news-thread pointer updates, permission mapping, and other
+                    sharp local invariants that should never panic.
                 </p>
                 
                 <div class="bg-[#12121f] rounded-lg shadow-[0px_8px_32px_0px_rgba(18,18,31,0.18)] overflow-hidden">
@@ -313,6 +369,65 @@
             <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
                 <span class="text-[#9a3a1f] font-semibold">Test suite location:</span> Regression tests from verification tools live in <code class="text-[#12121f] text-xs font-normal font-primary">tests/regression/</code> with a comment header citing the original model checker output. This maintains traceability from formal proof to implementation.
             </p>
+        </div>
+    </div>
+</div>
+
+<div id="section-local-workflow" class="relative border-t border-[#e8d5b8] py-16 sm:py-20 overflow-hidden">
+    <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
+
+    <div class="relative max-w-[900px] mx-auto px-4 sm:px-8">
+        <h2 class="text-[#12121f] text-3xl sm:text-[39.80px] font-normal font-secondary mb-6">Local commands and CI depth</h2>
+
+        <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8">
+            The verification strategy is meant to be runnable, not just admired.
+            Pull requests run a fast subset; nightly jobs deepen the bounds and
+            publish counterexample artefacts for triage.
+        </p>
+
+        <div class="bg-[#12121f] rounded-lg shadow-[0px_8px_32px_0px_rgba(18,18,31,0.18)] overflow-hidden mb-8">
+            <div class="px-4 py-3 bg-[#1a1a2e] border-b border-[#2a2a42] flex items-center gap-3">
+                <div class="w-2 h-2 bg-[#c43a3a] rounded"></div>
+                <div class="w-2 h-2 bg-[#e8a838] rounded"></div>
+                <div class="w-2 h-2 bg-[#4a8c5c] rounded"></div>
+                <div class="flex-1 text-right">
+                    <span class="text-[#3a3a55] text-[11.10px] font-normal font-primary">local verification commands</span>
+                </div>
+            </div>
+            <div class="px-6 py-6 overflow-x-auto">
+                <pre class="text-[#f5e6d0] text-xs sm:text-sm font-normal font-primary leading-[21.32px]"><span class="text-[#3a3a55]"># TLC via Makefile</span>
+<span class="text-[#e8a838]">make</span> tlc-handshake
+
+<span class="text-[#3a3a55]"># Stateright models</span>
+<span class="text-[#e8a838]">cargo</span> test -p mxd-verification -- --nocapture
+<span class="text-[#e8a838]">cargo</span> test -p mxd-verification --test session_gating -- --nocapture
+
+<span class="text-[#3a3a55]"># Kani harnesses</span>
+<span class="text-[#e8a838]">cargo</span> kani -p mxd --harness kani_validate_header_matches_predicate
+<span class="text-[#e8a838]">cargo</span> kani -p mxd --harness kani_reply_header_echoes_id
+<span class="text-[#e8a838]">cargo</span> kani -p mxd --harness kani_xor_bytes_round_trip_bounded
+<span class="text-[#e8a838]">cargo</span> kani -p mxd --harness kani_login_extras_boundary_gate</pre>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-lg border border-[#e8d5b8] p-6">
+                <h3 class="text-[#12121f] text-[27.60px] font-normal font-secondary mb-4">Pull requests</h3>
+                <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px]">
+                    Run the critical TLC specs, conservative Stateright bounds,
+                    and the highest-value Kani harnesses so verification stays
+                    fast enough to gate review.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-lg border border-[#e8d5b8] p-6">
+                <h3 class="text-[#12121f] text-[27.60px] font-normal font-secondary mb-4">Nightly jobs</h3>
+                <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px]">
+                    Increase the exploration bounds, run the deeper verification
+                    set, and publish any counterexample artefacts so failures can
+                    be triaged without guessing what the model checker found.
+                </p>
+            </div>
         </div>
     </div>
 </div>

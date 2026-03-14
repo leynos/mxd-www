@@ -59,7 +59,7 @@
         </h1>
         
         <p class="text-[#e8d5b8] text-lg sm:text-[23px] font-light font-tertiary leading-relaxed sm:leading-[39.17px] max-w-[700px]">
-            Build mxd from source, create a user account, and start the daemon in under five minutes.
+            Build mxd from source, create a user account, and choose between the legacy and Wireframe runtimes in under five minutes.
         </p>
     </div>
     
@@ -101,6 +101,10 @@ cd mxd
 make sqlite</pre>
             </div>
         </div>
+
+        <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px]">
+            The default build keeps <span class="text-[#12121f] text-base font-normal font-primary">legacy-networking</span> enabled, so the classic <span class="text-[#12121f] text-base font-normal font-primary">mxd</span> daemon remains part of the operator surface. Runtime selection is documented behaviour, not a packaging accident.
+        </p>
     </div>
 </div>
 
@@ -171,6 +175,18 @@ make sqlite</pre>
                 <pre class="text-[#e8a838] text-sm font-normal font-primary leading-[21.32px]">make APP=mxd-wireframe-server sqlite
 cargo run --bin mxd-wireframe-server -- --bind 0.0.0.0:6600 --database mxd.db</pre>
             </div>
+        </div>
+
+        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a]">
+            <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
+                <span class="text-[#9a3a1f] font-semibold">Wireframe-only build:</span>
+                disable default features with <code class="text-xs font-primary">cargo build --no-default-features --features "sqlite toml"</code>
+                to omit the legacy <code class="text-xs font-primary">mxd</code>
+                binary entirely while keeping the same CLI flags,
+                <code class="text-xs font-primary">MXD_*</code> overrides,
+                <code class="text-xs font-primary">.mxd.toml</code> defaults,
+                and admin subcommands.
+            </p>
         </div>
     </div>
 </div>

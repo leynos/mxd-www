@@ -83,7 +83,7 @@
       <div class="mxd-page-toc__title" id="mxd-toc-title">Hotline Server Protocol v1.8.5</div>
     </div>
     <div class="mxd-page-toc__links">
-      <a href="#section-handshake">Session handshake</a><a href="#section-frame">Transaction frame structure</a><a href="#section-parameters">Parameter encoding</a><a href="#section-catalogue">Transaction catalogue</a>
+      <a href="#section-handshake">Session handshake</a><a href="#section-negotiation">Compatibility negotiation</a><a href="#section-frame">Transaction frame structure</a><a href="#section-parameters">Parameter encoding</a><a href="#section-catalogue">Transaction catalogue</a>
     </div>
   </div>
 </section>
@@ -120,14 +120,71 @@
             The server validates the identifier and version, then sends an
             8-byte handshake reply with an error code: `0` for success, `1`
             for invalid protocol, `2` for unsupported version, and `3` for
+            handshake timeout. Idle sockets are dropped after the five-second
             handshake timeout. Only after that reply does the server begin
-            accepting transaction frames.
+            accepting transaction frames, and the negotiated sub-protocol and
+            sub-version remain recorded in connection state for the lifetime of
+            the session.
         </p>
         
         <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a]">
             <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
                 <span class="text-[#9a3a1f] font-semibold">Interpretation:</span> The protocol identifier is ASCII <span class="text-[#12121f] text-xs font-normal font-primary">TRTP</span> (Transaction Request/Transaction Protocol). The original specification does not name the protocol; this identifier appears in packet captures and is universally recognised by clients.
             </p>
+        </div>
+    </div>
+</div>
+
+<div id="section-negotiation" class="relative border-t border-[#e8d5b8] py-16 sm:py-20 overflow-hidden">
+    <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
+
+    <div class="relative max-w-[900px] mx-auto px-4 sm:px-8">
+        <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-6">Compatibility negotiation</h2>
+
+        <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8">
+            The handshake is only the first half of compatibility detection.
+            mxd also records login metadata and text-encoding behaviour so the
+            reply path can stay client-specific without lying about broader
+            feature parity.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-white rounded-lg border border-[#e8d5b8] p-6">
+                <h3 class="text-[#12121f] text-[27.60px] font-normal font-secondary mb-4">Login field gating</h3>
+                <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px] mb-4">
+                    <span class="text-[#12121f] text-xs font-normal font-primary">sub_version == 2</span>
+                    identifies SynHX. Otherwise, login field
+                    <span class="text-[#12121f] text-xs font-normal font-primary">160</span>
+                    distinguishes Hotline 1.8.5
+                    (<span class="text-[#12121f] text-xs font-normal font-primary">151..=189</span>)
+                    from Hotline 1.9
+                    (<span class="text-[#12121f] text-xs font-normal font-primary">&gt;=190</span>).
+                </p>
+                <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px]">
+                    Replies always include the server version field, while
+                    Hotline 1.8.5 and 1.9 clients also receive fields
+                    <span class="text-[#12121f] text-xs font-normal font-primary">161</span>
+                    and <span class="text-[#12121f] text-xs font-normal font-primary">162</span>.
+                    SynHX and unknown or legacy versions omit those banner
+                    extras on purpose.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-lg border border-[#e8d5b8] p-6">
+                <h3 class="text-[#12121f] text-[27.60px] font-normal font-secondary mb-4">XOR heuristics</h3>
+                <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px] mb-4">
+                    XOR compatibility is heuristic and per-connection rather
+                    than negotiated by a clean capability bit. The adapter
+                    enables it when text-bearing payloads look invalid until
+                    XOR-decoded, then keeps that transform aligned on replies.
+                </p>
+                <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px]">
+                    The currently evidenced scope covers XOR login, XOR news
+                    payloads, and the guard that plaintext message payloads do
+                    not accidentally enable XOR mode. Broader parity still
+                    belongs to the compatibility matrix and roadmap.
+                </p>
+            </div>
         </div>
     </div>
 </div>
@@ -327,12 +384,20 @@
         </div>
         
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-6">
-            Common parameter types include integers, strings, and binary data. String parameters may be XOR-encoded; mxd detects and decodes these transparently.
+            Common parameter types include integers, strings, and binary data.
+            String parameters may be XOR-encoded; mxd detects and decodes these
+            transparently when the connection has entered that compatibility
+            mode.
         </p>
         
         <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a]">
             <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
-                <span class="text-[#9a3a1f] font-semibold">XOR encoding:</span> Some clients XOR-encode text fields with <span class="text-[#12121f] text-xs font-normal font-primary">0xFF</span>. The wireframe layer detects this by examining the first Login transaction and applies the same transform to all subsequent text parameters.
+                <span class="text-[#9a3a1f] font-semibold">XOR encoding:</span>
+                Some clients XOR-encode text fields with
+                <span class="text-[#12121f] text-xs font-normal font-primary">0xFF</span>.
+                The wireframe layer detects this by examining early text-bearing
+                transactions, especially Login, and applies the same transform
+                only to text fields for the remainder of that connection.
             </p>
         </div>
     </div>
@@ -351,6 +416,18 @@
             are still design material or roadmap work and should not be read as
             fully implemented.
         </p>
+
+        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a] mb-8">
+            <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
+                <span class="text-[#9a3a1f] font-semibold">Design depth versus shipped scope:</span>
+                the reference set goes much further than this routed subset. It
+                documents file operations 200 through 213 with resumable
+                transfers, aliasing, folder upload and download, comments, and
+                ACLs; chat rooms with invites, subjects, and persisted history;
+                and news bundles, categories, and threaded article pointers.
+                Those designs matter, but they are not all implemented today.
+            </p>
+        </div>
         
         <div class="space-y-4">
             <div class="bg-white rounded-lg border border-[#e8d5b8] overflow-hidden transition-all duration-300 hover:shadow-[0px_8px_24px_0px_rgba(18,18,31,0.12)]">

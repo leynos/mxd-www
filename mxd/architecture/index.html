@@ -78,7 +78,7 @@
       <div class="mxd-page-toc__title" id="mxd-toc-title">Hexagonal, not by accident</div>
     </div>
     <div class="mxd-page-toc__links">
-      <a href="#section-overview">Domain core and adapters</a><a href="#section-compatibility">Compatibility guardrails</a><a href="#section-authentication">Authentication and reply augmentation</a><a href="#section-diagrams">Architecture diagrams</a>
+      <a href="#section-overview">Domain core and adapters</a><a href="#section-wireframe-capabilities">Wireframe capabilities</a><a href="#section-compatibility">Compatibility guardrails</a><a href="#section-authentication">Authentication and reply augmentation</a><a href="#section-diagrams">Architecture diagrams</a>
     </div>
   </div>
 </section>
@@ -99,7 +99,7 @@
                     </div>
                     <h3 class="text-[#12121f] text-[27.60px] font-normal font-secondary mb-3">Wireframe transport adapter</h3>
                     <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px]">
-                        Handles the Hotline binary protocol: TCP socket management, the 12-byte handshake, the 20-byte frame codec, transaction routing, XOR detection, and client compatibility shims.
+                        Handles the Hotline binary protocol: TCP socket management, the 12-byte handshake, the 20-byte frame codec, transaction routing, XOR detection, client compatibility shims, and the streaming and push primitives that shape later subsystem work.
                     </p>
                 </div>
             </div>
@@ -121,6 +121,55 @@
             <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
                 <span class="text-[#9a3a1f] font-semibold">Structural enforcement:</span> The <span class="text-[#12121f] text-xs font-normal font-primary">WireframeRouter</span> is the sole public routing entrypoint; internal routing functions are <span class="text-[#12121f] text-xs font-normal font-primary">pub(crate)</span>. New routes cannot accidentally bypass compatibility hooks because there is no public surface through which to do so.
             </p>
+        </div>
+    </div>
+</div>
+
+<div id="section-wireframe-capabilities" class="relative border-t border-[#e8d5b8] py-16 sm:py-20 overflow-hidden">
+    <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
+
+    <div class="relative max-w-[900px] mx-auto px-4 sm:px-8">
+        <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-6">Wireframe capabilities that shape mxd</h2>
+
+        <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8">
+            Wireframe is not an incidental dependency. The design documents lean
+            on its codec, middleware, lifecycle, streaming, and observability
+            surfaces, so the transport library directly shapes how mxd models
+            compatibility hooks, large transfers, and session handling.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-lg border border-[#e8d5b8] p-6">
+                <h3 class="text-[#12121f] text-[27.60px] font-normal font-secondary mb-4">Framing and streaming</h3>
+                <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px]">
+                    mxd relies on Wireframe's custom frame codec, fragmentation
+                    and reassembly helpers, request metadata versus body split,
+                    and streaming request and response paths to support large
+                    payloads without collapsing everything into one buffered
+                    blob.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-lg border border-[#e8d5b8] p-6">
+                <h3 class="text-[#12121f] text-[27.60px] font-normal font-secondary mb-4">Middleware and lifecycle</h3>
+                <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px]">
+                    Middleware layering, setup and teardown callbacks,
+                    preamble-timeout handling, and per-connection state make the
+                    handshake, compatibility recording, and authenticated
+                    routing story explicit instead of smearing it through ad hoc
+                    socket code.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-lg border border-[#e8d5b8] p-6">
+                <h3 class="text-[#12121f] text-[27.60px] font-normal font-secondary mb-4">Push queues and observability</h3>
+                <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px]">
+                    Push queues, connection actors, first-class client runtime
+                    hooks, and metrics support are the design basis for later
+                    presence, chat, and transfer work. Those extension points
+                    exist now even where user-facing parity is still planned.
+                </p>
+            </div>
         </div>
     </div>
 </div>
@@ -223,7 +272,11 @@
         
         <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a]">
             <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
-                <span class="text-[#9a3a1f] font-semibold">Extensibility:</span> The split exists to give HOPE extensions and SynHX hashed authentication a place to land without reopening the core login handler.
+                <span class="text-[#9a3a1f] font-semibold">Extensibility:</span>
+                The split exists to give HOPE reply extensions and SynHX hashed
+                authentication a place to land without reopening the core login
+                handler. Those remain extension points, not current shipped
+                behaviour.
             </p>
         </div>
     </div>

@@ -73,7 +73,7 @@
       <div class="mxd-page-toc__title" id="mxd-toc-title">Installation</div>
     </div>
     <div class="mxd-page-toc__links">
-      <a href="#section-prerequisites">Prerequisites</a><a href="#section-building">Building</a><a href="#section-wireframe-only">Wireframe-only build</a><a href="#section-next-steps">Next steps</a>
+      <a href="#section-prerequisites">Prerequisites</a><a href="#section-building">Building</a><a href="#section-wireframe-only">Runtime selection</a><a href="#section-next-steps">Next steps</a>
     </div>
   </div>
 </section>
@@ -194,6 +194,18 @@
                 </div>
             </div>
         </div>
+
+        <div class="mt-8 px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a]">
+            <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
+                <span class="text-[#9a3a1f] font-semibold">Shared operator surface:</span>
+                both <code class="text-xs font-primary">mxd</code> and
+                <code class="text-xs font-primary">mxd-wireframe-server</code>
+                reuse the same CLI flags, <code class="text-xs font-primary">MXD_*</code>
+                environment overrides, <code class="text-xs font-primary">.mxd.toml</code>
+                defaults, and admin subcommands such as
+                <code class="text-xs font-primary">create-user</code>.
+            </p>
+        </div>
     </div>
 </div>
 
@@ -201,11 +213,11 @@
     <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
     
     <div class="relative max-w-[900px] mx-auto px-4 sm:px-8">
-        <h2 class="text-[#12121f] text-2xl sm:text-3xl md:text-[39.80px] font-normal font-secondary mb-6">Wireframe-only build</h2>
+        <h2 class="text-[#12121f] text-2xl sm:text-3xl md:text-[39.80px] font-normal font-secondary mb-6">Runtime selection</h2>
         
         <div class="space-y-6">
             <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px]">
-                The <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">legacy-networking</code> Cargo feature is enabled by default. To produce a Wireframe-only build that omits the legacy binary:
+                The <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">legacy-networking</code> Cargo feature is enabled by default. That keeps the classic <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">mxd</code> binary available. Disabling default features changes the produced binaries and selects the Wireframe runtime as the active listener path:
             </p>
             
             <div class="bg-white rounded-lg border border-[#e8d5b8] overflow-hidden">
@@ -226,9 +238,23 @@
             
             <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a]">
                 <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
-                    <span class="text-[#9a3a1f] font-semibold">Feature flags:</span> This command disables all default features and explicitly enables only <code class="text-xs font-primary">sqlite</code> and <code class="text-xs font-primary">toml</code>, producing a minimal build without legacy networking code.
+                    <span class="text-[#9a3a1f] font-semibold">Feature flags:</span>
+                    This command disables all default features and explicitly
+                    enables only <code class="text-xs font-primary">sqlite</code>
+                    and <code class="text-xs font-primary">toml</code>. The
+                    legacy <code class="text-xs font-primary">mxd</code>
+                    binary is skipped via <code class="text-xs font-primary">required-features</code>,
+                    and <code class="text-xs font-primary">server::run()</code>
+                    invokes the Wireframe runtime instead.
                 </p>
             </div>
+
+            <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px]">
+                Treat that runtime choice as user-facing behaviour. The
+                repository documents and tests it explicitly with the
+                Wireframe-first suite, rather than leaving it as an incidental
+                build detail.
+            </p>
         </div>
     </div>
 </div>

@@ -73,10 +73,52 @@
       <div class="mxd-page-toc__title" id="mxd-toc-title">Development roadmap</div>
     </div>
     <div class="mxd-page-toc__links">
-      <a href="#section-phase-1">Phase 1: Wireframe Migration</a><a href="#section-phase-2">Phase 2: Presence and Chat</a><a href="#section-phase-3">Phase 3: File Services</a><a href="#section-phase-4">Phase 4: Administration</a><a href="#section-closing">closing</a>
+      <a href="#section-status">Status meaning</a><a href="#section-phase-1">Phase 1: Wireframe Migration</a><a href="#section-phase-2">Phase 2: Presence and Chat</a><a href="#section-phase-3">Phase 3: File Services</a><a href="#section-phase-4">Phase 4: Administration</a><a href="#section-closing">Closing</a>
     </div>
   </div>
 </section>
+
+<div id="section-status" class="border-t border-[#e8d5b8] py-16 sm:py-20 bg-white">
+    <div class="max-w-[900px] mx-auto px-4 sm:px-8">
+        <h2 class="text-[#12121f] text-2xl sm:text-3xl md:text-[39.80px] font-normal font-secondary mb-6">How to read roadmap status</h2>
+
+        <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8">
+            The design set is broader than the currently shipped runtime. Some
+            subsystems already have detailed schemas, ADRs, and verification
+            notes even when the transport wiring still sits on the roadmap. The
+            status badges below are therefore part of the product story, not
+            decorative metadata.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-[#fdf8f0] rounded-lg border border-[#e8d5b8] p-6">
+                <span class="px-2 py-0.5 bg-[#e8f5ec] rounded-full border border-[#c4e5cc] text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-wide">Supported</span>
+                <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px] mt-4">
+                    Shipped and evidenced. The capability is implemented for the
+                    scope named here and backed by tests or verification.
+                </p>
+            </div>
+
+            <div class="bg-[#fdf8f0] rounded-lg border border-[#e8d5b8] p-6">
+                <span class="px-2 py-0.5 bg-[#fff4e0] rounded-full border border-[#f2dca8] text-[#c89430] text-[10.40px] font-bold font-primary uppercase tracking-wide">Partial</span>
+                <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px] mt-4">
+                    Real code exists, but only for the narrower behaviour called
+                    out. Compatibility, routing, or subsystem parity remains
+                    incomplete.
+                </p>
+            </div>
+
+            <div class="bg-[#fdf8f0] rounded-lg border border-[#e8d5b8] p-6">
+                <span class="px-2 py-0.5 bg-[#e8eaf6] rounded-full border border-[#c5cae9] text-[#2d3a8c] text-[10.40px] font-bold font-primary uppercase tracking-wide">Planned</span>
+                <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px] mt-4">
+                    The design may already be specific, but the runtime work is
+                    not yet complete. Detailed docs do not imply shipped feature
+                    coverage.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div id="section-phase-1" class="relative border-t border-[#e8d5b8] py-16 sm:py-20 overflow-hidden">
     <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
@@ -182,7 +224,7 @@
         </div>
         
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8">
-            User presence tracking, instant messaging, and broadcast notifications. Implement the state machine for user sessions and chat room membership. Verify liveness and safety properties.
+            User presence tracking, public and private chat, and broadcast notifications. The schema work already covers lobby semantics, invite flows, membership tables, subjects, and persisted history, but most of that transport wiring still belongs to this phase rather than to current runtime support.
         </p>
         
         <div class="space-y-4">
@@ -223,7 +265,7 @@
                             </span>
                         </div>
                         <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[21.32px] mb-3">
-                            Transaction 0x0069 (chat send). XOR encoding for outbound messages. Broadcast to all connected users. Message history persistence. Rate limiting.
+                            Transaction 0x0069 (chat send). Public lobby auto-join semantics. Join and leave notifications. XOR-aware outbound text. Message history persistence. Rate limiting.
                         </p>
                         <div class="flex flex-wrap gap-2">
                             <span class="px-2.5 py-1 bg-[#4a8c5c] rounded-full">
@@ -250,7 +292,7 @@
                             </span>
                         </div>
                         <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[21.32px] mb-3">
-                            Transaction 0x0070 (private message). Recipient session lookup. Delivery confirmation. Offline queueing. Message threading.
+                            Direct messages modelled as private chats. Invite, accept, and decline flows. Group-chat membership via persisted tables. Subject updates. Delivery confirmation and history retention.
                         </p>
                         <div class="flex flex-wrap gap-2">
                             <span class="px-2.5 py-1 bg-[#4a8c5c] rounded-full">
@@ -276,7 +318,7 @@
         </div>
         
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8">
-            File transfer, news hierarchies, and folder navigation. Implement resumable uploads, download queueing, and the news path resolver. Verify invariants around file permissions and quota enforcement.
+            File transfer, news hierarchies, and folder navigation. The design already splits file bytes into object storage while keeping hierarchy, aliases, comments, drop-box flags, and ACLs in the database. This phase wires that richer model into the runtime and verifies the resulting permission and threading invariants.
         </p>
         
         <div class="space-y-4">
@@ -293,7 +335,7 @@
                             </span>
                         </div>
                         <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[21.32px] mb-3">
-                            Transaction 0x00C8 (get file list). Directory traversal. Metadata encoding. Icon assignment. Permission filtering. Recursive CTE for path resolution.
+                            Transaction 0x00C8 (get file list). FileNode tree traversal. Metadata and comment encoding. Alias visibility. Drop-box hiding and upload-only visibility rules. Folder and per-file ACL filtering.
                         </p>
                         <div class="flex flex-wrap gap-2">
                             <span class="px-2.5 py-1 bg-[#e8a838] rounded-full">
@@ -317,7 +359,7 @@
                             </span>
                         </div>
                         <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[21.32px] mb-3">
-                            Transaction 0x00CA (download file). Transfer socket negotiation. Resume support. Bandwidth throttling. Queue management. Progress reporting.
+                            Download and upload negotiation over transfer sockets. Resume support for partial transfers. Object-store streaming. Move, rename, delete, GetFileInfo, SetFileInfo, MakeFileAlias, DownloadFolder, and UploadFolder behaviour.
                         </p>
                         <div class="flex flex-wrap gap-2">
                             <span class="px-2.5 py-1 bg-[#e8a838] rounded-full">
@@ -341,7 +383,7 @@
                             </span>
                         </div>
                         <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[21.32px] mb-3">
-                            Transaction 0x0172 (news category list). Nested folder structure. Article posting. Read/unread tracking. JSON path encoding. Category permissions.
+                            Bundles versus categories. Recursive path resolution. Article parent, previous, next, and first-child pointers. Read and unread assumptions. Category visibility and posting rights. Reply posting remains explicit implementation work.
                         </p>
                         <div class="flex flex-wrap gap-2">
                             <span class="px-2.5 py-1 bg-[#4a8c5c] rounded-full">
