@@ -60,7 +60,12 @@
         
         <div class="text-[#e8d5b8] text-base font-normal font-tertiary leading-[27.20px] max-w-[700px] space-y-4">
             <p>
-                Hotline communicates over TCP using a binary frame protocol. All multi-byte integers are big-endian. No padding or alignment bytes appear in the wire format. This reference covers the session handshake, transaction frame structure, parameter encoding, and the full transaction catalogue as implemented by mxd.
+                Hotline communicates over TCP using a binary frame protocol. All
+                multi-byte integers are big-endian. No padding or alignment
+                bytes appear in the wire format. This reference covers the
+                documented handshake, transaction frame structure, parameter
+                encoding, and the subset of routed transactions explicitly
+                described by the repository reference set.
             </p>
             <p>
                 mxd implements the protocol faithfully, not slavishly. Where the original specification is ambiguous, this reference records the interpretation adopted and the evidence supporting it. Where client behaviour diverges from the specification, the compatibility matrix documents the divergence and the adapter-level shim that handles it.
@@ -88,7 +93,9 @@
         <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-6">Session handshake</h2>
         
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-6">
-            The client initiates with a four-byte protocol identifier followed by a two-byte version number:
+            The client initiates with a 12-byte preamble: the four-byte
+            protocol identifier, the protocol version, and the client
+            sub-version fields used by compatibility policy:
         </p>
         
         <div class="bg-[#12121f] rounded-lg shadow-[0px_8px_32px_0px_rgba(18,18,31,0.18)] overflow-hidden mb-8 transition-all duration-300 hover:shadow-[0px_12px_32px_0px_rgba(18,18,31,0.24)]">
@@ -101,14 +108,20 @@
                 </div>
             </div>
             <div class="px-6 py-6">
-                <pre class="text-[#f5e6d0] text-sm font-normal font-primary leading-[21.32px]"><span class="text-[#3a3a55]">// 6-byte handshake preamble</span>
+                <pre class="text-[#f5e6d0] text-sm font-normal font-primary leading-[21.32px]"><span class="text-[#3a3a55]">// 12-byte handshake preamble</span>
 <span class="text-[#e8a838]">protocol_id</span>: [<span class="text-[#d4714f]">0x54</span>, <span class="text-[#d4714f]">0x52</span>, <span class="text-[#d4714f]">0x54</span>, <span class="text-[#d4714f]">0x50</span>]  <span class="text-[#3a3a55]">// "TRTP"</span>
-<span class="text-[#e8a838]">version</span>: <span class="text-[#d4714f]">0x0001</span>                            <span class="text-[#3a3a55]">// v1</span></pre>
+<span class="text-[#e8a838]">version</span>: <span class="text-[#d4714f]">0x0001</span>                            <span class="text-[#3a3a55]">// protocol version</span>
+<span class="text-[#e8a838]">sub_version</span>: <span class="text-[#d4714f]">u32</span>                        <span class="text-[#3a3a55]">// compatibility marker</span>
+<span class="text-[#e8a838]">reserved</span>: <span class="text-[#d4714f]">u16</span>                           <span class="text-[#3a3a55]">// retained by the preamble layout</span></pre>
             </div>
         </div>
         
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-6">
-            The server validates the identifier and version, then begins accepting transaction frames. No handshake reply is sent. A connection that sends an invalid preamble is dropped immediately.
+            The server validates the identifier and version, then sends an
+            8-byte handshake reply with an error code: `0` for success, `1`
+            for invalid protocol, `2` for unsupported version, and `3` for
+            handshake timeout. Only after that reply does the server begin
+            accepting transaction frames.
         </p>
         
         <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a]">
@@ -332,7 +345,11 @@
         <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-6">Transaction catalogue</h2>
         
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8">
-            The complete transaction catalogue is generated from <span class="text-[#12121f] text-base font-normal font-primary">docs/protocol.md</span> in the repository. Each transaction type includes request parameters, reply structure, error conditions, and compatibility notes.
+            The reference set supports only a conservative catalogue here. The
+            pages and docs agree on login, authenticated-session continuity,
+            selected file routing, and selected news routing. Other transactions
+            are still design material or roadmap work and should not be read as
+            fully implemented.
         </p>
         
         <div class="space-y-4">
@@ -347,7 +364,7 @@
                     </div>
                     <div class="flex gap-2">
                         <span class="px-2.5 py-1 bg-[#e8f5ec] rounded-full border border-[#c4e5cc]">
-                            <span class="text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Supported</span>
+                            <span class="text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Implemented</span>
                         </span>
                     </div>
                 </div>
@@ -364,7 +381,7 @@
                     </div>
                     <div class="flex gap-2">
                         <span class="px-2.5 py-1 bg-[#e8f5ec] rounded-full border border-[#c4e5cc]">
-                            <span class="text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Supported</span>
+                            <span class="text-[#c89430] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Routed / Partial</span>
                         </span>
                     </div>
                 </div>
@@ -407,7 +424,11 @@
         
         <div class="mt-8 px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a]">
             <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
-                <span class="text-[#9a3a1f] font-semibold">Full catalogue:</span> The complete transaction reference, including request/reply structures, parameter tables, and compatibility matrices, is maintained in the repository documentation.
+                <span class="text-[#9a3a1f] font-semibold">Scope note:</span>
+                This page is intentionally narrower than a full protocol manual.
+                For current support claims, defer to the compatibility matrix
+                and roadmap rather than inferring completeness from this
+                catalogue.
             </p>
         </div>
     </div>

@@ -60,7 +60,10 @@
         
         <div class="text-[#e8d5b8] text-base font-normal font-tertiary leading-[27.20px] max-w-[700px]">
             <p class="mb-4">
-                This matrix records what mxd supports today, what it partially supports, and what remains planned. Every "Supported" or "Partial" claim cites the automated tests that back it. If a behaviour is not tested, it is not claimed.
+                This page mirrors `docs/internal-compatibility-matrix.md`, the
+                repository source of truth for support claims. It records only
+                the profiles and scopes backed by that matrix and avoids naming
+                clients or tiers the repository does not document.
             </p>
         </div>
     </div>
@@ -88,130 +91,96 @@
                     <thead>
                         <tr class="border-b-2 border-[#e8d5b8] bg-[#faf3ea]">
                             <th class="px-6 py-4 text-left text-[#2d3a8c] text-[11.10px] font-bold font-primary uppercase tracking-[0.10em]">Client Profile</th>
-                            <th class="px-6 py-4 text-left text-[#2d3a8c] text-[11.10px] font-bold font-primary uppercase tracking-[0.10em]">Version</th>
+                            <th class="px-6 py-4 text-left text-[#2d3a8c] text-[11.10px] font-bold font-primary uppercase tracking-[0.10em]">Detection</th>
                             <th class="px-6 py-4 text-left text-[#2d3a8c] text-[11.10px] font-bold font-primary uppercase tracking-[0.10em]">Status</th>
-                            <th class="px-6 py-4 text-left text-[#2d3a8c] text-[11.10px] font-bold font-primary uppercase tracking-[0.10em]">Test Coverage</th>
-                            <th class="px-6 py-4 text-left text-[#2d3a8c] text-[11.10px] font-bold font-primary uppercase tracking-[0.10em]">Notes</th>
+                            <th class="px-6 py-4 text-left text-[#2d3a8c] text-[11.10px] font-bold font-primary uppercase tracking-[0.10em]">Supported scope</th>
+                            <th class="px-6 py-4 text-left text-[#2d3a8c] text-[11.10px] font-bold font-primary uppercase tracking-[0.10em]">Known deviations</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-[#e8d5b8]">
                         <tr class="mxd-table-row">
                             <td class="px-6 py-4">
-                                <span class="text-[#12121f] text-sm font-semibold font-tertiary">Hotline Client</span>
+                                <span class="text-[#12121f] text-sm font-semibold font-tertiary">Hotline 1.8.5</span>
                             </td>
                             <td class="px-6 py-4">
-                                <code class="text-[#3a3a55] text-sm font-normal font-primary">1.9.x</code>
-                            </td>
-                            <td class="px-6 py-4">
-                                <span class="px-2.5 py-1 bg-[#e8f5ec] rounded-full border border-[#c4e5cc] text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Supported</span>
-                            </td>
-                            <td class="px-6 py-4">
-                                <code class="text-[#2d3a8c] text-sm font-normal font-primary">tests/client_compat.rs</code>
-                            </td>
-                            <td class="px-6 py-4 text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
-                                Full protocol compliance
-                            </td>
-                        </tr>
-                        <tr class="mxd-table-row">
-                            <td class="px-6 py-4">
-                                <span class="text-[#12121f] text-sm font-semibold font-tertiary">Frogblast</span>
-                            </td>
-                            <td class="px-6 py-4">
-                                <code class="text-[#3a3a55] text-sm font-normal font-primary">1.2+</code>
-                            </td>
-                            <td class="px-6 py-4">
-                                <span class="px-2.5 py-1 bg-[#e8f5ec] rounded-full border border-[#c4e5cc] text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Supported</span>
-                            </td>
-                            <td class="px-6 py-4">
-                                <code class="text-[#2d3a8c] text-sm font-normal font-primary">tests/frogblast_suite.rs</code>
-                            </td>
-                            <td class="px-6 py-4 text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
-                                XOR-encoded text fields
-                            </td>
-                        </tr>
-                        <tr class="mxd-table-row">
-                            <td class="px-6 py-4">
-                                <span class="text-[#12121f] text-sm font-semibold font-tertiary">Pitbull Pro</span>
-                            </td>
-                            <td class="px-6 py-4">
-                                <code class="text-[#3a3a55] text-sm font-normal font-primary">2.x</code>
+                                <code class="text-[#3a3a55] text-sm font-normal font-primary">`sub_version != 2`; login field 160 in `151..=189`</code>
                             </td>
                             <td class="px-6 py-4">
                                 <span class="px-2.5 py-1 bg-[#fff4e0] rounded-full border border-[#f2dca8] text-[#c89430] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Partial</span>
                             </td>
                             <td class="px-6 py-4">
-                                <code class="text-[#2d3a8c] text-sm font-normal font-primary">tests/pitbull_basic.rs</code>
+                                <span class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">Login handshake and login reply augmentation; text payloads may be auto-decoded if XOR-encoded</span>
                             </td>
                             <td class="px-6 py-4 text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
-                                News posting not verified
+                                User-list and messaging parity remain pending later roadmap items
                             </td>
                         </tr>
                         <tr class="mxd-table-row">
                             <td class="px-6 py-4">
-                                <span class="text-[#12121f] text-sm font-semibold font-tertiary">Nostalgy</span>
+                                <span class="text-[#12121f] text-sm font-semibold font-tertiary">Hotline 1.9</span>
                             </td>
                             <td class="px-6 py-4">
-                                <code class="text-[#3a3a55] text-sm font-normal font-primary">0.9.x</code>
-                            </td>
-                            <td class="px-6 py-4">
-                                <span class="px-2.5 py-1 bg-[#e8f5ec] rounded-full border border-[#c4e5cc] text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Supported</span>
-                            </td>
-                            <td class="px-6 py-4">
-                                <code class="text-[#2d3a8c] text-sm font-normal font-primary">tests/nostalgy_integration.rs</code>
-                            </td>
-                            <td class="px-6 py-4 text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
-                                Modern Rust client
-                            </td>
-                        </tr>
-                        <tr class="mxd-table-row">
-                            <td class="px-6 py-4">
-                                <span class="text-[#12121f] text-sm font-semibold font-tertiary">Helix Client</span>
-                            </td>
-                            <td class="px-6 py-4">
-                                <code class="text-[#3a3a55] text-sm font-normal font-primary">1.x</code>
-                            </td>
-                            <td class="px-6 py-4">
-                                <span class="px-2.5 py-1 bg-[#e8eaf6] rounded-full border border-[#c5cae9] text-[#2d3a8c] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Planned</span>
-                            </td>
-                            <td class="px-6 py-4">
-                                <span class="text-[#3a3a55] text-sm font-normal font-tertiary italic">Pending</span>
-                            </td>
-                            <td class="px-6 py-4 text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
-                                macOS client, v0.3 milestone
-                            </td>
-                        </tr>
-                        <tr class="mxd-table-row">
-                            <td class="px-6 py-4">
-                                <span class="text-[#12121f] text-sm font-semibold font-tertiary">Synapse</span>
-                            </td>
-                            <td class="px-6 py-4">
-                                <code class="text-[#3a3a55] text-sm font-normal font-primary">0.7+</code>
+                                <code class="text-[#3a3a55] text-sm font-normal font-primary">`sub_version != 2`; login field 160 in `&gt;=190`</code>
                             </td>
                             <td class="px-6 py-4">
                                 <span class="px-2.5 py-1 bg-[#fff4e0] rounded-full border border-[#f2dca8] text-[#c89430] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Partial</span>
                             </td>
                             <td class="px-6 py-4">
-                                <code class="text-[#2d3a8c] text-sm font-normal font-primary">tests/synapse_login.rs</code>
+                                <span class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">Login handshake and login reply augmentation; text payloads may be auto-decoded if XOR-encoded</span>
                             </td>
                             <td class="px-6 py-4 text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
-                                File transfers under review
+                                User-list and messaging parity remain pending later roadmap items
                             </td>
                         </tr>
                         <tr class="mxd-table-row">
                             <td class="px-6 py-4">
-                                <span class="text-[#12121f] text-sm font-semibold font-tertiary">Ambrosia</span>
+                                <span class="text-[#12121f] text-sm font-semibold font-tertiary">SynHX (non-XOR)</span>
                             </td>
                             <td class="px-6 py-4">
-                                <code class="text-[#3a3a55] text-sm font-normal font-primary">1.5.x</code>
+                                <code class="text-[#3a3a55] text-sm font-normal font-primary">`sub_version == 2`; login field 160 accepted</code>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="px-2.5 py-1 bg-[#fff4e0] rounded-full border border-[#f2dca8] text-[#c89430] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Partial</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">Login flow with SynHX banner-field omission semantics</span>
+                            </td>
+                            <td class="px-6 py-4 text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
+                                Field-level parity outside implemented transactions remains roadmap work
+                            </td>
+                        </tr>
+                        <tr class="mxd-table-row">
+                            <td class="px-6 py-4">
+                                <span class="text-[#12121f] text-sm font-semibold font-tertiary">SynHX (XOR text mode)</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <code class="text-[#3a3a55] text-sm font-normal font-primary">Same as SynHX plus XOR heuristic triggers on text fields</code>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="px-2.5 py-1 bg-[#fff4e0] rounded-full border border-[#f2dca8] text-[#c89430] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Partial</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">XOR login, XOR message payload detection, XOR news post payload decoding/encoding</span>
+                            </td>
+                            <td class="px-6 py-4 text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
+                                XOR mode is heuristic until a reliable handshake signal exists
+                            </td>
+                        </tr>
+                        <tr class="mxd-table-row">
+                            <td class="px-6 py-4">
+                                <span class="text-[#12121f] text-sm font-semibold font-tertiary">Unknown / legacy login version</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <code class="text-[#3a3a55] text-sm font-normal font-primary">`sub_version != 2`; login field 160 below `151` or absent</code>
                             </td>
                             <td class="px-6 py-4">
                                 <span class="px-2.5 py-1 bg-[#e8f5ec] rounded-full border border-[#c4e5cc] text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Supported</span>
                             </td>
                             <td class="px-6 py-4">
-                                <code class="text-[#2d3a8c] text-sm font-normal font-primary">tests/ambrosia_full.rs</code>
+                                <span class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">Safety behaviour: login reply omits Hotline banner extras and remains protocol-valid</span>
                             </td>
                             <td class="px-6 py-4 text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
-                                Windows client, all features
+                                Client is treated conservatively as unknown until explicit mapping exists
                             </td>
                         </tr>
                     </tbody>
@@ -221,7 +190,13 @@
         
         <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a] mb-8">
             <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
-                <span class="text-[#9a3a1f] font-semibold">Test suite location:</span> All compatibility tests live in <code class="text-[#12121f] text-xs font-normal font-primary">tests/</code> at repository root. Each client profile has a dedicated test module. Run with <code class="text-[#12121f] text-xs font-normal font-primary">cargo test --test client_compat</code>
+                <span class="text-[#9a3a1f] font-semibold">Evidence trail:</span>
+                The matrix evidence in the repository points to
+                <code class="text-[#12121f] text-xs font-normal font-primary">tests/features/wireframe_login_compat.feature</code>
+                and
+                <code class="text-[#12121f] text-xs font-normal font-primary">tests/features/wireframe_xor_compat.feature</code>,
+                plus the compatibility policy helpers named in
+                <code class="text-[#12121f] text-xs font-normal font-primary">docs/internal-compatibility-matrix.md</code>.
             </p>
         </div>
     </div>
@@ -239,7 +214,8 @@
                     <span class="px-2.5 py-1 bg-[#e8f5ec] rounded-full border border-[#c4e5cc] text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Supported</span>
                 </div>
                 <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
-                    All documented protocol features work. Automated tests verify handshake, login, file operations, chat, and news. No known regressions.
+                    Implemented and covered by automated tests for the scope
+                    described in the matrix. This label is intentionally narrow.
                 </p>
             </div>
             
@@ -248,7 +224,8 @@
                     <span class="px-2.5 py-1 bg-[#fff4e0] rounded-full border border-[#f2dca8] text-[#c89430] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Partial</span>
                 </div>
                 <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
-                    Core features verified. Specific transactions or edge cases remain untested. The matrix notes what is not yet confirmed.
+                    Implemented only for listed transactions or behaviours.
+                    Other parity work is still pending roadmap delivery.
                 </p>
             </div>
             
@@ -257,7 +234,8 @@
                     <span class="px-2.5 py-1 bg-[#e8eaf6] rounded-full border border-[#c5cae9] text-[#2d3a8c] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Planned</span>
                 </div>
                 <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
-                    Scheduled for future verification. The roadmap specifies which release milestone will address this client profile.
+                    Not implemented yet. It appears in the matrix only to
+                    prevent over-claiming support.
                 </p>
             </div>
         </div>
@@ -269,40 +247,39 @@
         <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-6">Verification strategy</h2>
         
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-6">
-            Each supported client profile has a dedicated test suite that exercises the full protocol stack. Tests run against a real mxd instance with an in-memory SQLite database. The test client implements the Hotline wire protocol directly, not through a third-party library.
+            Verification follows the evidence listed in the internal matrix.
+            Today that evidence is concentrated on login compatibility,
+            banner-field augmentation or omission, and XOR-mode behaviour rather
+            than on broad end-to-end feature parity.
         </p>
         
         <h3 class="text-[#12121f] text-[27.60px] font-normal font-secondary mb-4">Test coverage requirements</h3>
         
         <div class="bg-white rounded-lg border border-[#e8d5b8] overflow-hidden mb-8">
             <div class="px-6 py-4 border-b border-[#e8d5b8]">
-                <p class="text-[#12121f] text-sm font-semibold font-tertiary">For a client to be marked "Supported", tests must verify:</p>
+                <p class="text-[#12121f] text-sm font-semibold font-tertiary">Current behavioural guarantees captured by tests include:</p>
             </div>
             <div class="px-6 py-4">
                 <ul class="space-y-3">
                     <li class="flex items-start gap-3">
                         <span class="text-[#4a8c5c] mt-1"><i class="fa-solid fa-check text-sm"></i></span>
-                        <span class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">Handshake preamble exchange (protocol ID, version negotiation)</span>
+                        <span class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">Hotline 1.8.5 and 1.9 login replies include fields 161/162</span>
                     </li>
                     <li class="flex items-start gap-3">
                         <span class="text-[#4a8c5c] mt-1"><i class="fa-solid fa-check text-sm"></i></span>
-                        <span class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">Login transaction (0x006B) with password verification</span>
+                        <span class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">SynHX replies omit fields 161/162</span>
                     </li>
                     <li class="flex items-start gap-3">
                         <span class="text-[#4a8c5c] mt-1"><i class="fa-solid fa-check text-sm"></i></span>
-                        <span class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">File listing and download (transaction 0x00C8, 0x00CA)</span>
+                        <span class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">Unknown client versions omit banner fields and stay protocol-valid</span>
                     </li>
                     <li class="flex items-start gap-3">
                         <span class="text-[#4a8c5c] mt-1"><i class="fa-solid fa-check text-sm"></i></span>
-                        <span class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">Chat message send and receive (transaction 0x0069)</span>
+                        <span class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">XOR-encoded login and news payloads are accepted when heuristics detect XOR</span>
                     </li>
                     <li class="flex items-start gap-3">
                         <span class="text-[#4a8c5c] mt-1"><i class="fa-solid fa-check text-sm"></i></span>
-                        <span class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">XOR text encoding detection and handling (if client uses it)</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-[#4a8c5c] mt-1"><i class="fa-solid fa-check text-sm"></i></span>
-                        <span class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">Multi-fragment reassembly for large payloads</span>
+                        <span class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">Plaintext message payloads do not accidentally enable XOR compatibility</span>
                     </li>
                 </ul>
             </div>
@@ -310,7 +287,10 @@
         
         <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a]">
             <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
-                <span class="text-[#9a3a1f] font-semibold">QA enforcement:</span> The release checklist requires that all "Supported" claims in this matrix have passing tests in CI. If a test fails, the status downgrades to "Partial" or the client is removed from the matrix until the issue is resolved.
+                <span class="text-[#9a3a1f] font-semibold">Open gaps:</span>
+                Session-presence and messaging parity remain future work for the
+                named Hotline and SynHX profiles, and XOR invariants are tracked
+                separately by roadmap and proof work.
             </p>
         </div>
     </div>
@@ -323,7 +303,11 @@
         <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-6">Release note compliance</h2>
         
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-6">
-            Release notes must reference this matrix. The QA sign-off checklist in the repository enforces this. If you're reading a release note that claims support for a client profile not listed here as Supported, something has gone wrong.
+            Release notes must reference this matrix. The QA sign-off checklist
+            requires a line that explicitly names
+            <code class="text-[#12121f] text-xs font-normal font-primary">docs/internal-compatibility-matrix.md</code>,
+            and it asks reviewers to reject notes that claim support beyond the
+            matrix status.
         </p>
         
         <div class="bg-[#12121f] rounded-lg shadow-[0px_8px_32px_0px_rgba(18,18,31,0.18)] overflow-hidden">
@@ -332,18 +316,12 @@
                 <div class="w-2 h-2 bg-[#e8a838] rounded"></div>
                 <div class="w-2 h-2 bg-[#4a8c5c] rounded"></div>
                 <div class="flex-1 text-right">
-                    <span class="text-[#3a3a55] text-[11.10px] font-normal font-primary">CHANGELOG.md example</span>
+                    <span class="text-[#3a3a55] text-[11.10px] font-normal font-primary">QA sign-off example</span>
                 </div>
             </div>
             <div class="px-6 py-6">
-                <pre class="text-[#f5e6d0] text-sm font-normal font-primary leading-[21.32px]"><span class="text-[#e8a838]">## [0.2.1] - 2026-03-15</span>
-
-<span class="text-[#e8a838]">### Changed</span>
-<span class="text-[#3a3a55]">- Hotline Client 1.9.x: Full support verified (see compatibility matrix)</span>
-<span class="text-[#3a3a55]">- Frogblast 1.2+: XOR encoding detection now automated</span>
-
-<span class="text-[#e8a838]">### Fixed</span>
-<span class="text-[#3a3a55]">- Pitbull Pro 2.x: News posting transaction now partial (tests pending)</span></pre>
+                <pre class="text-[#f5e6d0] text-sm font-normal font-primary leading-[21.32px]"><span class="text-[#e8a838]">QA sign-off: compatibility matrix reviewed at docs/internal-compatibility-matrix.md</span>
+<span class="text-[#3a3a55]">Deviation recorded in docs/internal-compatibility-matrix.md</span></pre>
             </div>
         </div>
     </div>

@@ -69,7 +69,7 @@
             <span class="text-[#3a3a55] text-[11.10px] font-normal font-primary"> · version: </span>
             <span class="text-[#e8a838] text-[11.10px] font-normal font-primary">0x0001</span>
             <span class="text-[#3a3a55] text-[11.10px] font-normal font-primary"> · status: </span>
-            <span class="text-[#e8a838] text-[11.10px] font-normal font-primary">READY</span>
+            <span class="text-[#e8a838] text-[11.10px] font-normal font-primary">PARTIAL</span>
         </div>
 
         <div class="flex flex-wrap gap-3">
@@ -183,10 +183,17 @@
         <div class="mxd-section-label">01 — Overview</div>
         <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-4">The Hotline protocol, treated seriously</h2>
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-4">
-            mxd implements Hotline server protocol v1.8.5: login, chat, threaded news, hierarchical file sharing, and private messaging. It speaks the binary wire format — 20-byte frame headers, big-endian integers, multi-fragment reassembly — so vintage Hotline clients and modern alternatives like SynHX connect without shims or translation layers.
+            mxd is building toward Hotline server protocol v1.8.5 coverage. The
+            documented and implemented core today is the login handshake,
+            compatibility-aware login replies, and selected routed file and
+            news flows. The binary wire format still matters — 20-byte frame
+            headers, big-endian integers, multi-fragment reassembly — but chat,
+            messaging, and full client parity remain roadmap work.
         </p>
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px]">
-            The name is a train reference. The architecture is not.
+            Hotline 1.8.5, Hotline 1.9, and SynHX compatibility is partial
+            rather than complete. The roadmap and compatibility matrix are part
+            of the product surface, not footnotes.
         </p>
     </div>
 </div>
