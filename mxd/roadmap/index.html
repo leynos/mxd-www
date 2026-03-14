@@ -149,7 +149,11 @@
                             </span>
                         </div>
                         <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[21.32px] mb-3">
-                            Byte-level frame parsing and serialisation for all transaction types. Big-endian integer handling. XOR detection and decoding. Multi-fragment reassembly.
+                            Byte-level frame parsing and serialisation for the
+                            current routed subset, with shared big-endian
+                            header handling, XOR detection and decoding, and
+                            multi-fragment reassembly across the protocol
+                            surface.
                         </p>
                         <div class="flex flex-wrap gap-2">
                             <span class="px-2.5 py-1 bg-[#c54b2a] rounded-full">
