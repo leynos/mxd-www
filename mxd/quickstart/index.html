@@ -214,7 +214,7 @@ cargo run --bin mxd-wireframe-server -- --bind 0.0.0.0:6600 --database mxd.db</p
             <div class="px-6 py-6">
                 <pre class="text-[#e8a838] text-sm font-normal font-primary leading-[21.32px]">cargo install --locked pg-embed-setup-unpriv --version 0.5.0
 pg_embedded_setup_unpriv
-export MXD_DATABASE=postgres://postgres:&lt;db-password&gt;@localhost/mxd
+export MXD_DATABASE='postgres://postgres:&lt;db-password&gt;@localhost/mxd'
 cargo run --bin mxd -- --database "$MXD_DATABASE"</pre>
             </div>
         </div>
