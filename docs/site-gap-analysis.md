@@ -13,8 +13,7 @@ constraints are, or whether it is already implemented.
 
 The reference set documents two operational binaries, `mxd` and
 `mxd-wireframe-server`, plus feature-gated runtime selection and a
-wireframe-only build path. `docs/users-guide.md` treats this as core user
-facing behaviour.
+wireframe-only build path. `docs/users-guide.md` treats this as core user-facing behaviour.
 
 The site mentions the Wireframe server in the quickstart and installation
 pages, but it does not document the runtime model as a first-class concept. It

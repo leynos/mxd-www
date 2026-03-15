@@ -215,7 +215,7 @@
             </div>
             <div class="px-6 py-6">
                 <pre class="text-[#f5e6d0] text-sm font-normal font-primary leading-[21.32px]"><span class="text-[#e8a838]">bind</span> = <span class="text-[#4a8c5c]">"0.0.0.0:6600"</span>
-<span class="text-[#e8a838]">database</span> = <span class="text-[#4a8c5c]">"postgres://user:pass@localhost/mxd"</span></pre>
+<span class="text-[#e8a838]">database</span> = <span class="text-[#4a8c5c]">"postgres://user:&lt;password&gt;@localhost/mxd"</span></pre>
             </div>
         </div>
         
@@ -306,7 +306,7 @@
             </div>
             <div class="px-6 py-6">
                 <pre class="text-[#f5e6d0] text-sm font-normal font-primary leading-[21.32px]"><span class="text-[#e8a838]">export</span> MXD_BIND=<span class="text-[#4a8c5c]">"127.0.0.1:5501"</span>
-<span class="text-[#e8a838]">export</span> MXD_DATABASE=<span class="text-[#4a8c5c]">"postgres://mxd:password@db.example.com/mxd_prod"</span>
+<span class="text-[#e8a838]">export</span> MXD_DATABASE=<span class="text-[#4a8c5c]">"postgres://mxd:${MXD_DB_PASSWORD}@db.example.com/mxd_prod"</span>
 mxd</pre>
             </div>
         </div>

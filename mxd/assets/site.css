@@ -52,6 +52,16 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .mxd-express-line {
+    animation: none;
+  }
+}
+
 body {
   margin: 0;
 }
@@ -542,4 +552,3 @@ body {
   margin: 0;
   padding: 0;
 }
-
