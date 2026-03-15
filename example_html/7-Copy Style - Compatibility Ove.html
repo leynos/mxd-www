@@ -1,0 +1,428 @@
+<!DOCTYPE html><html lang="en"><head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compatibility</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800;900&amp;family=DM+Serif+Display:ital,wght@0,400;1,400&amp;family=Source+Serif+4:ital,wght@200;300;400;600;700;900&amp;family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        "primary": ["JetBrains Mono", "monospace"],
+                        "secondary": ["DM Serif Display", "serif"],
+                        "tertiary": ["Source Serif 4", "serif"],
+                        "display": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        ::-webkit-scrollbar { display: none; }
+        html, body { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .express-line {
+            animation: shimmer 8s ease-in-out infinite;
+            background-size: 200% 100%;
+        }
+        
+        .btn-primary {
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(197, 75, 42, 0.3);
+        }
+        
+        .btn-secondary {
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #c54b2a;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .table-row {
+            transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        
+        .table-row:hover {
+            background-color: #faf3ea;
+        }
+    </style>
+</head>
+<body class="bg-[#fdf8f0]">
+
+<div id="hero-section" class="relative bg-[#12121f] overflow-hidden" style="height: 480px;">
+    <div class="absolute inset-0 opacity-60">
+        <div class="absolute inset-0 grid grid-cols-[repeat(auto-fill,60px)] grid-rows-[repeat(auto-fill,60px)]">
+            <svg width="60" height="60" class="opacity-10" xmlns="http://www.w3.org/2000/svg">
+                <path d="M30 0L60 30L30 60L0 30L30 0Z" stroke="#C54B2A" stroke-width="0.4" fill="none"></path>
+                <path d="M30 12L48 30L30 48L12 30L30 12Z" stroke="#C54B2A" stroke-width="0.4" fill="none"></path>
+                <path d="M30 24L36 30L30 36L24 30L30 24Z" stroke="#C54B2A" stroke-width="0.4" fill="none"></path>
+                <circle cx="30" cy="30" r="6" stroke="#C54B2A" stroke-width="0.4" fill="none"></circle>
+            </svg>
+        </div>
+    </div>
+    
+    <div class="absolute top-0 left-0 right-0 h-1 express-line bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
+    
+    <div class="relative max-w-[900px] mx-auto px-8 pt-24 pb-16">
+        <div class="inline-flex px-3 py-1 rounded-sm border border-[#c89430] mb-6">
+            <div class="text-[#e8a838] text-[11.10px] font-bold font-primary uppercase tracking-[0.15em]">Docs · Compatibility</div>
+        </div>
+        
+        <h1 class="mb-6">
+            <span class="text-[#f5e6d0] text-[68.80px] font-normal font-secondary leading-[72.24px]">Client compatibility matrix</span>
+        </h1>
+        
+        <div class="text-[#e8d5b8] text-base font-normal font-tertiary leading-[27.20px] max-w-[700px]">
+            <p class="mb-4">
+                This matrix records what mxd supports today, what it partially supports, and what remains planned. Every "Supported" or "Partial" claim cites the automated tests that back it. If a behaviour is not tested, it is not claimed.
+            </p>
+        </div>
+    </div>
+    
+    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#c54b2a]"></div>
+</div>
+
+<div id="section-matrix" class="border-t border-[#e8d5b8] py-20">
+    <div class="max-w-[900px] mx-auto px-8">
+        <div class="bg-white rounded-lg border border-[#e8d5b8] overflow-hidden mb-8">
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b-2 border-[#e8d5b8] bg-[#faf3ea]">
+                            <th class="px-6 py-4 text-left text-[#2d3a8c] text-[11.10px] font-bold font-primary uppercase tracking-[0.10em]">Client Profile</th>
+                            <th class="px-6 py-4 text-left text-[#2d3a8c] text-[11.10px] font-bold font-primary uppercase tracking-[0.10em]">Version</th>
+                            <th class="px-6 py-4 text-left text-[#2d3a8c] text-[11.10px] font-bold font-primary uppercase tracking-[0.10em]">Status</th>
+                            <th class="px-6 py-4 text-left text-[#2d3a8c] text-[11.10px] font-bold font-primary uppercase tracking-[0.10em]">Test Coverage</th>
+                            <th class="px-6 py-4 text-left text-[#2d3a8c] text-[11.10px] font-bold font-primary uppercase tracking-[0.10em]">Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-[#e8d5b8]">
+                        <tr class="table-row">
+                            <td class="px-6 py-4">
+                                <span class="text-[#12121f] text-sm font-semibold font-tertiary">Hotline Client</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <code class="text-[#3a3a55] text-sm font-normal font-display">1.9.x</code>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="px-2.5 py-1 bg-[#e8eaf6] rounded-full border border-[#c4e5cc] text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Supported</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <code class="text-[#2d3a8c] text-sm font-normal font-display">tests/client_compat.rs</code>
+                            </td>
+                            <td class="px-6 py-4 text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
+                                Full protocol compliance
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td class="px-6 py-4">
+                                <span class="text-[#12121f] text-sm font-semibold font-tertiary">Frogblast</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <code class="text-[#3a3a55] text-sm font-normal font-display">1.2+</code>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="px-2.5 py-1 bg-[#e8eaf6] rounded-full border border-[#c4e5cc] text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Supported</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <code class="text-[#2d3a8c] text-sm font-normal font-display">tests/frogblast_suite.rs</code>
+                            </td>
+                            <td class="px-6 py-4 text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
+                                XOR-encoded text fields
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td class="px-6 py-4">
+                                <span class="text-[#12121f] text-sm font-semibold font-tertiary">Pitbull Pro</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <code class="text-[#3a3a55] text-sm font-normal font-display">2.x</code>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="px-2.5 py-1 bg-[#e8eaf6] rounded-full border border-[#f2dca8] text-[#c89430] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Partial</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <code class="text-[#2d3a8c] text-sm font-normal font-display">tests/pitbull_basic.rs</code>
+                            </td>
+                            <td class="px-6 py-4 text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
+                                News posting not verified
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td class="px-6 py-4">
+                                <span class="text-[#12121f] text-sm font-semibold font-tertiary">Nostalgy</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <code class="text-[#3a3a55] text-sm font-normal font-display">0.9.x</code>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="px-2.5 py-1 bg-[#e8eaf6] rounded-full border border-[#c4e5cc] text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Supported</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <code class="text-[#2d3a8c] text-sm font-normal font-display">tests/nostalgy_integration.rs</code>
+                            </td>
+                            <td class="px-6 py-4 text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
+                                Modern Rust client
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td class="px-6 py-4">
+                                <span class="text-[#12121f] text-sm font-semibold font-tertiary">Helix Client</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <code class="text-[#3a3a55] text-sm font-normal font-display">1.x</code>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="px-2.5 py-1 bg-[#e8eaf6] rounded-full border border-[#c5cae9] text-[#2d3a8c] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Planned</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="text-[#3a3a55] text-sm font-normal font-tertiary italic">Pending</span>
+                            </td>
+                            <td class="px-6 py-4 text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
+                                macOS client, v0.3 milestone
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td class="px-6 py-4">
+                                <span class="text-[#12121f] text-sm font-semibold font-tertiary">Synapse</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <code class="text-[#3a3a55] text-sm font-normal font-display">0.7+</code>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="px-2.5 py-1 bg-[#e8eaf6] rounded-full border border-[#f2dca8] text-[#c89430] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Partial</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <code class="text-[#2d3a8c] text-sm font-normal font-display">tests/synapse_login.rs</code>
+                            </td>
+                            <td class="px-6 py-4 text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
+                                File transfers under review
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td class="px-6 py-4">
+                                <span class="text-[#12121f] text-sm font-semibold font-tertiary">Ambrosia</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <code class="text-[#3a3a55] text-sm font-normal font-display">1.5.x</code>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="px-2.5 py-1 bg-[#e8eaf6] rounded-full border border-[#c4e5cc] text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Supported</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <code class="text-[#2d3a8c] text-sm font-normal font-display">tests/ambrosia_full.rs</code>
+                            </td>
+                            <td class="px-6 py-4 text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
+                                Windows client, all features
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-2 border-[#c54b2a] mb-8">
+            <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
+                <span class="text-[#9a3a1f] font-semibold">Test suite location:</span> All compatibility tests live in <code class="text-[#12121f] text-xs font-normal font-display">tests/</code> at repository root. Each client profile has a dedicated test module. Run with <code class="text-[#12121f] text-xs font-normal font-display">cargo test --test client_compat</code>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div id="section-legend" class="relative border-t border-[#e8d5b8] py-20 overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute inset-0 grid grid-cols-[repeat(auto-fill,60px)] grid-rows-[repeat(auto-fill,60px)]">
+            <svg width="60" height="60" xmlns="http://www.w3.org/2000/svg">
+                <path d="M30 0L60 30L30 60L0 30L30 0Z" stroke="#C54B2A" stroke-width="0.5" fill="none"></path>
+                <path d="M30 10L50 30L30 50L10 30L30 10Z" stroke="#C54B2A" stroke-width="0.5" fill="none"></path>
+                <path d="M30 20L40 30L30 40L20 30L30 20Z" stroke="#C54B2A" stroke-width="0.5" fill="none"></path>
+            </svg>
+        </div>
+    </div>
+    
+    <div class="relative max-w-[900px] mx-auto px-8">
+        <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-6">Status definitions</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white rounded-lg border border-[#e8d5b8] p-6">
+                <div class="mb-4">
+                    <span class="px-2.5 py-1 bg-[#e8eaf6] rounded-full border border-[#c4e5cc] text-[#4a8c5c] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Supported</span>
+                </div>
+                <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
+                    All documented protocol features work. Automated tests verify handshake, login, file operations, chat, and news. No known regressions.
+                </p>
+            </div>
+            
+            <div class="bg-white rounded-lg border border-[#e8d5b8] p-6">
+                <div class="mb-4">
+                    <span class="px-2.5 py-1 bg-[#e8eaf6] rounded-full border border-[#f2dca8] text-[#c89430] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Partial</span>
+                </div>
+                <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
+                    Core features verified. Specific transactions or edge cases remain untested. The matrix notes what is not yet confirmed.
+                </p>
+            </div>
+            
+            <div class="bg-white rounded-lg border border-[#e8d5b8] p-6">
+                <div class="mb-4">
+                    <span class="px-2.5 py-1 bg-[#e8eaf6] rounded-full border border-[#c5cae9] text-[#2d3a8c] text-[10.40px] font-bold font-primary uppercase tracking-[0.08em]">Planned</span>
+                </div>
+                <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
+                    Scheduled for future verification. The roadmap specifies which release milestone will address this client profile.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="section-verification" class="border-t border-[#e8d5b8] py-20">
+    <div class="max-w-[900px] mx-auto px-8">
+        <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-6">Verification strategy</h2>
+        
+        <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-6">
+            Each supported client profile has a dedicated test suite that exercises the full protocol stack. Tests run against a real mxd instance with an in-memory SQLite database. The test client implements the Hotline wire protocol directly, not through a third-party library.
+        </p>
+        
+        <h3 class="text-[#12121f] text-[27.60px] font-normal font-secondary mb-4">Test coverage requirements</h3>
+        
+        <div class="bg-white rounded-lg border border-[#e8d5b8] overflow-hidden mb-8">
+            <div class="px-6 py-4 border-b border-[#e8d5b8]">
+                <p class="text-[#12121f] text-sm font-semibold font-tertiary">For a client to be marked "Supported", tests must verify:</p>
+            </div>
+            <div class="px-6 py-4">
+                <ul class="space-y-3">
+                    <li class="flex items-start gap-3">
+                        <span class="text-[#4a8c5c] mt-1"><i class="fa-solid fa-check text-sm"></i></span>
+                        <span class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">Handshake preamble exchange (protocol ID, version negotiation)</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-[#4a8c5c] mt-1"><i class="fa-solid fa-check text-sm"></i></span>
+                        <span class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">Login transaction (0x006B) with password verification</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-[#4a8c5c] mt-1"><i class="fa-solid fa-check text-sm"></i></span>
+                        <span class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">File listing and download (transaction 0x00C8, 0x00CA)</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-[#4a8c5c] mt-1"><i class="fa-solid fa-check text-sm"></i></span>
+                        <span class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">Chat message send and receive (transaction 0x0069)</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-[#4a8c5c] mt-1"><i class="fa-solid fa-check text-sm"></i></span>
+                        <span class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">XOR text encoding detection and handling (if client uses it)</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-[#4a8c5c] mt-1"><i class="fa-solid fa-check text-sm"></i></span>
+                        <span class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">Multi-fragment reassembly for large payloads</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-2 border-[#c54b2a]">
+            <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
+                <span class="text-[#9a3a1f] font-semibold">QA enforcement:</span> The release checklist requires that all "Supported" claims in this matrix have passing tests in CI. If a test fails, the status downgrades to "Partial" or the client is removed from the matrix until the issue is resolved.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div id="section-closing" class="relative border-t border-[#e8d5b8] py-20 overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute inset-0 grid grid-cols-[repeat(auto-fill,60px)] grid-rows-[repeat(auto-fill,60px)]">
+            <svg width="60" height="60" xmlns="http://www.w3.org/2000/svg">
+                <path d="M30 0L60 30L30 60L0 30L30 0Z" stroke="#C54B2A" stroke-width="0.5" fill="none"></path>
+                <path d="M30 10L50 30L30 50L10 30L30 10Z" stroke="#C54B2A" stroke-width="0.5" fill="none"></path>
+                <path d="M30 20L40 30L30 40L20 30L30 20Z" stroke="#C54B2A" stroke-width="0.5" fill="none"></path>
+            </svg>
+        </div>
+    </div>
+    
+    <div class="relative max-w-[900px] mx-auto px-8">
+        <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-6">Release note compliance</h2>
+        
+        <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-6">
+            Release notes must reference this matrix. The QA sign-off checklist in the repository enforces this. If you're reading a release note that claims support for a client profile not listed here as Supported, something has gone wrong.
+        </p>
+        
+        <div class="bg-[#12121f] rounded-lg shadow-[0px_8px_32px_0px_rgba(18,18,31,0.18)] overflow-hidden">
+            <div class="px-4 py-3 bg-[#1a1a2e] border-b border-[#2a2a42] flex items-center gap-3">
+                <div class="w-2 h-2 bg-[#c43a3a] rounded"></div>
+                <div class="w-2 h-2 bg-[#e8a838] rounded"></div>
+                <div class="w-2 h-2 bg-[#4a8c5c] rounded"></div>
+                <div class="flex-1 text-right">
+                    <span class="text-[#3a3a55] text-[11.10px] font-normal font-primary">CHANGELOG.md example</span>
+                </div>
+            </div>
+            <div class="px-6 py-6">
+                <pre class="text-[#f5e6d0] text-sm font-normal font-display leading-[21.32px]"><span class="text-[#e8a838]">## [0.2.1] - 2026-03-15</span>
+
+<span class="text-[#e8a838]">### Changed</span>
+<span class="text-[#3a3a55]">- Hotline Client 1.9.x: Full support verified (see compatibility matrix)</span>
+<span class="text-[#3a3a55]">- Frogblast 1.2+: XOR encoding detection now automated</span>
+
+<span class="text-[#e8a838]">### Fixed</span>
+<span class="text-[#3a3a55]">- Pitbull Pro 2.x: News posting transaction now partial (tests pending)</span></pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="footer-cta" class="border-t border-[#e8d5b8] py-20 bg-white">
+    <div class="max-w-[900px] mx-auto px-8 text-center">
+        <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-4">Protocol documentation</h2>
+        <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8 max-w-[600px] mx-auto">
+            See the full transaction reference and wire format specification.
+        </p>
+        
+        <div class="flex flex-wrap justify-center gap-3">
+            <button class="btn-primary px-6 py-3 bg-[#c54b2a] text-white text-sm font-normal font-primary rounded border-2 border-[#c54b2a]">
+                Protocol Reference
+            </button>
+            <button class="btn-secondary px-6 py-3 text-[#c54b2a] text-sm font-normal font-primary rounded border-2 border-[#c54b2a]">
+                Test Suite
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="footer" class="bg-[#12121f] relative">
+    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
+    
+    <div class="max-w-[900px] mx-auto px-8 py-12 text-center">
+        <div class="mb-6 opacity-40">
+            <span class="text-[#e8d5b8] text-[23px] font-normal font-primary">◆</span>
+        </div>
+        
+        <p class="text-[#3a3a55] text-[11.10px] font-normal font-secondary leading-[18.88px] mb-2">
+            Protocol Souk — Design System for <span class="text-[#e8a838]">mxd</span>
+        </p>
+        
+        <p class="text-[#3a3a55] text-[11.10px] font-normal font-secondary leading-[18.88px]">
+            A <span class="text-[#e8a838]">df12 Productions</span> artefact · Edinburgh · 2026
+        </p>
+    </div>
+</div>
+
+
+</body></html>
