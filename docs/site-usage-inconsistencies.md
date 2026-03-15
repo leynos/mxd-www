@@ -73,7 +73,7 @@ transaction catalogue.
 The references draw a sharper boundary:
 
 - `docs/design.md` says the chat schema is designed and migrated but not yet
-  fully utilised in code;
+  fully utilized in code;
 - `docs/internal-compatibility-matrix.md` limits currently supported scope
   heavily;
 - the roadmap page marks most chat, file, and admin work as planned.

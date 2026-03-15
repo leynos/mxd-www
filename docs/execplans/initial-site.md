@@ -17,7 +17,7 @@ system defined in `docs/mxd-design-system.html`. This plan addresses both.
 
 After this work, a visitor browsing the site will experience a consistent
 visual language across all twelve pages. A developer maintaining the site will
-find shared styles centralised in `mxd/assets/site.css` rather than duplicated
+find shared styles centralized in `mxd/assets/site.css` rather than duplicated
 across twelve inline `<style>` blocks. Validation with Playwright snapshots
 and `css-view` will confirm that computed styles match the design system tokens.
 
@@ -71,7 +71,7 @@ and `css-view` will confirm that computed styles match the design system tokens.
   produce different visual results.
   Severity: low
   Likelihood: medium
-  Mitigation: Normalise HTML structure as part of the overhaul. Document any
+  Mitigation: Normalize HTML structure as part of the overhaul. Document any
   structural changes in Surprises & Discoveries.
 
 - Risk: Removing inline `<style>` blocks may break page-specific components
@@ -82,7 +82,7 @@ and `css-view` will confirm that computed styles match the design system tokens.
   Mitigation: Audit every inline class before removal. Move page-specific
   classes that appear on only one page to site.css with a comment noting their
   single-page scope. This keeps all CSS in one place without forcing
-  unnecessary generalisation.
+  unnecessary generalization.
 
 ## Progress
 
@@ -394,7 +394,7 @@ The design system uses a CSS Grid (`grid-template-columns: repeat(auto-fit, minm
 for the transaction byte stripe. The site uses `flex flex-wrap` instead. The
 visual result is similar but the bytes in the site use `min-w-[81.79px]` as a
 floor width rather than the grid's `minmax(80px, 1fr)`. The protocol page
-uses `flex-1` without a min-width. These should be standardised to match the
+uses `flex-1` without a min-width. These should be standardized to match the
 design system's grid approach.
 
 **D13. Missing design system CSS custom properties.**
@@ -517,7 +517,7 @@ everywhere.
 
 ### Stage C: Apply design system alignment
 
-In this stage, we modify all twelve HTML pages.
+In this stage, all twelve HTML pages are modified.
 
 **C1.** Remove inline `<style>` blocks from all pages. All styles now live in
 site.css. The only remaining inline content is the Tailwind config `<script>`.
@@ -529,14 +529,14 @@ escalate (tolerance: no new fonts).
 **C3.** Remove `style="height: Npx"` from all hero sections. Let content +
 padding determine height.
 
-**C4.** Standardise responsive padding: `px-4 sm:px-8` everywhere (content
+**C4.** Standardize responsive padding: `px-4 sm:px-8` everywhere (content
 wrappers, heroes, footers). Replace bare `px-8` on home, quickstart,
 architecture, protocol, compatibility pages.
 
-**C5.** Standardise responsive hero heading sizes:
+**C5.** Standardize responsive hero heading sizes:
 `text-4xl sm:text-5xl md:text-[68.80px]` on all pages.
 
-**C6.** Standardise section padding: `py-16 sm:py-20` on all content sections.
+**C6.** Standardize section padding: `py-16 sm:py-20` on all content sections.
 
 **C7.** Fix all `font-display` usages → `font-primary` (D1, D5).
 
@@ -685,13 +685,13 @@ Souk design system.
 - Badge colours corrected: Supported=#e8f5ec, Partial=#fff4e0, Planned=#e8eaf6.
 - Inter font removed from Tailwind config; all `font-display` usages migrated
   to `font-primary` (JetBrains Mono).
-- Button font-weight standardised to 600 (font-semibold) per design system.
+- Button font-weight standardized to 600 (font-semibold) per design system.
 - Callout border-left width corrected to 3px per design system.
 - Hero bottom gradient corrected to terracotta→saffron→indigo.
 - Fixed pixel hero heights removed; content determines height.
 - Responsive padding (`px-4 sm:px-8`) and heading sizes applied consistently.
-- Express Line shimmer animation centralised as `.mxd-express-line`.
-- All page titles include ` — mxd` suffix.
+- Express Line shimmer animation centralized as `.mxd-express-line`.
+- All page titles include `— mxd` suffix.
 
 **Validation results:**
 
@@ -704,7 +704,7 @@ Souk design system.
 
 **Lessons learned:**
 
-- Parallelising page edits across 11 background agents was effective. The
+- Parallelizing page edits across 11 background agents was effective. The
   cross-cutting verification step afterwards caught the few items that
   individual agents missed (border-l-2 on 3 pages).
 - Systematic grep-based verification after agent work is essential — it

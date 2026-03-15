@@ -22,7 +22,7 @@ correct:
 - semantic HTML
 - semantic class names
 
-## What Not to Optimise Yet
+## What Not to Optimize Yet
 
 Do not invest effort in build automation, build pipeline work, or large-scale
 refactoring for this prototype. That work will be handled later by the CMS
@@ -37,7 +37,7 @@ shared before it is incorporated into the larger website.
 
 - The user will start a `caddy file-server` instance on port `2018` when a live
   preview is needed.
-- Do not attempt to start Caddy yourself.
+- Do not attempt to start Caddy from the agent workflow.
 - When using Playwright for previewing, point it at the existing server on port
   `2018`.
 

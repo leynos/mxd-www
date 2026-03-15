@@ -89,7 +89,7 @@ messaging as planned, but the site never documents the actual feature model
 defined in `docs/chat-schema.md` and `docs/design.md`.
 
 The gap is especially important because the references themselves say parts of
-chat are designed and migrated but not yet fully utilised in code.
+chat are designed and migrated but not yet fully utilized in code.
 
 ## 5. News hierarchy and article-thread structure
 

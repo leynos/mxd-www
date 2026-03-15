@@ -173,6 +173,13 @@ body {
     linear-gradient(180deg, rgba(253, 248, 240, 0.96), rgba(253, 248, 240, 0.9));
 }
 
+@media (max-width: 960px) {
+  .mxd-page-toc {
+    position: static;
+    top: auto;
+  }
+}
+
 .mxd-page-toc__inner {
   max-width: 1180px;
   margin: 0 auto;
@@ -536,5 +543,3 @@ body {
   padding: 0;
 }
 
-::-webkit-scrollbar { display: none; }
-html, body { -ms-overflow-style: none; scrollbar-width: none; }
