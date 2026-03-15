@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="../assets/site.css">
 </head>
 <body class="bg-[#fdf8f0]">
-<a class="mxd-skip-link" href="#hero-section">Skip to content</a>
+<a class="mxd-skip-link" href="#main-content">Skip to content</a>
 <header class="mxd-site-header">
   <div class="mxd-site-header__inner">
     <a class="mxd-brand" href="../">
@@ -43,6 +43,7 @@
     </nav>
   </div>
 </header>
+<main id="main-content" tabindex="-1">
 
 <div id="hero-section" class="relative bg-[#12121f] overflow-hidden">
     <div class="mxd-pattern mxd-pattern--hero absolute inset-0 opacity-60" aria-hidden="true"></div>
@@ -172,7 +173,8 @@
                         </div>
                     </div>
                     <div class="px-6 py-6 overflow-x-auto">
-                        <pre class="text-[#f5e6d0] text-sm font-normal font-primary leading-[21.32px]"><span class="text-[#e8a838]">docker</span> run -e <span class="text-[#f5e6d0]">MXD_DATABASE</span>=<span class="text-[#4a8c5c]">postgres://user:pass@host/db</span> mxd:latest</pre>
+                        <pre class="text-[#f5e6d0] text-sm font-normal font-primary leading-[21.32px]"><span class="text-[#3a3a55]"># Pass credentials via env file, not inline.</span>
+<span class="text-[#e8a838]">docker</span> run --env-file <span class="text-[#4a8c5c]">mxd.env</span> mxd:latest</pre>
                     </div>
                 </div>
             </div>
@@ -292,5 +294,6 @@
     </div>
 </div>
 
+</main>
 
 </body></html>
