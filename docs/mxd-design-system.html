@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mxd Design System — Protocol Souk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════
+   DESIGN TOKENS
+   ═══════════════════════════════════════════════════ */
+:root {
+  /* Core palette — Marrakesh */
+  --terracotta:       #C54B2A;
+  --terracotta-light: #D4714F;
+  --terracotta-dark:  #9A3A1F;
+  --saffron:          #E8A838;
+  --saffron-light:    #F2C96A;
+  --saffron-muted:    #C89430;
+  --indigo:           #2D3A8C;
+  --indigo-light:     #4A58B0;
+  --indigo-dark:      #1E2760;
+
+  /* Neutrals — Kohl and Sandstone */
+  --kohl:             #12121F;
+  --kohl-lighter:     #1A1A2E;
+  --kohl-mid:         #2A2A42;
+  --kohl-soft:        #3A3A55;
+  --sandstone:        #F5E6D0;
+  --sandstone-light:  #FAF3EA;
+  --sandstone-dark:   #E8D5B8;
+  --parchment:        #FDF8F0;
+
+  /* Semantic — Protocol signals */
+  --mint-tea:         #4A8C5C;
+  --mint-tea-light:   #6AAF7A;
+  --amber-signal:     #FFB347;
+  --error-red:        #C43A3A;
+  --xor-magenta:      #A855A0;
+
+  /* Typography scale — minor third */
+  --text-xs:    0.694rem;
+  --text-sm:    0.833rem;
+  --text-base:  1rem;
+  --text-md:    1.2rem;
+  --text-lg:    1.44rem;
+  --text-xl:    1.728rem;
+  --text-2xl:   2.074rem;
+  --text-3xl:   2.488rem;
+  --text-4xl:   2.986rem;
+  --text-hero:  4.3rem;
+
+  /* Spacing — 8px base */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+  --space-10: 4rem;
+  --space-12: 5rem;
+  --space-16: 8rem;
+
+  /* Border radii */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+
+  /* Shadows */
+  --shadow-subtle: 0 1px 3px rgba(18,18,31,0.08);
+  --shadow-card:   0 4px 16px rgba(18,18,31,0.10);
+  --shadow-deep:   0 8px 32px rgba(18,18,31,0.18);
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 150ms;
+  --duration-med:  300ms;
+  --duration-slow: 600ms;
+}
+
+/* ═══════════════════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-weight: 400;
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--kohl);
+  background-color: var(--parchment);
+}
+
+/* ═══════════════════════════════════════════════════
+   ZELLIJ PATTERN — SVG background tile
+   ═══════════════════════════════════════════════════ */
+.zellij-bg {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23C54B2A' stroke-width='0.5' opacity='0.08'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z'/%3E%3Cpath d='M30 10L50 30L30 50L10 30Z'/%3E%3Cpath d='M30 20L40 30L30 40L20 30Z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ═══════════════════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════════════════ */
+.hero {
+  background: var(--kohl);
+  color: var(--sandstone);
+  padding: var(--space-16) var(--space-6) var(--space-12);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23C54B2A' stroke-width='0.4' opacity='0.15'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z'/%3E%3Cpath d='M40 12L68 40L40 68L12 40Z'/%3E%3Cpath d='M40 24L56 40L40 56L24 40Z'/%3E%3Ccircle cx='40' cy='40' r='6'/%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.6;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--terracotta), var(--saffron), var(--indigo), var(--terracotta));
+  background-size: 300% 100%;
+  animation: shimmer 8s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.hero-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--saffron);
+  border: 1px solid var(--saffron-muted);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-6);
+  opacity: 0;
+  animation: fadeSlideUp 0.6s var(--ease-out) 0.2s forwards;
+}
+
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: var(--text-hero);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-4);
+  opacity: 0;
+  animation: fadeSlideUp 0.8s var(--ease-out) 0.4s forwards;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--terracotta-light);
+}
+
+.hero-subtitle {
+  font-family: 'Source Serif 4', serif;
+  font-size: var(--text-lg);
+  font-weight: 300;
+  color: var(--sandstone-dark);
+  max-width: 600px;
+  margin-bottom: var(--space-8);
+  opacity: 0;
+  animation: fadeSlideUp 0.8s var(--ease-out) 0.6s forwards;
+}
+
+.hero-frame {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--text-xs);
+  color: var(--kohl-soft);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--kohl-mid);
+  border-radius: var(--radius-md);
+  background: var(--kohl-lighter);
+  display: inline-block;
+  opacity: 0;
+  animation: fadeSlideUp 0.8s var(--ease-out) 0.8s forwards;
+}
+
+.hero-frame .field-label {
+  color: var(--kohl-soft);
+}
+
+.hero-frame .field-val {
+  color: var(--saffron);
+}
+
+.hero-frame .field-hex {
+  color: var(--terracotta-light);
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════════════════
+   LAYOUT
+   ═══════════════════════════════════════════════════ */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+section {
+  padding: var(--space-12) 0;
+}
+
+section + section {
+  border-top: 1px solid var(--sandstone-dark);
+}
+
+/* ═══════════════════════════════════════════════════
+   SECTION HEADERS
+   ═══════════════════════════════════════════════════ */
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: var(--space-2);
+}
+
+h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: var(--text-3xl);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--kohl);
+  margin-bottom: var(--space-4);
+}
+
+h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: var(--text-xl);
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--kohl);
+  margin-bottom: var(--space-3);
+}
+
+h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--kohl-soft);
+  margin-bottom: var(--space-2);
+}
+
+p + p { margin-top: var(--space-4); }
+
+/* ═══════════════════════════════════════════════════
+   COLOUR PALETTE DISPLAY
+   ═══════════════════════════════════════════════════ */
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.swatch {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--duration-med) var(--ease-out),
+              box-shadow var(--duration-med) var(--ease-out);
+}
+
+.swatch:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-deep);
+}
+
+.swatch-colour {
+  height: 100px;
+  position: relative;
+}
+
+.swatch-colour::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='white' stroke-width='0.3' opacity='0.12'%3E%3Cpath d='M20 0L40 20L20 40L0 20Z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.swatch-info {
+  padding: var(--space-3);
+  background: white;
+}
+
+.swatch-name {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 600;
+  font-size: var(--text-sm);
+  color: var(--kohl);
+}
+
+.swatch-hex {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--text-xs);
+  color: var(--kohl-soft);
+  margin-top: 2px;
+}
+
+.swatch-role {
+  font-family: 'Source Serif 4', serif;
+  font-size: var(--text-xs);
+  color: var(--kohl-soft);
+  margin-top: 4px;
+  font-style: italic;
+}
+
+/* ═══════════════════════════════════════════════════
+   TYPOGRAPHY SPECIMENS
+   ═══════════════════════════════════════════════════ */
+.type-specimen {
+  padding: var(--space-6);
+  border: 1px solid var(--sandstone-dark);
+  border-radius: var(--radius-lg);
+  margin-top: var(--space-5);
+  background: white;
+}
+
+.type-specimen + .type-specimen { margin-top: var(--space-4); }
+
+.type-specimen-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--indigo);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--sandstone-dark);
+}
+
+.specimen-display {
+  font-family: 'DM Serif Display', serif;
+  font-size: var(--text-4xl);
+  line-height: 1.1;
+  color: var(--kohl);
+}
+
+.specimen-display em { color: var(--terracotta); }
+
+.specimen-body {
+  font-family: 'Source Serif 4', serif;
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--kohl);
+  max-width: 60ch;
+}
+
+.specimen-mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--kohl);
+}
+
+/* ═══════════════════════════════════════════════════
+   PROTOCOL FRAME — signature component
+   ═══════════════════════════════════════════════════ */
+.frame-card {
+  background: var(--kohl);
+  color: var(--sandstone);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-top: var(--space-5);
+  box-shadow: var(--shadow-deep);
+}
+
+.frame-header {
+  padding: var(--space-3) var(--space-4);
+  background: var(--kohl-lighter);
+  border-bottom: 1px solid var(--kohl-mid);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.frame-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.frame-dot--red { background: var(--error-red); }
+.frame-dot--yellow { background: var(--saffron); }
+.frame-dot--green { background: var(--mint-tea); }
+
+.frame-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--text-xs);
+  color: var(--kohl-soft);
+  margin-left: auto;
+}
+
+.frame-body {
+  padding: var(--space-5);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--text-sm);
+  line-height: 1.8;
+}
+
+.frame-body .comment { color: var(--kohl-soft); }
+.frame-body .keyword { color: var(--saffron); }
+.frame-body .string { color: var(--mint-tea-light); }
+.frame-body .number { color: var(--terracotta-light); }
+.frame-body .type { color: var(--indigo-light); }
+.frame-body .field { color: var(--xor-magenta); }
+
+/* ═══════════════════════════════════════════════════
+   TRANSACTION STRIPE — hex offset display
+   ═══════════════════════════════════════════════════ */
+.tx-stripe {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 2px;
+  margin-top: var(--space-5);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.tx-byte {
+  text-align: center;
+  padding: var(--space-3) var(--space-2);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.tx-byte:hover {
+  transform: scale(1.05);
+  z-index: 1;
+}
+
+.tx-byte-value {
+  display: block;
+  font-size: var(--text-md);
+  margin-bottom: 2px;
+}
+
+.tx-byte-label {
+  display: block;
+  font-weight: 400;
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.tx-byte--flags    { background: var(--terracotta); color: white; }
+.tx-byte--reply    { background: var(--terracotta-dark); color: white; }
+.tx-byte--type     { background: var(--saffron); color: var(--kohl); }
+.tx-byte--id       { background: var(--saffron-muted); color: white; }
+.tx-byte--error    { background: var(--indigo); color: white; }
+.tx-byte--total    { background: var(--indigo-dark); color: var(--sandstone); }
+.tx-byte--data     { background: var(--kohl-mid); color: var(--sandstone); }
+
+/* ═══════════════════════════════════════════════════
+   COMPONENT CARDS
+   ═══════════════════════════════════════════════════ */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-5);
+}
+
+.card {
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--sandstone-dark);
+  padding: var(--space-5);
+  transition: border-color var(--duration-med) var(--ease-out),
+              box-shadow var(--duration-med) var(--ease-out);
+}
+
+.card:hover {
+  border-color: var(--terracotta-light);
+  box-shadow: var(--shadow-card);
+}
+
+.card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--text-md);
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+}
+
+.card-icon--terracotta { background: var(--terracotta); color: white; }
+.card-icon--saffron    { background: var(--saffron); color: var(--kohl); }
+.card-icon--indigo     { background: var(--indigo); color: white; }
+.card-icon--mint       { background: var(--mint-tea); color: white; }
+
+.card h3 { margin-bottom: var(--space-2); }
+
+.card p {
+  font-size: var(--text-sm);
+  color: var(--kohl-soft);
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════════
+   BUTTONS
+   ═══════════════════════════════════════════════════ */
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-decoration: none;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-md);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.btn--primary {
+  background: var(--terracotta);
+  color: white;
+  border-color: var(--terracotta);
+}
+
+.btn--primary:hover {
+  background: var(--terracotta-dark);
+  border-color: var(--terracotta-dark);
+  transform: translateY(-1px);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--terracotta);
+  border-color: var(--terracotta);
+}
+
+.btn--outline:hover {
+  background: var(--terracotta);
+  color: white;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--kohl-soft);
+  border-color: var(--sandstone-dark);
+}
+
+.btn--ghost:hover {
+  border-color: var(--kohl-soft);
+  color: var(--kohl);
+}
+
+.btn--dark {
+  background: var(--kohl);
+  color: var(--sandstone);
+  border-color: var(--kohl);
+}
+
+.btn--dark:hover {
+  background: var(--kohl-lighter);
+}
+
+/* ═══════════════════════════════════════════════════
+   STATUS BADGES
+   ═══════════════════════════════════════════════════ */
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 100px;
+}
+
+.badge--supported  { background: #E8F5EC; color: var(--mint-tea); border: 1px solid #C4E5CC; }
+.badge--partial    { background: #FFF4E0; color: var(--saffron-muted); border: 1px solid #F2DCA8; }
+.badge--planned    { background: #E8EAF6; color: var(--indigo); border: 1px solid #C5CAE9; }
+.badge--rust       { background: var(--terracotta); color: white; }
+
+/* ═══════════════════════════════════════════════════
+   ZELLIJ DIVIDER
+   ═══════════════════════════════════════════════════ */
+.zellij-divider {
+  height: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23C54B2A' stroke-width='0.6' opacity='0.2'%3E%3Cpath d='M20 0L40 20L20 40L0 20Z'/%3E%3Cpath d='M20 8L32 20L20 32L8 20Z'/%3E%3C/g%3E%3C/svg%3E");
+  margin: var(--space-8) 0;
+}
+
+/* ═══════════════════════════════════════════════════
+   CALLOUT / ASIDE
+   ═══════════════════════════════════════════════════ */
+.callout {
+  border-left: 3px solid var(--terracotta);
+  padding: var(--space-4) var(--space-5);
+  background: var(--sandstone-light);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin-top: var(--space-5);
+}
+
+.callout p {
+  font-size: var(--text-sm);
+  color: var(--kohl);
+}
+
+.callout strong {
+  color: var(--terracotta-dark);
+}
+
+/* ═══════════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════════ */
+footer {
+  background: var(--kohl);
+  color: var(--kohl-soft);
+  padding: var(--space-8) var(--space-6);
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--text-xs);
+  position: relative;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--terracotta), var(--saffron), var(--indigo));
+}
+
+footer a {
+  color: var(--saffron);
+  text-decoration: none;
+}
+
+footer a:hover { text-decoration: underline; }
+
+.footer-sigil {
+  font-family: 'DM Serif Display', serif;
+  font-size: var(--text-lg);
+  color: var(--sandstone-dark);
+  margin-bottom: var(--space-3);
+  opacity: 0.4;
+}
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .hero h1 { font-size: var(--text-3xl); }
+  .hero { padding: var(--space-10) var(--space-4) var(--space-8); }
+  .container { padding: 0 var(--space-4); }
+  .tx-stripe { grid-template-columns: repeat(4, 1fr); }
+  .specimen-display { font-size: var(--text-2xl); }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">df12 Productions — Design System v1.0</div>
+    <h1>Marrakesh<br>Express <em>Daemon</em></h1>
+    <p class="hero-subtitle">A design language for protocol archaeology. Where the precision of 20-byte frame headers meets the geometry of tilework.</p>
+    <div class="hero-frame">
+      <span class="field-label">protocol_id:</span> <span class="field-hex">0x54 52 54 50</span>
+      <span class="field-label"> &middot; version:</span> <span class="field-val">0x0001</span>
+      <span class="field-label"> &middot; status:</span> <span class="field-val">READY</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ════════════════════════════════════════════
+     PHILOSOPHY
+     ════════════════════════════════════════════ -->
+<section class="zellij-bg">
+  <div class="container">
+    <div class="section-label">00 &mdash; Philosophy</div>
+    <h2>Protocol Souk</h2>
+    <p>The design language takes its name from the intersection of two worlds: the geometric precision of binary protocol specifications and the pattern-rich warmth of Moroccan architectural craft. Every surface in a souk tells a story of material and method. Every byte in a transaction frame carries meaning through position.</p>
+    <p>This is not retro nostalgia. It is the recognition that the Hotline protocol — with its big-endian integers, its XOR-obfuscated text fields, its 20-byte frame headers — is an artefact worthy of the same care given to zellij tilework: each piece cut precisely, placed deliberately, forming something greater than its parts.</p>
+
+    <div class="callout">
+      <p><strong>Design principle:</strong> Warmth and precision are not opposites. The terracotta of Marrakesh walls and the cold logic of <code>0x006B</code> (Login) coexist. The design language renders technical depth in materials that feel human.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     COLOUR
+     ════════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-label">01 &mdash; Colour</div>
+    <h2>The Palette</h2>
+    <p>Drawn from three sources: the sun-baked earth of Marrakesh (terracotta, saffron, sandstone), the deep indigo of traditional dye vats, and the amber glow of terminal phosphors. Each colour carries a semantic role in addition to its aesthetic weight.</p>
+
+    <h3>Primary &amp; Secondary</h3>
+    <div class="palette-grid">
+      <div class="swatch">
+        <div class="swatch-colour" style="background: var(--terracotta);"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Terracotta</div>
+          <div class="swatch-hex">#C54B2A</div>
+          <div class="swatch-role">Primary action, emphasis, brand</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-colour" style="background: var(--saffron);"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Saffron</div>
+          <div class="swatch-hex">#E8A838</div>
+          <div class="swatch-role">Highlights, values, warnings</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-colour" style="background: var(--indigo);"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Indigo</div>
+          <div class="swatch-hex">#2D3A8C</div>
+          <div class="swatch-role">Secondary accent, links, depth</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-colour" style="background: var(--mint-tea);"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Mint Tea</div>
+          <div class="swatch-hex">#4A8C5C</div>
+          <div class="swatch-role">Success, valid, strings</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Neutrals</h3>
+    <div class="palette-grid">
+      <div class="swatch">
+        <div class="swatch-colour" style="background: var(--kohl);"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Kohl</div>
+          <div class="swatch-hex">#12121F</div>
+          <div class="swatch-role">Deepest background, terminal</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-colour" style="background: var(--kohl-mid);"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Kohl Mid</div>
+          <div class="swatch-hex">#2A2A42</div>
+          <div class="swatch-role">Code surface, card dark</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-colour" style="background: var(--sandstone);"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Sandstone</div>
+          <div class="swatch-hex">#F5E6D0</div>
+          <div class="swatch-role">Light background, text on dark</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-colour" style="background: var(--parchment);"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Parchment</div>
+          <div class="swatch-hex">#FDF8F0</div>
+          <div class="swatch-role">Page background, lightest surface</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Signal Colours</h3>
+    <div class="palette-grid">
+      <div class="swatch">
+        <div class="swatch-colour" style="background: var(--amber-signal);"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Amber Signal</div>
+          <div class="swatch-hex">#FFB347</div>
+          <div class="swatch-role">Terminal phosphor, caution</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-colour" style="background: var(--error-red);"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Error Red</div>
+          <div class="swatch-hex">#C43A3A</div>
+          <div class="swatch-role">Error, destructive action</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-colour" style="background: var(--xor-magenta);"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">XOR Magenta</div>
+          <div class="swatch-hex">#A855A0</div>
+          <div class="swatch-role">XOR-encoded fields, transforms</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     TYPOGRAPHY
+     ════════════════════════════════════════════ -->
+<section class="zellij-bg">
+  <div class="container">
+    <div class="section-label">02 &mdash; Typography</div>
+    <h2>Three Voices</h2>
+    <p>The type system uses three families, each with a distinct voice. Together they allow the page to shift register between the editorial warmth of long-form explanation, the authority of headings, and the exactitude of protocol data.</p>
+
+    <div class="type-specimen">
+      <div class="type-specimen-label">Display — DM Serif Display</div>
+      <div class="specimen-display">
+        Transaction <em>0x006B</em><br>
+        Login Request
+      </div>
+      <p style="margin-top: var(--space-3); font-size: var(--text-sm); color: var(--kohl-soft);">Used for page titles, section headings, and hero text. The wedge serifs evoke railway timetable typography without cosplaying as one. Set at display sizes only; never below 1.44rem.</p>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-specimen-label">Body — Source Serif 4</div>
+      <div class="specimen-body">
+        <p>All multi-byte integers are transmitted big-endian. No padding or alignment bytes are used: the fields follow one another exactly as listed. The wireframe adapter automatically detects clients that XOR-encode text fields. Once detected, inbound payloads are decoded and outbound replies are encoded to match the client, without any additional configuration.</p>
+      </div>
+      <p style="margin-top: var(--space-3); font-size: var(--text-sm); color: var(--kohl-soft);">The editorial voice. Variable optical sizing provides comfortable reading at body sizes. Set between 0.833rem and 1.2rem for prose. Line height 1.7 for body copy, tighter for larger sizes.</p>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-specimen-label">Mono — JetBrains Mono</div>
+      <div class="specimen-mono">
+<pre style="white-space: pre-wrap;">Flags: 0x00  Is-reply: 0x00  Type: 0x006B
+ID: 0x00000001  Error: 0x00000000
+Total-size: 0x00000024  Data-size: 0x00000024</pre>
+      </div>
+      <p style="margin-top: var(--space-3); font-size: var(--text-sm); color: var(--kohl-soft);">The precise voice. Used for code, protocol data, field labels, badges, and UI chrome. Also serves as the small-caps substitute for section labels and navigation. Never exceeds 1rem in running text.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     SIGNATURE ELEMENT: TRANSACTION FRAME
+     ════════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-label">03 &mdash; Signature Element</div>
+    <h2>The Transaction Frame</h2>
+    <p>The 20-byte Hotline transaction header is the defining visual motif. It appears as a colour-coded byte stripe in documentation, as a structural metaphor in page layout, and as a decorative element in hero sections. Each field maps to a palette colour.</p>
+
+    <div class="tx-stripe">
+      <div class="tx-byte tx-byte--flags">
+        <span class="tx-byte-value">00</span>
+        <span class="tx-byte-label">Flags</span>
+      </div>
+      <div class="tx-byte tx-byte--reply">
+        <span class="tx-byte-value">00</span>
+        <span class="tx-byte-label">Reply</span>
+      </div>
+      <div class="tx-byte tx-byte--type">
+        <span class="tx-byte-value">00</span>
+        <span class="tx-byte-label">Type</span>
+      </div>
+      <div class="tx-byte tx-byte--type">
+        <span class="tx-byte-value">6B</span>
+        <span class="tx-byte-label">Type</span>
+      </div>
+      <div class="tx-byte tx-byte--id">
+        <span class="tx-byte-value">00</span>
+        <span class="tx-byte-label">ID</span>
+      </div>
+      <div class="tx-byte tx-byte--id">
+        <span class="tx-byte-value">00</span>
+        <span class="tx-byte-label">ID</span>
+      </div>
+      <div class="tx-byte tx-byte--id">
+        <span class="tx-byte-value">00</span>
+        <span class="tx-byte-label">ID</span>
+      </div>
+      <div class="tx-byte tx-byte--id">
+        <span class="tx-byte-value">01</span>
+        <span class="tx-byte-label">ID</span>
+      </div>
+      <div class="tx-byte tx-byte--error">
+        <span class="tx-byte-value">00</span>
+        <span class="tx-byte-label">Error</span>
+      </div>
+      <div class="tx-byte tx-byte--error">
+        <span class="tx-byte-value">00</span>
+        <span class="tx-byte-label">Error</span>
+      </div>
+      <div class="tx-byte tx-byte--error">
+        <span class="tx-byte-value">00</span>
+        <span class="tx-byte-label">Error</span>
+      </div>
+      <div class="tx-byte tx-byte--error">
+        <span class="tx-byte-value">00</span>
+        <span class="tx-byte-label">Error</span>
+      </div>
+      <div class="tx-byte tx-byte--total">
+        <span class="tx-byte-value">00</span>
+        <span class="tx-byte-label">Total</span>
+      </div>
+      <div class="tx-byte tx-byte--total">
+        <span class="tx-byte-value">00</span>
+        <span class="tx-byte-label">Total</span>
+      </div>
+      <div class="tx-byte tx-byte--total">
+        <span class="tx-byte-value">00</span>
+        <span class="tx-byte-label">Total</span>
+      </div>
+      <div class="tx-byte tx-byte--total">
+        <span class="tx-byte-value">24</span>
+        <span class="tx-byte-label">Total</span>
+      </div>
+      <div class="tx-byte tx-byte--data">
+        <span class="tx-byte-value">00</span>
+        <span class="tx-byte-label">Data</span>
+      </div>
+      <div class="tx-byte tx-byte--data">
+        <span class="tx-byte-value">00</span>
+        <span class="tx-byte-label">Data</span>
+      </div>
+      <div class="tx-byte tx-byte--data">
+        <span class="tx-byte-value">00</span>
+        <span class="tx-byte-label">Data</span>
+      </div>
+      <div class="tx-byte tx-byte--data">
+        <span class="tx-byte-value">24</span>
+        <span class="tx-byte-label">Data</span>
+      </div>
+    </div>
+
+    <p style="margin-top: var(--space-4); font-size: var(--text-sm); color: var(--kohl-soft); font-style: italic;">A Login request frame (transaction type 0x006B). Colour mapping: Terracotta = flags/reply, Saffron = type, Gold = ID, Indigo = error, Dark indigo = total size, Kohl = data size.</p>
+
+    <div class="callout">
+      <p><strong>Usage:</strong> The frame stripe appears at the top of transaction documentation pages, in the page footer as a decorative gradient, and as micro-illustrations in feature cards. The colour-to-field mapping is consistent across all uses.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     CODE SURFACES
+     ════════════════════════════════════════════ -->
+<section class="zellij-bg">
+  <div class="container">
+    <div class="section-label">04 &mdash; Code Surfaces</div>
+    <h2>Terminal Windows</h2>
+    <p>Code blocks and protocol examples use the Kohl background with the traffic-light dots as window chrome. Syntax colours draw from the main palette rather than a generic IDE theme, reinforcing the design language even in technical contexts.</p>
+
+    <div class="frame-card">
+      <div class="frame-header">
+        <span class="frame-dot frame-dot--red"></span>
+        <span class="frame-dot frame-dot--yellow"></span>
+        <span class="frame-dot frame-dot--green"></span>
+        <span class="frame-title">src/wireframe/preamble.rs</span>
+      </div>
+      <div class="frame-body">
+<pre><span class="comment">// Validate the Hotline handshake preamble</span>
+<span class="keyword">pub fn</span> <span class="type">validate</span>(preamble: &amp;<span class="type">HotlinePreamble</span>) -&gt; <span class="type">Result</span>&lt;(), <span class="type">HandshakeError</span>&gt; {
+    <span class="keyword">if</span> preamble.protocol_id != <span class="string">b"TRTP"</span> {
+        <span class="keyword">return</span> <span class="type">Err</span>(<span class="type">HandshakeError</span>::InvalidProtocol);
+    }
+    <span class="keyword">if</span> preamble.version != <span class="number">0x0001</span> {
+        <span class="keyword">return</span> <span class="type">Err</span>(<span class="type">HandshakeError</span>::UnsupportedVersion);
+    }
+    <span class="type">Ok</span>(())
+}</pre>
+      </div>
+    </div>
+
+    <h4 style="margin-top: var(--space-6);">Syntax colour mapping</h4>
+    <p style="font-size: var(--text-sm); color: var(--kohl-soft);">
+      <span style="color: var(--saffron);">Keywords</span> &rarr; Saffron &nbsp;&middot;&nbsp;
+      <span style="color: var(--indigo-light);">Types</span> &rarr; Indigo Light &nbsp;&middot;&nbsp;
+      <span style="color: var(--mint-tea-light);">Strings</span> &rarr; Mint Tea &nbsp;&middot;&nbsp;
+      <span style="color: var(--terracotta-light);">Numbers</span> &rarr; Terracotta Light &nbsp;&middot;&nbsp;
+      <span style="color: var(--kohl-soft);">Comments</span> &rarr; Kohl Soft &nbsp;&middot;&nbsp;
+      <span style="color: var(--xor-magenta);">Fields/XOR</span> &rarr; XOR Magenta
+    </p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     COMPONENTS
+     ════════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-label">05 &mdash; Components</div>
+    <h2>Building Blocks</h2>
+
+    <h3>Feature Cards</h3>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon card-icon--terracotta">Hx</div>
+        <h3>Hexagonal Architecture</h3>
+        <p>Domain logic isolated from transport and persistence. Ports and adapters keep the protocol wire format at the boundary where it belongs.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon card-icon--saffron">Tx</div>
+        <h3>Transaction Routing</h3>
+        <p>Wireframe-based dispatch maps each Hotline transaction ID to a domain handler. Frame validation, multi-fragment reassembly, and XOR detection happen before your code runs.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon card-icon--indigo">Db</div>
+        <h3>Dual Database</h3>
+        <p>SQLite for embedded deployment, PostgreSQL for scale. One codebase, dual migration trees, compile-time backend selection via Cargo features.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon card-icon--mint">Kn</div>
+        <h3>Verified Correct</h3>
+        <p>TLA+ for state machines, Stateright for concurrency, Kani for bounded proofs. Protocol invariants are not just tested — they are proved.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: var(--space-8);">Buttons</h3>
+    <div class="btn-row">
+      <button class="btn btn--primary">Get Started</button>
+      <button class="btn btn--outline">Documentation</button>
+      <button class="btn btn--ghost">View Source</button>
+      <button class="btn btn--dark">cargo install mxd</button>
+    </div>
+
+    <h3 style="margin-top: var(--space-8);">Status Badges</h3>
+    <p style="font-size: var(--text-sm); color: var(--kohl-soft);">Used in compatibility matrices, feature tables, and roadmap items.</p>
+    <div class="badge-row">
+      <span class="badge badge--supported">Supported</span>
+      <span class="badge badge--partial">Partial</span>
+      <span class="badge badge--planned">Planned</span>
+      <span class="badge badge--rust">Rust</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     PATTERNS & TEXTURE
+     ════════════════════════════════════════════ -->
+<section class="zellij-bg">
+  <div class="container">
+    <div class="section-label">06 &mdash; Texture</div>
+    <h2>Zellij Patterns</h2>
+    <p>The background pattern is a nested diamond motif derived from Moroccan zellij tilework. It renders as an inline SVG at very low opacity, providing depth without distraction. The pattern uses the Terracotta stroke colour and appears on alternating sections to establish visual rhythm.</p>
+    <p>The pattern also carries a second reading: rotated 45&deg;, each diamond is a byte boundary; the nested layers echo the frame-within-frame structure of Hotline's multi-fragment reassembly. This dual interpretation — decorative and structural — is the essence of the design language.</p>
+
+    <div class="callout">
+      <p><strong>Application rules:</strong> The zellij pattern appears only on Parchment or Sandstone backgrounds, never on dark surfaces. Opacity must not exceed 0.12. The pattern tile is 60&times;60px for section backgrounds and 40&times;40px for dividers and smaller elements.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     GRADIENT BAR
+     ════════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-label">07 &mdash; Motion &amp; Accent</div>
+    <h2>The Express Line</h2>
+    <p>A 4px gradient bar in Terracotta &rarr; Saffron &rarr; Indigo appears at the top of the hero and the bottom of the footer. On the hero, it uses a slow CSS <code>background-position</code> animation (8 seconds, ease-in-out) to shimmer — evoking the movement of a train through landscape. This is the only persistent animation; all other motion is interaction-triggered.</p>
+    <p>Interactive transitions use <code>cubic-bezier(0.22, 1, 0.36, 1)</code> — a slightly overshooting ease-out that gives hover effects a physical quality without bouncing.</p>
+
+    <div style="height: 4px; background: linear-gradient(90deg, var(--terracotta), var(--saffron), var(--indigo), var(--terracotta)); background-size: 300% 100%; animation: shimmer 8s ease-in-out infinite; border-radius: 2px; margin-top: var(--space-5);"></div>
+    <p style="margin-top: var(--space-2); font-size: var(--text-xs); color: var(--kohl-soft); font-family: 'JetBrains Mono', monospace;">The Express Line — 4px, tri-colour gradient, animated 8s cycle</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ════════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-sigil">◆</div>
+  <p>Protocol Souk &mdash; Design System for <a href="https://github.com/leynos/mxd">mxd</a></p>
+  <p style="margin-top: var(--space-2);">A <a href="https://df12.studio">df12 Productions</a> artefact &middot; Edinburgh &middot; 2026</p>
+</footer>
+
+</body>
+</html>

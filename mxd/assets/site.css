@@ -85,6 +85,11 @@ body {
   top: 1rem;
 }
 
+#main-content,
+[id^="section-"] {
+  scroll-margin-top: 10rem;
+}
+
 .mxd-site-header {
   position: sticky;
   top: 0;
@@ -184,6 +189,11 @@ body {
 }
 
 @media (max-width: 960px) {
+  #main-content,
+  [id^="section-"] {
+    scroll-margin-top: 5rem;
+  }
+
   .mxd-page-toc {
     position: static;
     top: auto;

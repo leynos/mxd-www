@@ -359,7 +359,7 @@ these:
 
 ## `mxd/roadmap/index.html`
 
-1. Claim: the roadmap is organised around four phases:
+1. Claim: the roadmap is organized around four phases:
    wireframe migration, presence and chat, file services, and administration.
 
    Benchmark: `Confirmed`.
