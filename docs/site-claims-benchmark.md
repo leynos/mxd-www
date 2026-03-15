@@ -1,7 +1,8 @@
 # Website Claims Benchmark
 
 This document benchmarks the claims made by the static site under `mxd/`
-against the design, ADR, and reference documents listed for this task.
+against the design, architecture decision record (ADR), and reference documents
+listed for this task.
 
 ## Benchmark legend
 

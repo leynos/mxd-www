@@ -122,7 +122,9 @@ make sqlite</pre>
                 </div>
             </div>
             <div class="px-6 py-6">
-                <pre class="text-[#e8a838] text-sm font-normal font-primary leading-[21.32px]">cargo run --bin mxd -- create-user --username alice --password secret</pre>
+                <pre class="text-[#e8a838] text-sm font-normal font-primary leading-[21.32px]"><span class="text-[#3a3a55]"># The CLI prompts for a password securely (non-echoed).</span>
+<span class="text-[#3a3a55]"># For scripted/CI use only: --password &lt;value&gt;</span>
+cargo run --bin mxd -- create-user --username alice</pre>
             </div>
         </div>
     </div>

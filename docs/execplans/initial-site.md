@@ -36,7 +36,7 @@ and `css-view` will confirm that computed styles match the design system tokens.
    only.
 5. Accessibility features (skip links, ARIA labels, semantic HTML) must be
    preserved or improved, never removed.
-6. The existing `mxd/assets/site.css` file and its BEM-style `.mxd-*`
+6. The existing `mxd/assets/site.css` file and its Block–Element–Modifier (BEM) style `.mxd-*`
    class naming convention is the foundation for shared styles. New shared
    classes must follow the same naming convention.
 
@@ -157,7 +157,7 @@ component, and pattern.
 ### Current CSS architecture
 
 Each page loads:
-1. Font Awesome CSS + JS from CDN
+1. Font Awesome CSS + JS from a content delivery network (CDN)
 2. Google Fonts (JetBrains Mono, DM Serif Display, Source Serif 4, Inter)
 3. Tailwind CSS from CDN with an inline config block
 4. An inline `<style>` block with page-specific animations and hover classes
@@ -474,7 +474,7 @@ shared classes in site.css:
 
 ### Stage B: Consolidate shared CSS
 
-In this stage, we modify `mxd/assets/site.css` to add the complete design
+In this stage, `mxd/assets/site.css` is modified to add the complete design
 system token set and all shared component classes identified in A3.
 
 **B1.** Add the full design system colour palette as CSS custom properties
@@ -546,17 +546,16 @@ architecture, protocol, compatibility pages.
 `from-[#c54b2a] via-[#e8a838] to-[#c54b2a]` to
 `from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]` (D4).
 
-Wait — on re-reading the design system, the hero has the shimmer animation at
-the bottom and the footer has a static gradient. The hero bottom bar on the
-site uses a different gradient (terracotta → saffron → terracotta) which does
-not match the hero. The design system shows the same tri-colour gradient at
-both top and bottom of the hero. Let me check: the design system's
-`.hero::after` uses `background: linear-gradient(90deg, var(--terracotta),
-var(--saffron), var(--indigo), var(--terracotta))` with shimmer. The site's
-hero top has the shimmer; the bottom does not and uses terracotta as the end
-colour. The correct fix: both hero bars should use the tri-colour gradient.
-The bottom bar should match the footer's static gradient
-(terracotta → saffron → indigo).
+On re-reading the design system, the hero has the shimmer animation at the
+bottom and the footer has a static gradient. The hero bottom bar on the site
+uses a different gradient (terracotta → saffron → terracotta) which does not
+match the hero. The design system shows the same tri-colour gradient at both
+top and bottom of the hero. Cross-checking: the design system's `.hero::after`
+uses `background: linear-gradient(90deg, var(--terracotta), var(--saffron),
+var(--indigo), var(--terracotta))` with shimmer. The site's hero top has the
+shimmer; the bottom does not and uses terracotta as the end colour. The correct
+fix: both hero bars should use the tri-colour gradient. The bottom bar should
+match the footer's static gradient (terracotta → saffron → indigo).
 
 **C10.** Fix badge background colours (D6):
 - Supported: `bg-[#e8eaf6]` → `bg-[#e8f5ec]`
