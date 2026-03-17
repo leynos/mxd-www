@@ -74,13 +74,14 @@
       <div class="mxd-page-toc__title" id="mxd-toc-title">Get started</div>
     </div>
     <div class="mxd-page-toc__links">
-      <a href="#section-build">Build the SQLite variant</a><a href="#section-user">Create a user account</a><a href="#section-start">Start the daemon</a><a href="#section-wireframe">Wireframe server</a><a href="#section-postgresql">PostgreSQL</a><a href="#section-tests">Running the test suite</a>
+      <a href="#section-build">Build</a><a href="#section-user">User Account</a><a href="#section-start">Start</a><a href="#section-wireframe">Wireframe</a><a href="#section-postgresql">PostgreSQL</a><a href="#section-tests">Tests</a>
     </div>
   </div>
 </section>
 
 <div id="section-build" class="border-t border-[#e8d5b8] py-16 sm:py-20">
     <div class="max-w-[900px] mx-auto px-4 sm:px-8">
+        <div class="mxd-section-label">01 — Build</div>
         <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-6">Build the SQLite variant</h2>
         
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-6">
@@ -111,6 +112,7 @@ make sqlite</pre>
 
 <div id="section-user" class="border-t border-[#e8d5b8] py-16 sm:py-20">
     <div class="max-w-[900px] mx-auto px-4 sm:px-8">
+        <div class="mxd-section-label">02 — User Account</div>
         <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-6">Create a user account</h2>
         
         <div class="mxd-code-block bg-[#12121f] rounded-lg shadow-[0px_8px_32px_0px_rgba(18,18,31,0.18)] overflow-hidden mb-8">
@@ -133,6 +135,7 @@ cargo run --bin mxd -- create-user --username alice</pre>
 
 <div id="section-start" class="border-t border-[#e8d5b8] py-16 sm:py-20">
     <div class="max-w-[900px] mx-auto px-4 sm:px-8">
+        <div class="mxd-section-label">03 — Start</div>
         <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-6">Start the daemon</h2>
         
         <div class="mxd-code-block bg-[#12121f] rounded-lg shadow-[0px_8px_32px_0px_rgba(18,18,31,0.18)] overflow-hidden mb-6">
@@ -159,6 +162,7 @@ cargo run --bin mxd -- create-user --username alice</pre>
     <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
     
     <div class="relative max-w-[900px] mx-auto px-4 sm:px-8">
+        <div class="mxd-section-label">04 — Wireframe</div>
         <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-6">Wireframe server</h2>
         
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-6">
@@ -196,6 +200,7 @@ cargo run --bin mxd-wireframe-server -- --bind 0.0.0.0:6600 --database mxd.db</p
 
 <div id="section-postgresql" class="border-t border-[#e8d5b8] py-16 sm:py-20">
     <div class="max-w-[900px] mx-auto px-4 sm:px-8">
+        <div class="mxd-section-label">05 — PostgreSQL</div>
         <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-6">PostgreSQL</h2>
         
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-6">
@@ -225,6 +230,7 @@ cargo run --bin mxd -- --database "$MXD_DATABASE"</pre>
     <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
     
     <div class="relative max-w-[900px] mx-auto px-4 sm:px-8">
+        <div class="mxd-section-label">06 — Tests</div>
         <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-6">Running the test suite</h2>
         
         <div class="mxd-code-block bg-[#12121f] rounded-lg shadow-[0px_8px_32px_0px_rgba(18,18,31,0.18)] overflow-hidden mb-6">
