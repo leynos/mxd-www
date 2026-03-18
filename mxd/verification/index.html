@@ -115,13 +115,24 @@
             </div>
         </div>
 
-        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a]">
+        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a] mb-6">
             <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
                 <span class="text-[#9a3a1f] font-semibold">Tool-choice rule:</span>
                 use TLA+ for state-machine progression and policy invariants,
                 Stateright for concurrent interleavings and ordering, and Kani
                 for bounded pure-function invariants and panic freedom.
             </p>
+        </div>
+
+        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#2d3a8c]">
+            <p class="text-[#12121f] text-sm font-semibold font-tertiary leading-[22.66px] mb-2">
+                <span class="text-[#2d3a8c] font-semibold">Specific domain invariants called out in the reference set:</span>
+            </p>
+            <ul class="space-y-1.5 text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
+                <li class="flex gap-2"><span class="text-[#2d3a8c] flex-shrink-0">&#9654;</span> <strong class="font-semibold">Privilege gating:</strong> no privileged effect before authentication</li>
+                <li class="flex gap-2"><span class="text-[#2d3a8c] flex-shrink-0">&#9654;</span> <strong class="font-semibold">News threading:</strong> linked-list pointer consistency after insert and delete</li>
+                <li class="flex gap-2"><span class="text-[#2d3a8c] flex-shrink-0">&#9654;</span> <strong class="font-semibold">Drop-box visibility:</strong> upload-only folders never expose contents to unprivileged sessions</li>
+            </ul>
         </div>
     </div>
 </div>
