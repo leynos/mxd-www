@@ -101,7 +101,7 @@
             </p>
             
             <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px]">
-                Recursive CTEs and <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">json_each</code> are used for news path resolution. mxd verifies at startup that the bundled SQLite supports both features; if it doesn't, the daemon exits with a diagnostic message rather than producing wrong results silently.
+                Recursive CTEs and <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">json_each</code> are used for news path resolution. The design calls for mxd to verify at startup that the bundled SQLite supports both features and exit with a diagnostic message rather than produce wrong results silently.
             </p>
             
             <div class="bg-white rounded-lg border border-[#e8d5b8] p-6 mxd-card-hover">
@@ -112,7 +112,7 @@
                     <div class="flex-1">
                         <h3 class="text-[#12121f] text-xl font-normal font-secondary mb-2">Startup verification</h3>
                         <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[21.32px]">
-                            mxd queries the SQLite compile-time options to confirm recursive CTE and JSON support. If either is missing, the daemon refuses to start and logs which feature is absent. This prevents runtime failures in news path traversal.
+                            The design specifies that mxd queries the SQLite compile-time options to confirm recursive CTE and JSON support. If either is missing, the daemon refuses to start and logs which feature is absent, preventing runtime failures in news path traversal.
                         </p>
                     </div>
                 </div>
