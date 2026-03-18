@@ -79,7 +79,7 @@
       <div class="mxd-page-toc__title" id="mxd-toc-title">Hexagonal, not by accident</div>
     </div>
     <div class="mxd-page-toc__links">
-      <a href="#section-overview">Ports and Adapters</a><a href="#section-wireframe-capabilities">Wireframe</a><a href="#section-compatibility">Compatibility</a><a href="#section-authentication">Authentication</a><a href="#section-diagrams">Diagrams</a>
+      <a href="#section-overview">Ports and Adapters</a><a href="#section-runtime-modes">Runtime Modes</a><a href="#section-wireframe-capabilities">Wireframe</a><a href="#section-compatibility">Compatibility</a><a href="#section-authentication">Authentication</a><a href="#section-diagrams">Diagrams</a>
     </div>
   </div>
 </section>
@@ -127,11 +127,93 @@
     </div>
 </div>
 
+<div id="section-runtime-modes" class="relative border-t border-[#e8d5b8] py-16 sm:py-20 overflow-hidden">
+    <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
+
+    <div class="relative max-w-[900px] mx-auto px-4 sm:px-8">
+        <div class="mxd-section-label">02 — Runtime Modes</div>
+        <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-6">Runtime modes and binary selection</h2>
+
+        <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8">
+            mxd ships two operational binaries whose availability depends on the
+            <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">legacy-networking</code>
+            Cargo feature. With the feature enabled (the default), both binaries
+            are produced. Disabling it removes the legacy frame handler, causes
+            <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">server::run()</code>
+            to delegate to the Wireframe runtime, and omits the
+            <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">mxd</code>
+            binary via
+            <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">required-features</code>.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="mxd-card-hover bg-white rounded-lg border border-[#e8d5b8] overflow-hidden">
+                <div class="px-6 py-6">
+                    <div class="w-10 h-10 bg-[#c54b2a] rounded flex items-center justify-center mb-4">
+                        <span class="text-white text-xl font-bold font-primary">Lg</span>
+                    </div>
+                    <h3 class="text-[#12121f] text-[27.60px] font-normal font-secondary mb-3">Legacy networking</h3>
+                    <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px] mb-3">
+                        The
+                        <code class="text-[#12121f] text-xs font-normal font-primary">mxd</code>
+                        binary. Uses the original frame handler with the legacy
+                        networking runtime. Available when the
+                        <code class="text-[#12121f] text-xs font-normal font-primary">legacy-networking</code>
+                        feature is enabled (the default).
+                    </p>
+                    <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px]">
+                        <code class="text-[#12121f] text-xs font-normal font-primary">cargo build</code> produces both
+                        <code class="text-[#12121f] text-xs font-normal font-primary">mxd</code> and
+                        <code class="text-[#12121f] text-xs font-normal font-primary">mxd-wireframe-server</code>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mxd-card-hover bg-white rounded-lg border border-[#e8d5b8] overflow-hidden">
+                <div class="px-6 py-6">
+                    <div class="w-10 h-10 bg-[#2d3a8c] rounded flex items-center justify-center mb-4">
+                        <span class="text-white text-xl font-bold font-primary">Wf</span>
+                    </div>
+                    <h3 class="text-[#12121f] text-[27.60px] font-normal font-secondary mb-3">Wireframe-only</h3>
+                    <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px] mb-3">
+                        The
+                        <code class="text-[#12121f] text-xs font-normal font-primary">mxd-wireframe-server</code>
+                        binary only. Built with
+                        <code class="text-[#12121f] text-xs font-normal font-primary">--no-default-features --features "sqlite toml"</code>.
+                    </p>
+                    <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px]">
+                        The legacy binary is omitted entirely. This is a
+                        deliberate build configuration, not an accidental
+                        omission. Tested with
+                        <code class="text-[#12121f] text-xs font-normal font-primary">make test-wireframe-only</code>.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a]">
+            <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
+                <span class="text-[#9a3a1f] font-semibold">Shared CLI surface:</span>
+                Both binaries share the CLI module
+                (<code class="text-[#12121f] text-xs font-normal font-primary">mxd::server::cli</code>),
+                environment overrides,
+                <code class="text-[#12121f] text-xs font-normal font-primary">.mxd.toml</code>
+                defaults, and admin commands such as
+                <code class="text-[#12121f] text-xs font-normal font-primary">create-user</code>
+                (via
+                <code class="text-[#12121f] text-xs font-normal font-primary">server::admin::run_command</code>).
+                The operator experience is identical regardless of which binary
+                is running.
+            </p>
+        </div>
+    </div>
+</div>
+
 <div id="section-wireframe-capabilities" class="relative border-t border-[#e8d5b8] py-16 sm:py-20 overflow-hidden">
     <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
 
     <div class="relative max-w-[900px] mx-auto px-4 sm:px-8">
-        <div class="mxd-section-label">02 — Wireframe</div>
+        <div class="mxd-section-label">03 — Wireframe</div>
         <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-6">Wireframe capabilities that shape mxd</h2>
 
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8">
@@ -181,7 +263,7 @@
     <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
 
     <div class="relative max-w-[900px] mx-auto px-4 sm:px-8">
-        <div class="mxd-section-label">03 — Compatibility</div>
+        <div class="mxd-section-label">04 — Compatibility</div>
         <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-6">Compatibility guardrails</h2>
         
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8">
@@ -224,7 +306,7 @@
 
 <div id="section-authentication" class="border-t border-[#e8d5b8] py-16 sm:py-20">
     <div class="max-w-[900px] mx-auto px-4 sm:px-8">
-        <div class="mxd-section-label">04 — Authentication</div>
+        <div class="mxd-section-label">05 — Authentication</div>
         <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-6">Authentication and reply augmentation</h2>
         
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8">
@@ -291,7 +373,7 @@
     <div class="mxd-pattern mxd-pattern--section absolute inset-0 opacity-10" aria-hidden="true"></div>
 
     <div class="relative max-w-[900px] mx-auto px-4 sm:px-8">
-        <div class="mxd-section-label">05 — Diagrams</div>
+        <div class="mxd-section-label">06 — Diagrams</div>
         <h2 class="text-[#12121f] text-[39.80px] font-normal font-secondary mb-6">Architecture diagrams</h2>
         
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8">
