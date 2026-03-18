@@ -226,34 +226,42 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="bg-white rounded-lg border border-[#e8d5b8] p-6">
                 <h3 class="text-[#12121f] text-[27.60px] font-normal font-secondary mb-4">Framing and streaming</h3>
-                <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px]">
-                    mxd relies on Wireframe's custom frame codec, fragmentation
-                    and reassembly helpers, request metadata versus body split,
-                    and streaming request and response paths to support large
-                    payloads without collapsing everything into one buffered
-                    blob.
+                <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px] mb-4">
+                    Custom frame codecs and streaming primitives that mxd's
+                    transport layer relies on for large-payload handling.
                 </p>
+                <ul class="space-y-2 text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px]">
+                    <li class="flex gap-2"><span class="text-[#c54b2a] flex-shrink-0">&#9654;</span> <code class="text-[#12121f] text-xs font-normal font-primary">FrameCodec</code> trait: <code class="text-[#12121f] text-xs font-normal font-primary">frame_payload()</code>, <code class="text-[#12121f] text-xs font-normal font-primary">wrap_payload()</code>, <code class="text-[#12121f] text-xs font-normal font-primary">correlation_id()</code>, <code class="text-[#12121f] text-xs font-normal font-primary">max_frame_length()</code></li>
+                    <li class="flex gap-2"><span class="text-[#c54b2a] flex-shrink-0">&#9654;</span> Fragmenter/Reassembler with <code class="text-[#12121f] text-xs font-normal font-primary">MessageId</code>, sequential <code class="text-[#12121f] text-xs font-normal font-primary">FragmentIndex</code>, max assembled size, <code class="text-[#12121f] text-xs font-normal font-primary">purge_expired</code></li>
+                    <li class="flex gap-2"><span class="text-[#c54b2a] flex-shrink-0">&#9654;</span> <code class="text-[#12121f] text-xs font-normal font-primary">RequestParts</code> separation of routing metadata from streaming bodies</li>
+                    <li class="flex gap-2"><span class="text-[#c54b2a] flex-shrink-0">&#9654;</span> <code class="text-[#12121f] text-xs font-normal font-primary">Response</code> enum: single frame, vector, streamed, channel-backed multi-packet</li>
+                </ul>
             </div>
 
             <div class="bg-white rounded-lg border border-[#e8d5b8] p-6">
                 <h3 class="text-[#12121f] text-[27.60px] font-normal font-secondary mb-4">Middleware and lifecycle</h3>
-                <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px]">
-                    Middleware layering, setup and teardown callbacks,
-                    preamble-timeout handling, and per-connection state make the
-                    handshake, compatibility recording, and authenticated
-                    routing story explicit instead of smearing it through ad hoc
-                    socket code.
+                <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px] mb-4">
+                    Layered middleware and connection lifecycle hooks that keep
+                    handshake, compatibility, and routing logic explicit.
                 </p>
+                <ul class="space-y-2 text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px]">
+                    <li class="flex gap-2"><span class="text-[#c54b2a] flex-shrink-0">&#9654;</span> <code class="text-[#12121f] text-xs font-normal font-primary">from_fn</code> async middleware with <code class="text-[#12121f] text-xs font-normal font-primary">frame()</code>, <code class="text-[#12121f] text-xs font-normal font-primary">frame_mut()</code>, <code class="text-[#12121f] text-xs font-normal font-primary">Next</code> continuation</li>
+                    <li class="flex gap-2"><span class="text-[#c54b2a] flex-shrink-0">&#9654;</span> Setup/teardown callbacks per connection with retained state</li>
+                    <li class="flex gap-2"><span class="text-[#c54b2a] flex-shrink-0">&#9654;</span> Read timeouts and preamble-timeout handling</li>
+                </ul>
             </div>
 
             <div class="bg-white rounded-lg border border-[#e8d5b8] p-6">
                 <h3 class="text-[#12121f] text-[27.60px] font-normal font-secondary mb-4">Push queues and observability</h3>
-                <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px]">
-                    Push queues, connection actors, first-class client runtime
-                    hooks, and metrics support are the design basis for later
-                    presence, chat, and transfer work. Those extension points
-                    exist now even where user-facing parity is still planned.
+                <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px] mb-4">
+                    Server-initiated push delivery and metrics that form the
+                    design basis for presence, chat, and transfer work.
                 </p>
+                <ul class="space-y-2 text-[#3a3a55] text-sm font-normal font-tertiary leading-[22.66px]">
+                    <li class="flex gap-2"><span class="text-[#c54b2a] flex-shrink-0">&#9654;</span> <code class="text-[#12121f] text-xs font-normal font-primary">PushQueues</code> with high/low-priority capacities, rate limits, dead-letter queue</li>
+                    <li class="flex gap-2"><span class="text-[#c54b2a] flex-shrink-0">&#9654;</span> <code class="text-[#12121f] text-xs font-normal font-primary">ConnectionActor::run()</code> with biased <code class="text-[#12121f] text-xs font-normal font-primary">select!</code> over shutdown, push, response</li>
+                    <li class="flex gap-2"><span class="text-[#c54b2a] flex-shrink-0">&#9654;</span> Optional <code class="text-[#12121f] text-xs font-normal font-primary">metrics</code> feature: <code class="text-[#12121f] text-xs font-normal font-primary">wireframe_connections_active</code> gauge, frame counters, error counters, panic counter</li>
+                </ul>
             </div>
         </div>
     </div>
