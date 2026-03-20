@@ -3,14 +3,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verification — mxd</title>
-    <script src="https://cdn.tailwindcss.com" crossorigin="anonymous"></script>
-    <script>
-        window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ia7YhVlqvkB+rxVLiUQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800;900&amp;family=DM+Serif+Display:ital,wght@0,400;1,400&amp;family=Source+Serif+4:ital,wght@200;300;400;600;700;900&amp;family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800;900&amp;family=DM+Serif+Display:ital,wght@0,400;1,400&amp;family=Source+Serif+4:ital,wght@200;300;400;600;700;900&amp;family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -39,18 +35,18 @@
       </span>
     </a>
     <nav class="mxd-site-nav" aria-label="Primary">
-      <a href="../">Home</a><a href="../quickstart/">Quickstart</a><a href="../installation/">Installation</a><a href="../deployment/">Deployment</a><a href="../architecture/">Architecture</a><a href="../protocol/">Protocol</a><a href="../configuration/">Configuration</a><a href="../database-backends/">Databases</a><a href="../compatibility/">Compatibility</a><a href="./" aria-current="page">Verification</a><a href="../roadmap/">Roadmap</a><a href="../changelog/">Changelog</a>
+      <a href="../">Home</a><a href="../quickstart/">Quickstart</a><a href="../installation/">Installation</a><a href="../deployment/">Deployment</a><a href="../architecture/">Architecture</a><a href="../protocol/">Protocol</a><a href="../configuration/">Configuration</a><a href="../database-backends/">Databases</a><a href="../subsystems/">Subsystems</a><a href="../compatibility/">Compatibility</a><a href="./" aria-current="page">Verification</a><a href="../roadmap/">Roadmap</a><a href="../changelog/">Changelog</a>
     </nav>
   </div>
 </header>
 <main id="main-content" tabindex="-1">
 
-<div id="hero-section" class="relative bg-[#12121f] overflow-hidden">
+<section id="hero-section" class="relative bg-[#12121f] overflow-hidden">
     <div class="mxd-pattern mxd-pattern--hero absolute inset-0 opacity-60" aria-hidden="true"></div>
     
     <div class="absolute top-0 left-0 right-0 h-1 mxd-express-line bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
     
-    <div class="relative max-w-[900px] mx-auto px-4 sm:px-8 pt-32 pb-20">
+    <div class="relative max-w-[900px] mx-auto px-4 sm:px-8 pt-20 pb-12">
         <div class="inline-flex px-3 py-1 rounded-sm border border-[#c89430] mb-6">
             <div class="text-[#e8a838] text-[11.10px] font-bold font-primary uppercase tracking-[0.15em]">Docs · Verification</div>
         </div>
@@ -67,7 +63,7 @@
     </div>
     
     <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
-</div>
+</section>
 
 <section class="mxd-page-toc" aria-labelledby="mxd-toc-title">
   <div class="mxd-page-toc__inner">
@@ -115,13 +111,24 @@
             </div>
         </div>
 
-        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a]">
+        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#c54b2a] mb-6">
             <p class="text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
                 <span class="text-[#9a3a1f] font-semibold">Tool-choice rule:</span>
                 use TLA+ for state-machine progression and policy invariants,
                 Stateright for concurrent interleavings and ordering, and Kani
                 for bounded pure-function invariants and panic freedom.
             </p>
+        </div>
+
+        <div class="px-6 py-4 bg-[#faf3ea] rounded-tr rounded-br border-l-[3px] border-[#2d3a8c]">
+            <p class="text-[#12121f] text-sm font-semibold font-tertiary leading-[22.66px] mb-2">
+                <span class="text-[#2d3a8c] font-semibold">Specific domain invariants called out in the reference set:</span>
+            </p>
+            <ul class="space-y-1.5 text-[#12121f] text-sm font-normal font-tertiary leading-[22.66px]">
+                <li class="flex gap-2"><span class="text-[#2d3a8c] flex-shrink-0">&#9654;</span> <strong class="font-semibold">Privilege gating:</strong> no privileged effect before authentication</li>
+                <li class="flex gap-2"><span class="text-[#2d3a8c] flex-shrink-0">&#9654;</span> <strong class="font-semibold">News threading:</strong> linked-list pointer consistency after insert and delete</li>
+                <li class="flex gap-2"><span class="text-[#2d3a8c] flex-shrink-0">&#9654;</span> <strong class="font-semibold">Drop-box visibility:</strong> upload-only folders never expose contents to unprivileged sessions</li>
+            </ul>
         </div>
     </div>
 </div>
@@ -152,7 +159,7 @@
                         <div class="w-2 h-2 bg-[#e8a838] rounded"></div>
                         <div class="w-2 h-2 bg-[#4a8c5c] rounded"></div>
                         <div class="flex-1 text-right">
-                            <span class="text-[#3a3a55] text-[11.10px] font-normal font-primary">specs/handshake.tla</span>
+                            <span class="text-[#3a3a55] text-[11.10px] font-normal font-primary">crates/mxd-verification/tla/MxdHandshake.tla</span>
                         </div>
                     </div>
                     <div class="px-6 py-6 overflow-x-auto">
@@ -203,7 +210,7 @@
                         <div class="w-2 h-2 bg-[#e8a838] rounded"></div>
                         <div class="w-2 h-2 bg-[#4a8c5c] rounded"></div>
                         <div class="flex-1 text-right">
-                            <span class="text-[#3a3a55] text-[11.10px] font-normal font-primary">verify/session_gate.rs</span>
+                            <span class="text-[#3a3a55] text-[11.10px] font-normal font-primary">crates/mxd-verification/src/session_model</span>
                         </div>
                     </div>
                     <div class="px-6 py-6 overflow-x-auto">
@@ -259,7 +266,7 @@
                         <div class="w-2 h-2 bg-[#e8a838] rounded"></div>
                         <div class="w-2 h-2 bg-[#4a8c5c] rounded"></div>
                         <div class="flex-1 text-right">
-                            <span class="text-[#3a3a55] text-[11.10px] font-normal font-primary">src/codec/xor.rs</span>
+                            <span class="text-[#3a3a55] text-[11.10px] font-normal font-primary">src/wireframe/codec/kani.rs</span>
                         </div>
                     </div>
                     <div class="px-6 py-6 overflow-x-auto">
@@ -489,7 +496,9 @@
     </div>
 </div>
 
-<div id="footer" class="bg-[#12121f] relative">
+</main>
+
+<footer id="footer" class="bg-[#12121f] relative">
     <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
     
     <div class="max-w-[900px] mx-auto px-4 sm:px-8 py-12 text-center">
@@ -505,8 +514,16 @@
             A <span class="text-[#e8a838]">df12 Productions</span> artefact · Edinburgh · 2026
         </p>
     </div>
-</div>
-
-</main>
+    <div class="border-t border-[#2a2a42] py-6">
+        <div class="max-w-[900px] mx-auto px-4 sm:px-8 flex flex-col sm:flex-row justify-between items-center text-[11.10px] font-primary">
+            <p class="text-[#9a9ab0] mb-3 sm:mb-0">&copy; 2026 df12 Productions</p>
+            <nav class="mxd-legal-nav flex space-x-6" aria-label="Legal">
+                <a href="../privacy-policy/" class="text-[#9a9ab0] hover:text-[#e8d5b8] transition-colors">Privacy Policy</a>
+                <a href="../terms-of-use/" class="text-[#9a9ab0] hover:text-[#e8d5b8] transition-colors">Terms of Use</a>
+                <a href="../code-of-conduct/" class="text-[#9a9ab0] hover:text-[#e8d5b8] transition-colors">Code of Conduct</a>
+            </nav>
+        </div>
+    </div>
+</footer>
 
 </body></html>

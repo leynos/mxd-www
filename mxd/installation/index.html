@@ -3,14 +3,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Installation — mxd</title>
-    <script src="https://cdn.tailwindcss.com" crossorigin="anonymous"></script>
-    <script>
-        window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ia7YhVlqvkB+rxVLiUQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800;900&amp;family=DM+Serif+Display:ital,wght@0,400;1,400&amp;family=Source+Serif+4:ital,wght@200;300;400;600;700;900&amp;family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800;900&amp;family=DM+Serif+Display:ital,wght@0,400;1,400&amp;family=Source+Serif+4:ital,wght@200;300;400;600;700;900&amp;family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -39,13 +35,13 @@
       </span>
     </a>
     <nav class="mxd-site-nav" aria-label="Primary">
-      <a href="../">Home</a><a href="../quickstart/">Quickstart</a><a href="./" aria-current="page">Installation</a><a href="../deployment/">Deployment</a><a href="../architecture/">Architecture</a><a href="../protocol/">Protocol</a><a href="../configuration/">Configuration</a><a href="../database-backends/">Databases</a><a href="../compatibility/">Compatibility</a><a href="../verification/">Verification</a><a href="../roadmap/">Roadmap</a><a href="../changelog/">Changelog</a>
+      <a href="../">Home</a><a href="../quickstart/">Quickstart</a><a href="./" aria-current="page">Installation</a><a href="../deployment/">Deployment</a><a href="../architecture/">Architecture</a><a href="../protocol/">Protocol</a><a href="../configuration/">Configuration</a><a href="../database-backends/">Databases</a><a href="../subsystems/">Subsystems</a><a href="../compatibility/">Compatibility</a><a href="../verification/">Verification</a><a href="../roadmap/">Roadmap</a><a href="../changelog/">Changelog</a>
     </nav>
   </div>
 </header>
 <main id="main-content" tabindex="-1">
 
-<div id="hero-section" class="relative bg-[#12121f] overflow-hidden">
+<section id="hero-section" class="relative bg-[#12121f] overflow-hidden">
     <div class="mxd-pattern mxd-pattern--hero absolute inset-0 opacity-60" aria-hidden="true"></div>
     
     <div class="absolute top-0 left-0 right-0 h-1 mxd-express-line bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
@@ -65,7 +61,7 @@
     </div>
     
     <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
-</div>
+</section>
 
 <section class="mxd-page-toc" aria-labelledby="mxd-toc-title">
   <div class="mxd-page-toc__inner">
@@ -87,7 +83,7 @@
         
         <div class="space-y-6">
             <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px]">
-                The Rust toolchain version is pinned by <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">rust-toolchain.toml</code> in the repository root. <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">cargo</code> and <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">make</code> must be on your <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">PATH</code>. Optionally, install <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">pg-embed-setup-unpriv</code> if you want PostgreSQL-backed tests without a system-level database install.
+                The Rust toolchain version is pinned by <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">rust-toolchain.toml</code> in the repository root. <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">cargo</code> and <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">make</code> must be on the <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">PATH</code>. Optionally, install <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">pg-embed-setup-unpriv</code> for PostgreSQL-backed tests without a system-level database install.
             </p>
             
             <div class="bg-white rounded-lg border border-[#e8d5b8] p-6 sm:p-8">
@@ -265,7 +261,7 @@
         <h2 class="text-[#12121f] text-2xl sm:text-3xl md:text-[39.80px] font-normal font-secondary mb-6 text-center">Next steps</h2>
         
         <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px] mb-8 max-w-[600px] mx-auto text-center">
-            With mxd built, you can configure your first server instance or explore the protocol documentation.
+            With mxd built, the next step is configuring a server instance or exploring the protocol documentation.
         </p>
         
         <div class="flex flex-wrap justify-center gap-3">
@@ -282,7 +278,9 @@
     </div>
 </div>
 
-<div id="footer" class="bg-[#12121f] relative">
+</main>
+
+<footer id="footer" class="bg-[#12121f] relative">
     <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
     
     <div class="max-w-[900px] mx-auto px-4 sm:px-8 py-12 text-center">
@@ -298,8 +296,16 @@
             A <span class="text-[#e8a838]">df12 Productions</span> artefact · Edinburgh · 2026
         </p>
     </div>
-</div>
-
-</main>
+    <div class="border-t border-[#2a2a42] py-6">
+        <div class="max-w-[900px] mx-auto px-4 sm:px-8 flex flex-col sm:flex-row justify-between items-center text-[11.10px] font-primary">
+            <p class="text-[#9a9ab0] mb-3 sm:mb-0">&copy; 2026 df12 Productions</p>
+            <nav class="mxd-legal-nav flex space-x-6" aria-label="Legal">
+                <a href="../privacy-policy/" class="text-[#9a9ab0] hover:text-[#e8d5b8] transition-colors">Privacy Policy</a>
+                <a href="../terms-of-use/" class="text-[#9a9ab0] hover:text-[#e8d5b8] transition-colors">Terms of Use</a>
+                <a href="../code-of-conduct/" class="text-[#9a9ab0] hover:text-[#e8d5b8] transition-colors">Code of Conduct</a>
+            </nav>
+        </div>
+    </div>
+</footer>
 
 </body></html>

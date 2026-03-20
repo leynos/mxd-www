@@ -3,14 +3,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home — mxd</title>
-    <script src="https://cdn.tailwindcss.com" crossorigin="anonymous"></script>
-    <script>
-        window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ia7YhVlqvkB+rxVLiUQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800;900&amp;family=DM+Serif+Display:ital,wght@0,400;1,400&amp;family=Source+Serif+4:ital,wght@200;300;400;600;700;900&amp;family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800;900&amp;family=DM+Serif+Display:ital,wght@0,400;1,400&amp;family=Source+Serif+4:ital,wght@200;300;400;600;700;900&amp;family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -39,19 +35,19 @@
       </span>
     </a>
     <nav class="mxd-site-nav" aria-label="Primary">
-      <a href="./" aria-current="page">Home</a><a href="quickstart/">Quickstart</a><a href="installation/">Installation</a><a href="deployment/">Deployment</a><a href="architecture/">Architecture</a><a href="protocol/">Protocol</a><a href="configuration/">Configuration</a><a href="database-backends/">Databases</a><a href="compatibility/">Compatibility</a><a href="verification/">Verification</a><a href="roadmap/">Roadmap</a><a href="changelog/">Changelog</a>
+      <a href="./" aria-current="page">Home</a><a href="quickstart/">Quickstart</a><a href="installation/">Installation</a><a href="deployment/">Deployment</a><a href="architecture/">Architecture</a><a href="protocol/">Protocol</a><a href="configuration/">Configuration</a><a href="database-backends/">Databases</a><a href="subsystems/">Subsystems</a><a href="compatibility/">Compatibility</a><a href="verification/">Verification</a><a href="roadmap/">Roadmap</a><a href="changelog/">Changelog</a>
     </nav>
   </div>
 </header>
 <main id="main-content" tabindex="-1">
 
-<div id="hero-section" class="relative bg-[#12121f] overflow-hidden">
+<section id="hero-section" class="relative bg-[#12121f] overflow-hidden">
     <div class="mxd-pattern mxd-pattern--hero absolute inset-0 opacity-60" aria-hidden="true"></div>
 
     <div class="absolute top-0 left-0 right-0 h-1 mxd-express-line bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
 
-    <div class="relative max-w-[900px] mx-auto px-4 sm:px-8 pt-32 pb-20">
-        <div class="inline-flex px-3 py-1 rounded-sm border border-[#c89430] mb-8">
+    <div class="relative max-w-[900px] mx-auto px-4 sm:px-8 pt-20 pb-12">
+        <div class="inline-flex px-3 py-1 rounded-sm border border-[#c89430] mb-6">
             <div class="text-[#e8a838] text-[11.10px] font-semibold font-primary uppercase tracking-[0.15em]">df12 Productions — Hotline server daemon</div>
         </div>
 
@@ -87,7 +83,7 @@
     </div>
 
     <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
-</div>
+</section>
 
 <section class="mxd-page-toc" aria-labelledby="mxd-toc-title">
   <div class="mxd-page-toc__inner">
@@ -101,83 +97,17 @@
   </div>
 </section>
 
-<section class="mxd-route-guide" aria-labelledby="site-map-title">
-  <div class="mxd-route-guide__inner">
-    <div class="mxd-route-guide__eyebrow">Site map</div>
-    <div class="mxd-route-guide__header">
-      <h2 id="site-map-title">One export, now with routes.</h2>
-      <p>Twelve standalone mock-ups became a browsable prototype. The copy stayed. The dead ends did not.</p>
+<div class="border-t border-[#e8d5b8] py-16 sm:py-20">
+    <div class="max-w-[900px] mx-auto px-4 sm:px-8">
+        <p class="text-[#12121f] text-base font-normal font-tertiary leading-[27.20px]">
+            Welcome to the mxd project site. These pages document the architecture,
+            protocol surface, deployment options, and verification strategy behind
+            the Marrakesh Express Daemon — a Hotline protocol server written in Rust.
+            Use the navigation above to explore the quickstart guide, installation
+            instructions, configuration reference, compatibility matrix, and roadmap.
+        </p>
     </div>
-    <div class="mxd-route-grid">
-<a class="mxd-route-card" href="quickstart/">
-  <div class="mxd-route-card__eyebrow">Five minutes</div>
-  <div class="mxd-route-card__title">Quickstart</div>
-  <div class="mxd-route-card__copy">Clone, build, create a user, and start the daemon without guesswork.</div>
-  <div class="mxd-route-card__cta">Open route</div>
-</a>
-<a class="mxd-route-card" href="installation/">
-  <div class="mxd-route-card__eyebrow">Build inputs</div>
-  <div class="mxd-route-card__title">Installation</div>
-  <div class="mxd-route-card__copy">Toolchains, backend toggles, and build targets for each variant.</div>
-  <div class="mxd-route-card__cta">Open route</div>
-</a>
-<a class="mxd-route-card" href="deployment/">
-  <div class="mxd-route-card__eyebrow">Operators</div>
-  <div class="mxd-route-card__title">Deployment</div>
-  <div class="mxd-route-card__copy">systemd, containers, restart rules, and backup concerns.</div>
-  <div class="mxd-route-card__cta">Open route</div>
-</a>
-<a class="mxd-route-card" href="architecture/">
-  <div class="mxd-route-card__eyebrow">Boundaries</div>
-  <div class="mxd-route-card__title">Architecture</div>
-  <div class="mxd-route-card__copy">Hexagonal layers, compatibility guardrails, and adapter responsibilities.</div>
-  <div class="mxd-route-card__cta">Open route</div>
-</a>
-<a class="mxd-route-card" href="protocol/">
-  <div class="mxd-route-card__eyebrow">Wire format</div>
-  <div class="mxd-route-card__title">Protocol</div>
-  <div class="mxd-route-card__copy">Handshake rules, frame headers, parameter encoding, and transaction catalogue.</div>
-  <div class="mxd-route-card__cta">Open route</div>
-</a>
-<a class="mxd-route-card" href="configuration/">
-  <div class="mxd-route-card__eyebrow">Runtime shape</div>
-  <div class="mxd-route-card__title">Configuration</div>
-  <div class="mxd-route-card__copy">Fields, precedence, TOML examples, and deployment-facing defaults.</div>
-  <div class="mxd-route-card__cta">Open route</div>
-</a>
-<a class="mxd-route-card" href="database-backends/">
-  <div class="mxd-route-card__eyebrow">Storage</div>
-  <div class="mxd-route-card__title">Databases</div>
-  <div class="mxd-route-card__copy">SQLite and PostgreSQL trade-offs, startup checks, and selection criteria.</div>
-  <div class="mxd-route-card__cta">Open route</div>
-</a>
-<a class="mxd-route-card" href="compatibility/">
-  <div class="mxd-route-card__eyebrow">Client truth</div>
-  <div class="mxd-route-card__title">Compatibility</div>
-  <div class="mxd-route-card__copy">Support rows, required toggles, evidence sources, and release-note discipline.</div>
-  <div class="mxd-route-card__cta">Open route</div>
-</a>
-<a class="mxd-route-card" href="verification/">
-  <div class="mxd-route-card__eyebrow">Proof work</div>
-  <div class="mxd-route-card__title">Verification</div>
-  <div class="mxd-route-card__copy">Domain-versus-adapter boundaries, tool choice, and the path from counterexample to regression test.</div>
-  <div class="mxd-route-card__cta">Open route</div>
-</a>
-<a class="mxd-route-card" href="roadmap/">
-  <div class="mxd-route-card__eyebrow">Not yet done</div>
-  <div class="mxd-route-card__title">Roadmap</div>
-  <div class="mxd-route-card__copy">Delivery phases, current constraints, and what remains unfinished.</div>
-  <div class="mxd-route-card__cta">Open route</div>
-</a>
-<a class="mxd-route-card" href="changelog/">
-  <div class="mxd-route-card__eyebrow">Release log</div>
-  <div class="mxd-route-card__title">Changelog</div>
-  <div class="mxd-route-card__copy">Versioned notes with explicit QA sign-off language and compatibility-matrix cross-checks.</div>
-  <div class="mxd-route-card__cta">Open route</div>
-</a>
-    </div>
-  </div>
-</section>
+</div>
 
 <div id="section-overview" class="border-t border-[#e8d5b8] py-16 sm:py-20">
     <div class="max-w-[900px] mx-auto px-4 sm:px-8">
@@ -198,7 +128,7 @@
             rather than complete. Runtime selection is part of that operator
             surface too: the <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">legacy-networking</code>
             feature remains enabled by default, so the classic <code class="text-[#12121f] text-xs font-normal font-primary bg-[#faf3ea] px-2 py-1 rounded">mxd</code>
-            binary stays available unless you deliberately build a
+            binary stays available unless the build deliberately targets a
             Wireframe-only runtime.
         </p>
 
@@ -263,7 +193,7 @@
                 </div>
                 <h3 class="text-[#12121f] text-[27.60px] font-normal font-secondary leading-[34.56px] mb-3"><a href="database-backends/" class="underline decoration-transparent hover:decoration-current">Dual Database</a></h3>
                 <p class="text-[#3a3a55] text-sm font-normal font-tertiary leading-[21.32px]">
-                    SQLite for a single-file deployment you can carry in your pocket. PostgreSQL when you need concurrent access at scale. One codebase, dual migration trees, compile-time backend selection. Recursive CTEs work on both.
+                    SQLite for a single-file deployment that fits in a pocket. PostgreSQL when concurrent access matters at scale. One codebase, dual migration trees, compile-time backend selection. Recursive CTEs work on both.
                 </p>
             </div>
 
@@ -490,24 +420,31 @@
     </div>
 </div>
 
-<div id="footer" class="bg-[#12121f] relative">
-    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
+</main>
 
+<footer id="footer" class="bg-[#12121f] relative">
+    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]"></div>
     <div class="max-w-[900px] mx-auto px-4 sm:px-8 py-12 text-center">
         <div class="mb-6 opacity-40">
             <span class="text-[#e8d5b8] text-[23px] font-normal font-primary">◆</span>
         </div>
-
         <p class="text-[#3a3a55] text-[11.10px] font-normal font-secondary leading-[18.88px] mb-2">
             Protocol Souk — Design System for <span class="text-[#e8a838]">mxd</span>
         </p>
-
         <p class="text-[#3a3a55] text-[11.10px] font-normal font-secondary leading-[18.88px]">
             A <span class="text-[#e8a838]">df12 Productions</span> artefact · Edinburgh · 2026
         </p>
     </div>
-</div>
-
-</main>
+    <div class="border-t border-[#2a2a42] py-6">
+        <div class="max-w-[900px] mx-auto px-4 sm:px-8 flex flex-col sm:flex-row justify-between items-center text-[11.10px] font-primary">
+            <p class="text-[#9a9ab0] mb-3 sm:mb-0">&copy; 2026 df12 Productions</p>
+            <nav class="mxd-legal-nav flex space-x-6" aria-label="Legal">
+                <a href="privacy-policy/" class="text-[#9a9ab0] hover:text-[#e8d5b8] transition-colors">Privacy Policy</a>
+                <a href="terms-of-use/" class="text-[#9a9ab0] hover:text-[#e8d5b8] transition-colors">Terms of Use</a>
+                <a href="code-of-conduct/" class="text-[#9a9ab0] hover:text-[#e8d5b8] transition-colors">Code of Conduct</a>
+            </nav>
+        </div>
+    </div>
+</footer>
 
 </body></html>
