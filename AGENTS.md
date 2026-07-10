@@ -41,6 +41,12 @@ shared before it is incorporated into the larger website.
 - When using Playwright for previewing, point it at the existing server on port
   `2018`.
 
+## Spelling
+
+Run `make spelling` after changing Markdown. The tracked `typos.toml` is
+generated from the shared en-GB-oxendict dictionary plus narrow exceptions in
+`typos.local.toml`; do not edit the generated file by hand.
+
 ## CSS Debugging
 
 The `css-view` command is available for debugging. It produces a JSON dump of

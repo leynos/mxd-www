@@ -46,7 +46,7 @@ already implemented.
 
 ## 2. Implement the Handshake
 
-The Hotline protocol’s session-initialisation handshake is the first message
+The Hotline protocol’s session-initialization handshake is the first message
 exchanged. Under `wireframe`, this is handled via the **preamble** mechanism,
 which allows custom handshake bytes to be read before normal message framing
 begins.
@@ -175,7 +175,7 @@ the message type.
 
 - **Manage Session State**: Preserve per-connection state across transactions.
   In `mxd`, a `Session` struct tracked data like the logged-in user ID for each
-  connection[^23]. Under `wireframe`, utilise its session or context features
+  connection[^23]. Under `wireframe`, utilize its session or context features
   to store this. For instance, implement the `WireframeProtocol` trait’s
   connection initialization to attach a new `Session` object to each connection
   (perhaps via `SessionRegistry` or by storing it in a thread-local context
@@ -212,13 +212,13 @@ these clients:
   data.
 
 - **Version-Specific Behaviour**: Use the handshake’s `sub_version` field to
-  toggle compatibility behaviors[^25]. For instance, if Hotline 1.9 clients
+  toggle compatibility behaviours[^25]. For instance, if Hotline 1.9 clients
   require a slightly different handshake reply or format for a particular
   transaction, detect their version in the Preamble and adjust accordingly.
   SynHX might advertise its own sub-version number; the server can maintain a
   mapping or conditional code paths for known client versions. All such
   differences should fall back to the Hotline 1.9 baseline so that any
-  unrecognised client version (including SynHX, which aims to be compatible) at
+  unrecognized client version (including SynHX, which aims to be compatible) at
   least gets standard 1.8.5/1.9 protocol handling. In essence, *if a feature is
   unsupported by a client, the server should degrade gracefully to the older
   behaviour*.
@@ -295,7 +295,7 @@ trials are recommended:
 Finally, consider the deployment of the new server and the platforms it will
 run on, incorporating the target environment requirements:
 
-- **Linux (Primary Target)**: Optimise and test for Linux x86_64 and aarch64 as
+- **Linux (Primary Target)**: Optimize and test for Linux x86_64 and aarch64 as
   the main deployment targets. Ensure that continuous integration covers
   building the server on these architectures. Any Linux-specific configurations
   (like systemd service files or Docker images) should be updated to point to

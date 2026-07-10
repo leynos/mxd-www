@@ -55,7 +55,7 @@ docker run --rm \
 
 GitHub Actions runs the fuzzer nightly. The workflow defined in
 `.github/workflows/fuzz.yml` builds the Docker image, executes AFL++ for
-several hours and uploads any crashes. Review the artifacts after each run to
+several hours and uploads any crashes. Review the artefacts after each run to
 inspect new findings. This process aligns with the overall architecture
 outlined in [roadmap.md](roadmap.md) and the storage notes in
 [file-sharing-design.md](file-sharing-design.md).
