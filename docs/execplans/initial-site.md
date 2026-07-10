@@ -654,7 +654,7 @@ state. Each milestone will be committed separately so partial rollback is
 possible.
 
 
-## Artifacts and notes
+## Artefacts and notes
 
 (Will be populated during execution.)
 

@@ -340,7 +340,7 @@ server performs:
    system, we can treat listing as requiring at least read access. If the
    folder is a dropbox (`is_dropbox=true`) and the user lacks the special view
    privilege, we will return an empty list (the folder will appear empty to
-   them, even though files might be present) – this mimics Hotline’s behavior
+   them, even though files might be present) – this mimics Hotline’s behaviour
    of upload-only dropboxes.
 3. **Query DB:** Fetch all FileNodes where parent_id = folder’s ID. This yields
    all files, subfolders, and aliases in that directory. We will retrieve
@@ -698,7 +698,7 @@ and a move to a different folder via MoveFile. We handle both:
      strictly follow that, a user with those bits can move an item from any
      folder they can see to any other folder they can see. In practice, you
      might also require Create rights on destination and Delete on source, but
-     since Hotline explicitly lists Move as a privilege, we honor that: the user
+     since Hotline explicitly lists Move as a privilege, we honour that: the user
      must have the Move permission for that item’s current folder (and perhaps
      also for the destination folder). In our ACL model, we could enforce: user
      must have privilege 4 (move) on the source item’s parent, and privilege 5
@@ -834,7 +834,7 @@ files). Implementation:
    object_key, but will enforce ACL on the alias node. If the alias node
    permits the user to download (e.g. because the dest folder is public), the
    download proceeds even if the original file’s folder was restricted. This
-   behavior should be documented for admins, as it is a deliberate capability
+   behaviour should be documented for admins, as it is a deliberate capability
    (e.g., an admin can put an alias of a file from a restricted area into a
    public area to share it without duplicating the file). If instead one wanted
    alias to obey original’s ACL, one could implement that check, but we assume
@@ -1099,7 +1099,7 @@ implementation:
    entries for each file; they will just be governed by parent folder’s ACL
    unless changed. This matches typical expectation – newly uploaded files in a
    folder are accessible to whoever can access that folder. If needed, an admin
-   can set specific ACLs afterward.
+   can set specific ACLs afterwards.
 
 6. **Finish:** After processing the last item, the server closes out the
    transfer (perhaps sending a final Next file or simply closing connection).
@@ -1353,7 +1353,7 @@ consistency is critical:
   `head()` on object store when serving, but that’s extra overhead. Consistency
   in our controlled environment should be maintained by design.
 
-- **Performance vs Consistency Trade-off:** We favor consistency for user-facing
+- **Performance vs Consistency Trade-off:** We favour consistency for user-facing
   metadata. So we do slightly redundant work like storing file size and mod
   time in DB (though the object store has this metadata too). This is to allow
   quick queries and avoid dependency on object store for every listing or info
@@ -1419,7 +1419,7 @@ Finally, we address strategies for ensuring good performance and scalability:
   needed. The library automatically coalesces range requests that are close
   together, improving efficiency if a client oddly asks for multiple ranges.
 - **Mermaid and Schema Efficiency:** (Performance of those isn’t relevant to
-  runtime, they’re design artifacts, so skipping.)
+  runtime, they’re design artefacts, so skipping.)
 - **Large Folders and Zip Option:** If a user tries to download an entire huge
   folder, sequential transfer could be slow to set up each file. As mentioned,
   one could implement an optimization: compress the folder server-side. But
@@ -1577,7 +1577,7 @@ database and object store. We also discussed performance optimizations to
 ensure the system can handle large files and many operations efficiently.
 
 This guide should enable developers to implement the file-sharing module in a
-Rust BBS server that feels like the classic Hotline server in behavior, but
+Rust BBS server that feels like the classic Hotline server in behaviour, but
 with the reliability and scalability expected from modern infrastructure. With
 careful attention to the details above, the resulting system will allow users
 to seamlessly upload/download files (even large ones with resume), organize
