@@ -1,6 +1,6 @@
 CADDY := caddy
 
-.PHONY: all dev clean spelling test
+.PHONY: all dev clean fmt spelling test
 
 TYPOS_VERSION ?= 1.48.0
 TYPOS := uv tool run typos@$(TYPOS_VERSION)
@@ -13,6 +13,9 @@ dev:
 
 clean:
 	@:
+
+fmt:
+	mdformat-all
 
 test:
 	@:

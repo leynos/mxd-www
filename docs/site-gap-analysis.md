@@ -13,7 +13,8 @@ constraints are, or whether it is already implemented.
 
 The reference set documents two operational binaries, `mxd` and
 `mxd-wireframe-server`, plus feature-gated runtime selection and a
-wireframe-only build path. `docs/users-guide.md` treats this as core user-facing behaviour.
+wireframe-only build path. `docs/users-guide.md` treats this as core
+user-facing behaviour.
 
 The site mentions the Wireframe server in the quickstart and installation
 pages, but it does not document the runtime model as a first-class concept. It
@@ -50,9 +51,9 @@ the references treat as the compatibility boundary.
 
 ## 3. File-sharing subsystem depth
 
-`docs/file-sharing-design.md` and the file-sharing sections of
-`docs/design.md` describe a much richer file subsystem than the website
-documents. Notable missing material includes:
+`docs/file-sharing-design.md` and the file-sharing sections of `docs/design.md`
+describe a much richer file subsystem than the website documents. Notable
+missing material includes:
 
 - object-store-backed file content with database-backed metadata;
 - resumable download and upload mechanics;
@@ -106,8 +107,7 @@ The site only refers to threaded news in passing and does not explain:
 - how the schema maps to Hotline transactions.
 
 This makes the website under-document a large portion of the design material
-that explains why the database and verification strategies look the way they
-do.
+that explains why the database and verification strategies look the way they do.
 
 ## 6. Compatibility matrix governance and evidence discipline
 

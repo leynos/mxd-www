@@ -1,9 +1,8 @@
 # Brand overhaul: align mxd site with Protocol Souk design system
 
-This ExecPlan (execution plan) is a living document. The sections
-`Constraints`, `Tolerances`, `Risks`, `Progress`, `Surprises & Discoveries`,
-`Decision Log`, and `Outcomes & Retrospective` must be kept up to date as work
-proceeds.
+This ExecPlan (execution plan) is a living document. The sections `Constraints`,
+`Tolerances`, `Risks`, `Progress`, `Surprises & Discoveries`, `Decision Log`,
+and `Outcomes & Retrospective` must be kept up to date as work proceeds.
 
 Status: COMPLETE
 
@@ -18,9 +17,8 @@ system defined in `docs/mxd-design-system.html`. This plan addresses both.
 After this work, a visitor browsing the site will experience a consistent
 visual language across all twelve pages. A developer maintaining the site will
 find shared styles centralized in `mxd/assets/site.css` rather than duplicated
-across twelve inline `<style>` blocks. Validation with Playwright snapshots
-and `css-view` will confirm that computed styles match the design system tokens.
-
+across twelve inline `<style>` blocks. Validation with Playwright snapshots and
+`css-view` will confirm that computed styles match the design system tokens.
 
 ## Constraints
 
@@ -36,9 +34,9 @@ and `css-view` will confirm that computed styles match the design system tokens.
    only.
 5. Accessibility features (skip links, ARIA labels, semantic HTML) must be
    preserved or improved, never removed.
-6. The existing `mxd/assets/site.css` file and its Block–Element–Modifier (BEM) style `.mxd-*`
-   class naming convention is the foundation for shared styles. New shared
-   classes must follow the same naming convention.
+6. The existing `mxd/assets/site.css` file and its Block–Element–Modifier (BEM)
+   style `.mxd-*` class naming convention is the foundation for shared styles.
+   New shared classes must follow the same naming convention.
 
 ## Tolerances (exception triggers)
 
@@ -58,31 +56,24 @@ and `css-view` will confirm that computed styles match the design system tokens.
 
 - Risk: Tailwind CDN inline styles have higher specificity than site.css
   classes, making migration to shared classes produce unexpected overrides.
-  Severity: medium
-  Likelihood: medium
-  Mitigation: Use `!important` sparingly and only in site.css where a
-  Tailwind utility must be overridden. Prefer replacing inline Tailwind
-  classes with site.css classes to avoid conflicts. Test each component
-  migration with css-view before and after.
+  Severity: medium Likelihood: medium Mitigation: Use `!important` sparingly
+  and only in site.css where a Tailwind utility must be overridden. Prefer
+  replacing inline Tailwind classes with site.css classes to avoid conflicts.
+  Test each component migration with css-view before and after.
 
 - Risk: The twelve pages were exported from different UXPilot revisions and
   may contain subtle HTML structural differences (e.g. `<div>` vs `<section>`
   for the same logical component) that make a uniform CSS class application
-  produce different visual results.
-  Severity: low
-  Likelihood: medium
+  produce different visual results. Severity: low Likelihood: medium
   Mitigation: Normalize HTML structure as part of the overhaul. Document any
   structural changes in Surprises & Discoveries.
 
 - Risk: Removing inline `<style>` blocks may break page-specific components
-  (e.g. `roadmap-item`, `release-card`, `table-row`) that are only used on
-  one page.
-  Severity: medium
-  Likelihood: high
-  Mitigation: Audit every inline class before removal. Move page-specific
-  classes that appear on only one page to site.css with a comment noting their
-  single-page scope. This keeps all CSS in one place without forcing
-  unnecessary generalization.
+  (e.g. `roadmap-item`, `release-card`, `table-row`) that are only used on one
+  page. Severity: medium Likelihood: high Mitigation: Audit every inline class
+  before removal. Move page-specific classes that appear on only one page to
+  site.css with a comment noting their single-page scope. This keeps all CSS in
+  one place without forcing unnecessary generalization.
 
 ## Progress
 
@@ -94,34 +85,34 @@ and `css-view` will confirm that computed styles match the design system tokens.
 
 ## Surprises & discoveries
 
-- Observation: The installation, deployment, database-backends, roadmap, and changelog
-  pages already had responsive padding (`px-4 sm:px-8`) and responsive hero heading
-  sizes — only the earlier pages (home, quickstart, architecture, protocol, compatibility)
-  needed these fixes.
-  Evidence: Code inspection during audit.
-  Impact: Reduced scope of C4/C5/C6 changes on newer pages.
+- Observation: The installation, deployment, database-backends, roadmap, and
+  changelog pages already had responsive padding (`px-4 sm:px-8`) and
+  responsive hero heading sizes — only the earlier pages (home, quickstart,
+  architecture, protocol, compatibility) needed these fixes. Evidence: Code
+  inspection during audit. Impact: Reduced scope of C4/C5/C6 changes on newer
+  pages.
 
-- Observation: Axe-core reported contrast violations for design system badge colours
-  (mint-tea on green tint, saffron-muted on yellow tint) and footer text. These are
-  design system choices, not regressions.
-  Evidence: Axe-core audits on home, roadmap, changelog, compatibility pages.
-  Impact: No action required — these are pre-existing design choices inherited from the
+- Observation: Axe-core reported contrast violations for design system badge
+  colours (mint-tea on green tint, saffron-muted on yellow tint) and footer
+  text. These are design system choices, not regressions. Evidence: Axe-core
+  audits on home, roadmap, changelog, compatibility pages. Impact: No action
+  required — these are pre-existing design choices inherited from the
   authoritative design system document.
 
 ## Decision log
 
-- Decision: Pre-existing axe-core contrast violations in design system badge colours
-  and footer text were not addressed.
-  Rationale: Constraint 3 states the design system is authoritative. The badge colours
-  (#4a8c5c on #e8f5ec, #c89430 on #fff4e0) and footer text (#3a3a55 on #12121f) are
-  design system prescriptions. Fixing them would violate the constraint.
-  Date/Author: 2026-03-10 / agent
+- Decision: Pre-existing axe-core contrast violations in design system badge
+  colours and footer text were not addressed. Rationale: Constraint 3 states
+  the design system is authoritative. The badge colours (#4a8c5c on #e8f5ec,
+  #c89430 on
+  #fff4e0) and footer text (#3a3a55 on #12121f) are design system
+  prescriptions. Fixing them would violate the constraint. Date/Author:
+  2026-03-10 / agent
 
-- Decision: The `Inter` font was removed from the Tailwind config but left in the
-  Google Fonts import URL.
-  Rationale: Removing it from the import would change the URL and is unnecessary. The
-  font will simply not be referenced by any CSS rule.
-  Date/Author: 2026-03-10 / agent
+- Decision: The `Inter` font was removed from the Tailwind config but left in
+  the Google Fonts import URL. Rationale: Removing it from the import would
+  change the URL and is unnecessary. The font will simply not be referenced by
+  any CSS rule. Date/Author: 2026-03-10 / agent
 
 ## Context and orientation
 
@@ -157,6 +148,7 @@ component, and pattern.
 ### Current CSS architecture
 
 Each page loads:
+
 1. Font Awesome CSS + JS from a content delivery network (CDN)
 2. Google Fonts (JetBrains Mono, DM Serif Display, Source Serif 4, Inter)
 3. Tailwind CSS from CDN with an inline config block
@@ -206,6 +198,7 @@ The design system defines the following CSS custom properties:
 ```
 
 Typography:
+
 - Display: DM Serif Display — page titles, section headings, hero text. Never
   below 1.44rem.
 - Body: Source Serif 4 — editorial prose. 0.833rem-1.2rem, line-height 1.7.
@@ -214,6 +207,7 @@ Typography:
 - (Inter is NOT in the design system. It appears only in the export.)
 
 Key components:
+
 - Express Line: 4px gradient bar (terracotta → saffron → indigo), 8s shimmer
   animation. Appears at hero top and footer top.
 - Transaction Frame Stripe: colour-coded byte display per the design system's
@@ -228,10 +222,9 @@ Key components:
 - Zellij pattern: nested diamond SVG at opacity ≤ 0.12, only on parchment or
   sandstone backgrounds.
 
-Transition easing: `cubic-bezier(0.22, 1, 0.36, 1)` — the design system
-calls this the slightly-overshooting ease-out. Duration: 150ms (fast), 300ms
+Transition easing: `cubic-bezier(0.22, 1, 0.36, 1)` — the design system calls
+this the slightly-overshooting ease-out. Duration: 150ms (fast), 300ms
 (medium), 600ms (slow).
-
 
 ## Plan of work
 
@@ -242,6 +235,7 @@ This stage produces the detailed audit below. No files are modified.
 #### A1. Internal inconsistencies between pages
 
 **Hero section heights differ without apparent reason:**
+
 - Home: `style="height: 639px;"` (fixed pixel)
 - Quickstart, Architecture, Protocol, Compatibility: `style="height: 480px;"`
 - Roadmap, Changelog: `style="height: 400px;"`
@@ -249,34 +243,38 @@ The design system does not prescribe fixed pixel heights. The hero's height
 should be determined by content and padding, not an inline style override.
 
 **Responsive padding inconsistency:**
+
 - Home, Quickstart, Architecture, Protocol, Compatibility pages use `px-8`
   for all content wrappers.
 - Roadmap and Changelog pages use `px-4 sm:px-8` for content wrappers,
-  hero sections, and footer.
-The roadmap/changelog approach (mobile-first responsive padding) is the
-correct pattern. The older pages omit the mobile breakpoint.
+  hero sections, and footer. The roadmap/changelog approach (mobile-first
+  responsive padding) is the correct pattern. The older pages omit the mobile
+  breakpoint.
 
 **Hero heading responsive sizing inconsistency:**
+
 - Home, Quickstart, Architecture, Protocol, Compatibility: fixed
   `text-[68.80px]` with no responsive scaling.
 - Roadmap, Changelog: responsive
-  `text-4xl sm:text-5xl md:text-[68.80px]` with proper breakpoints.
-The roadmap/changelog pattern is correct and should be applied everywhere.
+  `text-4xl sm:text-5xl md:text-[68.80px]` with proper breakpoints. The
+  roadmap/changelog pattern is correct and should be applied everywhere.
 
 **Hero subtitle element type:**
+
 - Home: `<p>` element for subtitle.
 - Architecture, Protocol: `<div>` wrapper with `<p>` children and
-  `space-y-4`.
-This is a legitimate structural difference where architecture/protocol have
-multi-paragraph subtitles. No action needed.
+  `space-y-4`. This is a legitimate structural difference where
+  architecture/protocol have multi-paragraph subtitles. No action needed.
 
 **Section padding inconsistency:**
+
 - Most pages: `py-20` for content sections.
 - Roadmap, Changelog: `py-16 sm:py-20`.
 Again, roadmap/changelog is more mobile-considerate. Apply everywhere.
 
-**Inline style class naming divergence:**
-Each page's `<style>` block defines different hover/transition classes:
+**Inline style class naming divergence:** Each page's `<style>` block defines
+different hover/transition classes:
+
 - Home: `.card-feature`, `.btn-tertiary`
 - Quickstart: `.code-block`
 - Architecture: `.card-hover`
@@ -288,70 +286,73 @@ Each page's `<style>` block defines different hover/transition classes:
 These should be consolidated into site.css with consistent naming.
 
 **Button font-weight inconsistency:**
+
 - Home, Quickstart, Architecture, Protocol, Compatibility:
   `font-normal` on buttons.
 - Roadmap, Changelog: `font-bold` on buttons.
 The design system specifies `font-weight: 600` for buttons. Neither
-`font-normal` (400) nor `font-bold` (700) is correct. Should be
-`font-semibold` (600).
+`font-normal` (400) nor `font-bold` (700) is correct. Should be `font-semibold`
+(600).
 
 **Footer CTA section missing from some pages:**
+
 - Home, Quickstart, Architecture, Protocol, Compatibility: have a
   `#footer-cta` section with CTA buttons before the dark footer.
 - Roadmap, Changelog: embed CTA within the last content section instead.
 This is a content/layout choice, not an inconsistency. No action needed.
 
 **Footer padding inconsistency:**
+
 - Home, Quickstart, Architecture, Protocol, Compatibility: `px-8`.
 - Roadmap, Changelog: `px-4 sm:px-8`.
 Same mobile-first pattern gap as above.
 
 #### A2. Deviations from the design system
 
-**D1. Font family "display" uses Inter instead of a design system font.**
-The Tailwind config defines `"display": ["Inter", "sans-serif"]`. Inter does
-not appear anywhere in the design system. It is used in the site for inline
-code references (e.g. `font-display` on `<span>` and `<code>` elements
-referencing function names or file paths). The design system prescribes
-JetBrains Mono for "code, protocol data, field labels, badges, and UI chrome."
-All `font-display` usages should become `font-primary` (JetBrains Mono).
+**D1. Font family "display" uses Inter instead of a design system font.** The
+Tailwind config defines `"display": ["Inter", "sans-serif"]`. Inter does not
+appear anywhere in the design system. It is used in the site for inline code
+references (e.g. `font-display` on `<span>` and `<code>` elements referencing
+function names or file paths). The design system prescribes JetBrains Mono for
+"code, protocol data, field labels, badges, and UI chrome." All `font-display`
+usages should become `font-primary` (JetBrains Mono).
 
-**D2. Section labels use `font-normal` weight instead of `font-bold`.**
-The design system's `.section-label` specifies `font-weight: 600` and
+**D2. Section labels use `font-normal` weight instead of `font-bold`.** The
+design system's `.section-label` specifies `font-weight: 600` and
 `letter-spacing: 0.2em`. The site's section labels use
 `text-[11.10px] font-normal font-primary uppercase`. The weight should be
 `font-semibold` (600) or `font-bold` (700, since 600 maps to semibold in
 Tailwind) and letter-spacing should be `tracking-[0.2em]`.
 
-**D3. Section heading (h2) size deviates.**
-The design system specifies `--text-3xl: 2.488rem` (≈39.8px) for `h2`. The
-site uses `text-[39.80px]` which is correct in absolute terms but expressed
-as a magic number. Not a deviation per se, but it should use the design system
-variable if possible.
+**D3. Section heading (h2) size deviates.** The design system specifies
+`--text-3xl: 2.488rem` (≈39.8px) for `h2`. The site uses `text-[39.80px]` which
+is correct in absolute terms but expressed as a magic number. Not a deviation
+per se, but it should use the design system variable if possible.
 
-**D4. The Express Line gradient endpoint colours differ.**
-Design system hero: `from terracotta via saffron to indigo` with a shimmer.
-Design system footer: `from terracotta via saffron to indigo` (no shimmer,
-static).
-Site hero top: `from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]` — correct.
-Site hero bottom: `from-[#c54b2a] via-[#e8a838] to-[#c54b2a]` — ends with
-terracotta, not indigo. This is inconsistent with the design system's footer
-gradient which ends with indigo.
+**D4. The Express Line gradient endpoint colours differ.** Design system hero:
+`from terracotta via saffron to indigo` with a shimmer. Design system footer:
+`from terracotta via saffron to indigo` (no shimmer, static). Site hero top:
+`from-[#c54b2a] via-[#e8a838] to-[#2d3a8c]` — correct. Site hero bottom:
+`from-[#c54b2a] via-[#e8a838] to-[#c54b2a]` — ends with terracotta, not indigo.
+This is inconsistent with the design system's footer gradient which ends with
+indigo.
 
 **D5. Code block text uses Inter (`font-display`) instead of JetBrains Mono.**
 Terminal window code content on quickstart/architecture/protocol uses
-`font-display` (Inter) for `<pre>` content. The design system's frame-card
-body specifies `font-family: 'JetBrains Mono', monospace` and
+`font-display` (Inter) for `<pre>` content. The design system's frame-card body
+specifies `font-family: 'JetBrains Mono', monospace` and
 `font-size: var(--text-sm)`. All code block `<pre>` content should use
 `font-primary`.
 
-**D6. Badge colour mapping has a cross-wiring error.**
-The design system specifies:
+**D6. Badge colour mapping has a cross-wiring error.** The design system
+specifies:
+
 - Supported: `background: #E8F5EC; color: var(--mint-tea); border: #C4E5CC`
 - Partial: `background: #FFF4E0; color: var(--saffron-muted); border: #F2DCA8`
 - Planned: `background: #E8EAF6; color: var(--indigo); border: #C5CAE9`
 
 The site uses:
+
 - Supported: `bg-[#e8eaf6]` (indigo background!) with `border-[#c4e5cc]`
   (green border) and `text-[#4a8c5c]` (green text).
 - Partial: `bg-[#e8eaf6]` (indigo background!) with `border-[#f2dca8]`
@@ -361,47 +362,47 @@ The site uses:
 
 All three badge types use `bg-[#e8eaf6]` (the indigo tint) regardless of
 status. The correct backgrounds per the design system are:
+
 - Supported: `bg-[#e8f5ec]` (green tint)
 - Partial: `bg-[#fff4e0]` (yellow tint)
 - Planned: `bg-[#e8eaf6]` (indigo tint — only this one is correct)
 
-**D7. Callout component border-left width.**
-The design system specifies `border-left: 3px solid var(--terracotta)`. The
-site uses `border-l-2` (2px). Should be `border-l-[3px]`.
+**D7. Callout component border-left width.** The design system specifies
+`border-left: 3px solid var(--terracotta)`. The site uses `border-l-2` (2px).
+Should be `border-l-[3px]`.
 
-**D8. Callout component border-radius.**
-The design system specifies `border-radius: 0 var(--radius-md) var(--radius-md) 0`
-(4px top-right and bottom-right). The site uses `rounded-tr rounded-br` which
-is `border-radius: 0.25rem` (4px) — this is actually correct.
+**D8. Callout component border-radius.** The design system specifies
+`border-radius: 0 var(--radius-md) var(--radius-md) 0` (4px top-right and
+bottom-right). The site uses `rounded-tr rounded-br` which is
+`border-radius: 0.25rem` (4px) — this is actually correct.
 
-**D9. Button border-radius.**
-The design system specifies `border-radius: var(--radius-md)` (4px). The site
-uses `rounded` which is `border-radius: 0.25rem` (4px). This is correct.
+**D9. Button border-radius.** The design system specifies
+`border-radius: var(--radius-md)` (4px). The site uses `rounded` which is
+`border-radius: 0.25rem` (4px). This is correct.
 
-**D10. Card border-radius.**
-The design system specifies `border-radius: var(--radius-lg)` (8px). The site
-uses `rounded-lg` which is `border-radius: 0.5rem` (8px). This is correct.
+**D10. Card border-radius.** The design system specifies
+`border-radius: var(--radius-lg)` (8px). The site uses `rounded-lg` which is
+`border-radius: 0.5rem` (8px). This is correct.
 
-**D11. Card shadow on hover.**
-The design system specifies `--shadow-card: 0 4px 16px rgba(18,18,31,0.10)`
-on hover. The site's `.card-feature:hover` uses
-`box-shadow: 0 12px 32px rgba(18,18,31,0.15)` which is closer to
-`--shadow-deep`. The default card state should use `--shadow-card` and hover
-should elevate to `--shadow-deep`.
+**D11. Card shadow on hover.** The design system specifies
+`--shadow-card: 0 4px 16px rgba(18,18,31,0.10)` on hover. The site's
+`.card-feature:hover` uses `box-shadow: 0 12px 32px rgba(18,18,31,0.15)` which
+is closer to `--shadow-deep`. The default card state should use `--shadow-card`
+and hover should elevate to `--shadow-deep`.
 
-**D12. Transaction stripe layout.**
-The design system uses a CSS Grid (`grid-template-columns: repeat(auto-fit, minmax(80px, 1fr))`)
-for the transaction byte stripe. The site uses `flex flex-wrap` instead. The
-visual result is similar but the bytes in the site use `min-w-[81.79px]` as a
-floor width rather than the grid's `minmax(80px, 1fr)`. The protocol page
-uses `flex-1` without a min-width. These should be standardized to match the
-design system's grid approach.
+**D12. Transaction stripe layout.** The design system uses a CSS Grid
+(`grid-template-columns: repeat(auto-fit, minmax(80px, 1fr))`) for the
+transaction byte stripe. The site uses `flex flex-wrap` instead. The visual
+result is similar but the bytes in the site use `min-w-[81.79px]` as a floor
+width rather than the grid's `minmax(80px, 1fr)`. The protocol page uses
+`flex-1` without a min-width. These should be standardized to match the design
+system's grid approach.
 
-**D13. Missing design system CSS custom properties.**
-The site's `site.css` defines `--mxd-*` variables that are a subset of the
-design system tokens but with different names. The design system uses
-`--terracotta`, `--saffron`, etc. The site uses `--mxd-accent`, `--mxd-gold`,
-etc. The mapping is:
+**D13. Missing design system CSS custom properties.** The site's `site.css`
+defines `--mxd-*` variables that are a subset of the design system tokens but
+with different names. The design system uses `--terracotta`, `--saffron`, etc.
+The site uses `--mxd-accent`, `--mxd-gold`, etc. The mapping is:
+
 - `--mxd-paper` = `--parchment` (#fdf8f0)
 - `--mxd-ink` = `--kohl` (#12121f)
 - `--mxd-muted` = `--kohl-soft` (#3a3a55)
@@ -411,19 +412,19 @@ etc. The mapping is:
 - `--mxd-border` = `--sandstone-dark` (#e8d5b8)
 
 Missing from site.css:
+
 - `--terracotta-light` (#D4714F), `--saffron-light` (#F2C96A),
-  `--saffron-muted` (#C89430), `--indigo` (#2D3A8C), `--indigo-light`
-  (#4A58B0), `--indigo-dark` (#1E2760), `--kohl-lighter` (#1A1A2E),
-  `--kohl-mid` (#2A2A42), `--sandstone` (#F5E6D0), `--sandstone-light`
-  (#FAF3EA), `--mint-tea` (#4A8C5C), `--mint-tea-light` (#6AAF7A),
-  `--amber-signal` (#FFB347), `--error-red` (#C43A3A), `--xor-magenta`
-  (#A855A0).
+  `--saffron-muted` (#C89430), `--indigo` (#2D3A8C), `--indigo-light` (#4A58B0),
+  `--indigo-dark` (#1E2760), `--kohl-lighter` (#1A1A2E), `--kohl-mid`
+  (#2A2A42), `--sandstone` (#F5E6D0), `--sandstone-light` (#FAF3EA),
+  `--mint-tea` (#4A8C5C), `--mint-tea-light` (#6AAF7A), `--amber-signal`
+  (#FFB347), `--error-red` (#C43A3A), `--xor-magenta` (#A855A0).
 
 The inline Tailwind classes hardcode these hex values (e.g. `bg-[#2d3a8c]`,
 `text-[#4a8c5c]`). Extending the site.css variables and Tailwind config to
-reference them would improve maintainability but is a large change.
-The minimum action is to add the missing variables to site.css `:root` so
-they are available for future use and for the new shared classes.
+reference them would improve maintainability but is a large change. The minimum
+action is to add the missing variables to site.css `:root` so they are
+available for future use and for the new shared classes.
 
 #### A3. Shared utilities to extract to site.css
 
@@ -471,14 +472,13 @@ shared classes in site.css:
     - `.mxd-release-card` — changelog release card hover.
     - `.mxd-table-row` — compatibility table row hover.
 
-
 ### Stage B: Consolidate shared CSS
 
 In this stage, `mxd/assets/site.css` is modified to add the complete design
 system token set and all shared component classes identified in A3.
 
-**B1.** Add the full design system colour palette as CSS custom properties
-in `:root`, using `--mxd-*` naming convention (preserving the existing names,
+**B1.** Add the full design system colour palette as CSS custom properties in
+`:root`, using `--mxd-*` naming convention (preserving the existing names,
 adding the missing ones).
 
 **B2.** Add the shared animation (`@keyframes mxd-shimmer`) and the
@@ -507,13 +507,11 @@ primary, translateY(-2px) for others per design system; use consistent
 **B11.** Add `.mxd-frame-card`, `.mxd-frame-card__header`,
 `.mxd-frame-card__body` for terminal windows.
 
-**B12.** Add page-specific classes that live in site.css:
-`.mxd-roadmap-item`, `.mxd-release-card`, `.mxd-table-row`.
+**B12.** Add page-specific classes that live in site.css: `.mxd-roadmap-item`,
+`.mxd-release-card`, `.mxd-table-row`.
 
-**B13.** Remove the `Inter` font family from the Tailwind config. Map
-`display` to JetBrains Mono, or simply remove it and use `font-primary`
-everywhere.
-
+**B13.** Remove the `Inter` font family from the Tailwind config. Map `display`
+to JetBrains Mono, or simply remove it and use `font-primary` everywhere.
 
 ### Stage C: Apply design system alignment
 
@@ -551,13 +549,16 @@ bottom and the footer has a static gradient. The hero bottom bar on the site
 uses a different gradient (terracotta → saffron → terracotta) which does not
 match the hero. The design system shows the same tri-colour gradient at both
 top and bottom of the hero. Cross-checking: the design system's `.hero::after`
-uses `background: linear-gradient(90deg, var(--terracotta), var(--saffron),
-var(--indigo), var(--terracotta))` with shimmer. The site's hero top has the
-shimmer; the bottom does not and uses terracotta as the end colour. The correct
-fix: both hero bars should use the tri-colour gradient. The bottom bar should
-match the footer's static gradient (terracotta → saffron → indigo).
+uses
+`background: linear-gradient(90deg, var(--terracotta), var(--saffron),
+var(--indigo), var(--terracotta))`
+with shimmer. The site's hero top has the shimmer; the bottom does not and
+uses terracotta as the end colour. The correct fix: both hero bars should use
+the tri-colour gradient. The bottom bar should match the footer's static
+gradient (terracotta → saffron → indigo).
 
 **C10.** Fix badge background colours (D6):
+
 - Supported: `bg-[#e8eaf6]` → `bg-[#e8f5ec]`
 - Partial: `bg-[#e8eaf6]` → `bg-[#fff4e0]`
 - Planned: already correct (`bg-[#e8eaf6]`)
@@ -568,6 +569,7 @@ match the footer's static gradient (terracotta → saffron → indigo).
 per the design system.
 
 **C13.** Replace inline class names with site.css class names:
+
 - `.btn-primary` → `.mxd-btn--primary`
 - `.btn-secondary` → `.mxd-btn--outline`
 - `.btn-tertiary` → `.mxd-btn--ghost`
@@ -581,10 +583,9 @@ per the design system.
 **C14.** Apply `.mxd-express-line` class and remove inline `.express-line`
 definitions.
 
-**C15.** Ensure the `<title>` on each page includes the site name:
-e.g. `<title>Architecture — mxd</title>` instead of just
+**C15.** Ensure the `<title>` on each page includes the site name: e.g.
+`<title>Architecture — mxd</title>` instead of just
 `<title>Architecture</title>`.
-
 
 ### Stage D: Validate with Playwright and css-view
 
@@ -595,6 +596,7 @@ directory.
 page to verify visual consistency.
 
 **D3.** Use `css-view` to capture computed styles and verify:
+
 - Badge background colours match design system.
 - Button font-weight is 600.
 - Callout border-left width is 3px.
@@ -606,22 +608,20 @@ page to verify visual consistency.
 
 **D5.** Fix any issues found during validation.
 
-
 ### Stage E: Final commit and retrospective
 
-**E1.** Commit all changes.
-**E2.** Update this plan's Outcomes & Retrospective section.
-
+**E1.** Commit all changes. **E2.** Update this plan's Outcomes & Retrospective
+section.
 
 ## Concrete steps
 
 (Will be populated during execution. Each stage will record the exact commands
 run and their outputs.)
 
-
 ## Validation and acceptance
 
 Quality criteria:
+
 - All twelve pages render with consistent visual language.
 - Badge colours match design system: supported=green tint, partial=yellow tint,
   planned=indigo tint.
@@ -639,12 +639,12 @@ Quality criteria:
 - Playwright accessibility tests show no regressions.
 
 Quality method:
+
 - Serve site with `python3 -m http.server` from `mxd/`.
 - Playwright screenshots of all pages.
 - css-view snapshots of badge, button, callout, section-label, code-block
   elements.
 - Axe-core accessibility audit via MCP tool.
-
 
 ## Idempotence and recovery
 
@@ -653,23 +653,22 @@ produces unexpected results, `git checkout -- mxd/` restores the previous
 state. Each milestone will be committed separately so partial rollback is
 possible.
 
-
 ## Artefacts and notes
 
 (Will be populated during execution.)
 
-
 ## Interfaces and dependencies
 
 No new interfaces or dependencies. The site continues to use:
+
 - Tailwind CSS CDN
 - Google Fonts CDN (JetBrains Mono, DM Serif Display, Source Serif 4)
 - Font Awesome CDN
 - `mxd/assets/site.css` (extended, not replaced)
 
 The `Inter` font will be removed from the Tailwind config but not from the
-Google Fonts import (harmless; removing it from the import would change the
-URL and is unnecessary).
+Google Fonts import (harmless; removing it from the import would change the URL
+and is unnecessary).
 
 ## Outcomes & retrospective
 
@@ -696,8 +695,8 @@ Souk design system.
 **Validation results:**
 
 - css-view confirms: buttons use font-weight 600, JetBrains Mono. Section
-  labels use font-weight 600, JetBrains Mono. Callout borders are 3px.
-  Badge backgrounds match design system. Zero elements use Inter.
+  labels use font-weight 600, JetBrains Mono. Callout borders are 3px. Badge
+  backgrounds match design system. Zero elements use Inter.
 - Axe-core accessibility audits show no regressions. Pre-existing contrast
   issues in badge colours and footer text are design system choices.
 - Playwright screenshots confirm visual consistency across pages.

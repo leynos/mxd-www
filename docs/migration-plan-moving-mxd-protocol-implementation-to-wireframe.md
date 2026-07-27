@@ -1,8 +1,8 @@
 # Migration Plan: Moving `mxd` Protocol Implementation to `wireframe`
 
 This plan outlines the migration of the `mxd` server’s Hotline protocol
-handling to the `wireframe` framework, replacing the custom networking code
-with `wireframe`’s abstractions[^1]. The goal is to carry over **all existing
+handling to the `wireframe` framework, replacing the custom networking code with
+`wireframe`’s abstractions[^1]. The goal is to carry over **all existing
 protocol functionality** from `mxd` (handshake, transaction framing, command
 handling, etc.) into `wireframe` with fidelity. Compatibility with the Synapse
 Hotline X client (SynHX, also known as *shx*) and the classic Hotline 1.9
@@ -54,9 +54,9 @@ begins.
 - **Define a Handshake Preamble**: Create a struct representing the 12-byte
   client handshake message (4-byte protocol ID, 4-byte sub-protocol ID, 2-byte
   version, 2-byte sub-version[^3]). Implement `bincode::Decode`/`BorrowDecode`
-  for this struct so that it meets `wireframe::preamble::Preamble` trait
-  bounds[^4]. This lets `wireframe` know how to decode the incoming handshake
-  bytes into a structured form.
+  for this struct so that it meets `wireframe::preamble::Preamble` trait bounds
+  [^4]. This lets `wireframe` know how to decode the incoming handshake bytes
+  into a structured form.
 
 - **Register Preamble with Server**: Configure the `WireframeServer` to use the
   custom handshake type by calling `.with_preamble::<YourHandshakeType>()`.
@@ -72,8 +72,8 @@ begins.
   8-byte handshake reply (protocol ID + 32-bit error code)[^7]. On success, the
   error code is 0; on failure (bad protocol or unsupported version), send the
   corresponding error code (e.g. 1 or 2) and terminate the connection. This
-  mirrors the current `parse_handshake` and `write_handshake_reply` behaviour
-  in `mxd`.
+  mirrors the current `parse_handshake` and `write_handshake_reply` behaviour in
+  `mxd`.
 
 - **Store Handshake Info**: Record the handshake details (such as
   `sub_version`) in the connection state if needed. For example, the server
@@ -101,16 +101,16 @@ this framing using `wireframe`’s customizable serialization layer.
 - Read and parse the 20-byte header of an incoming message. The header layout
   includes fields for flags, request/reply marker, transaction type,
   transaction ID, error code, total payload size, and fragment data size[^9].
-  You can reuse `mxd`’s `FrameHeader` struct and its parsing logic
-  here[^10][^11].
+  You can reuse `mxd`’s `FrameHeader` struct and its parsing logic here[^10]
+  [^11].
 
 - Determine if the message is fragmented. In Hotline, if
-  `Data size < Total size`, the message is split across multiple TCP
-  frames[^12]. Accumulate the bytes from subsequent frames (which share the
-  same transaction ID and header values) until the full `Total size` of payload
-  is reached[^13]. Only then should the combined payload be considered a
-  complete message to dispatch. This reassembly can be done within the
-  serializer or via a higher-level buffer in the connection state.
+  `Data size < Total size`, the message is split across multiple TCP frames
+  [^12]. Accumulate the bytes from subsequent frames (which share the same
+  transaction ID and header values) until the full `Total size` of payload is
+  reached[^13]. Only then should the combined payload be considered a complete
+  message to dispatch. This reassembly can be done within the serializer or via
+  a higher-level buffer in the connection state.
 
 - Return a decoded *Envelope* or message struct that contains the transaction
   type, an optional correlation (transaction ID), and the payload bytes.
@@ -158,8 +158,8 @@ the message type.
 
 - Parse the request’s payload into high-level parameters. You can leverage
   `mxd`’s parameter decoding helpers like `decode_params_map` and
-  field-specific extractors (e.g. `first_param_string`) to interpret the
-  payload[^20][^21].
+  field-specific extractors (e.g. `first_param_string`) to interpret the payload
+  [^20][^21].
 
 - Invoke the same processing routines `mxd` used. For example, use or port the
   `handle_login` function (to verify credentials and update session) or call

@@ -25,8 +25,8 @@ wrong session-init exchange.
 ## 2. The site presents partial client support as if it were broad support
 
 The home page says Hotline clients and SynHX connect without shims or
-translation layers. The architecture page uses `Supported` language for
-Hotline and SynHX variants. The quickstart tells readers to connect any Hotline
+translation layers. The architecture page uses `Supported` language for Hotline
+and SynHX variants. The quickstart tells readers to connect any Hotline
 1.8.5-compatible client after launch.
 
 The reference source of truth, `docs/internal-compatibility-matrix.md`, says:

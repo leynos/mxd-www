@@ -139,8 +139,8 @@ A codec implementation must:
 
 Install a custom codec with `with_codec`. The builder resets fragmentation to
 the codec-derived defaults, so override fragmentation afterwards if the
-protocol uses a different budget. When a framed stream is already available,
-use `send_response_framed_with_codec`, so responses pass through
+protocol uses a different budget. When a framed stream is already available, use
+`send_response_framed_with_codec`, so responses pass through
 `FrameCodec::wrap_payload`.
 
 Assume `MyCodec` implements `FrameCodec`:
@@ -410,11 +410,11 @@ async fn decode_and_respond(
 let middleware = from_fn(decode_and_respond);
 ```
 
-Advanced integrations can adopt the `wireframe::extractor` module, which
-defines `MessageRequest`, `Payload`, and `FromMessageRequest` for building
-Actix-style extractors in custom middleware or services. These types expose
-shared state, peer addresses, and payload cursors for frameworks that want to
-layer additional ergonomics on top of the core primitives.[^13]
+Advanced integrations can adopt the `wireframe::extractor` module, which defines
+`MessageRequest`, `Payload`, and `FromMessageRequest` for building Actix-style
+extractors in custom middleware or services. These types expose shared state,
+peer addresses, and payload cursors for frameworks that want to layer
+additional ergonomics on top of the core primitives.[^13]
 
 ## Connection lifecycle
 
@@ -686,8 +686,8 @@ frames, a streamed response, a channel-backed multi-packet response, or an
 empty reply. `into_stream` converts any variant into a boxed `FrameStream`,
 ready to install on a connection actor with `set_response`, so streaming output
 can be interleaved with push traffic. `WireframeError` distinguishes transport
-failures from protocol-level errors emitted by streaming
-responses.[^34][^35][^31]
+failures from protocol-level errors emitted by streaming responses.[^34][^35]
+[^31]
 
 When constructing imperative streams, the `async-stream` crate integrates
 smoothly. The example below yields five frames and converts them into a

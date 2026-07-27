@@ -17,9 +17,8 @@ listed for this task.
 
 The site is strongest when it describes the architectural shape of the system:
 hexagonal boundaries, dual database support, configuration precedence, and the
-verification stack are all grounded in `docs/design.md`,
-`docs/users-guide.md`, `docs/developers-guide.md`, and
-`docs/verification-strategy.md`.
+verification stack are all grounded in `docs/design.md`, `docs/users-guide.md`,
+`docs/developers-guide.md`, and `docs/verification-strategy.md`.
 
 The site is weakest when it describes current protocol completeness,
 client-compatibility status, and release history. The most serious problems are
@@ -45,10 +44,11 @@ these:
    The reference set clearly designs all of those subsystems, but it does not
    support presenting them as fully implemented. `docs/design.md` treats chat,
    direct messages, file sharing, and news as substantial subsystems with large
-   amounts of planned or design-stage functionality. `docs/internal-
-   compatibility-matrix.md` only marks login and selected compatibility hooks
-   as implemented for Hotline 1.8.5, Hotline 1.9, and SynHX. The roadmap page
-   on the site itself also marks most chat, file, and admin work as planned.
+   amounts of planned or design-stage functionality.
+   `docs/internal- compatibility-matrix.md` only marks login and selected
+   compatibility hooks as implemented for Hotline 1.8.5, Hotline 1.9, and
+   SynHX. The roadmap page on the site itself also marks most chat, file, and
+   admin work as planned.
 
 2. Claim: vintage Hotline clients and modern alternatives like SynHX connect
    without shims or translation layers.
@@ -96,8 +96,9 @@ these:
 
    Benchmark: `Confirmed`.
 
-   This is the core of `docs/adr-003-login-authentication-and-reply-
-   augmentation.md` and is also described in `docs/users-guide.md`.
+   This is the core of
+   `docs/adr-003-login-authentication-and-reply- augmentation.md` and is also
+   described in `docs/users-guide.md`.
 
 4. Claim: default Hotline, SynHX, and Hotline 1.8.5 and 1.9 are all
    `Supported`.
@@ -116,11 +117,11 @@ these:
    Benchmark: `Contradicted`.
 
    `docs/users-guide.md`, `docs/design.md`,
-   `docs/migration-plan-moving-mxd-protocol-implementation-to-wireframe.md`,
-   and `docs/adopting-hexagonal-architecture-in-the-mxd-wireframe-migration.md`
+   `docs/migration-plan-moving-mxd-protocol-implementation-to-wireframe.md`, and
+   `docs/adopting-hexagonal-architecture-in-the-mxd-wireframe-migration.md`
    all describe a 12-byte handshake preamble. They also describe an 8-byte
-   handshake reply with error codes for success, invalid protocol,
-   unsupported version, and timeout.
+   handshake reply with error codes for success, invalid protocol, unsupported
+   version, and timeout.
 
 2. Claim: the transaction catalogue shown on the page reflects the full set of
    transactions implemented by mxd.
@@ -158,9 +159,9 @@ these:
 
    Benchmark: `Contradicted`.
 
-   The internal matrix only lists Hotline 1.8.5, Hotline 1.9, SynHX
-   non-XOR, SynHX XOR, and unknown or legacy login versions. The site's other
-   client names do not appear in the provided reference set.
+   The internal matrix only lists Hotline 1.8.5, Hotline 1.9, SynHX non-XOR,
+   SynHX XOR, and unknown or legacy login versions. The site's other client
+   names do not appear in the provided reference set.
 
 3. Claim: `Supported` means automated tests verify handshake, login, file
    operations, chat, and news with no known regressions.
@@ -177,8 +178,8 @@ these:
    Benchmark: `Unverifiable from reference set`.
 
    The evidence in `docs/internal-compatibility-matrix.md` points to specific
-   feature scenarios such as `tests/features/wireframe_login_compat.feature`
-   and `tests/features/wireframe_xor_compat.feature`. The site's single-suite
+   feature scenarios such as `tests/features/wireframe_login_compat.feature` and
+   `tests/features/wireframe_xor_compat.feature`. The site's single-suite
    instruction does not match the evidence listed by the reference matrix.
 
 5. Claim: the release-note example on the page accurately reflects the release
@@ -248,9 +249,10 @@ these:
 
    Benchmark: `Partially supported`.
 
-   The compatibility matrix does not support such a broad operator-facing claim.
-   Hotline 1.8.5 is currently `Partial` in `docs/internal-compatibility-
-   matrix.md`, with user-list and messaging parity still pending.
+   The compatibility matrix does not support such a broad operator-facing
+   claim. Hotline 1.8.5 is currently `Partial` in
+   `docs/internal-compatibility- matrix.md`, with user-list and messaging
+   parity still pending.
 
 ## `mxd/installation/index.html`
 
@@ -302,8 +304,8 @@ these:
 
    Benchmark: `Confirmed`.
 
-   This is a recurring design claim in `docs/design.md`,
-   `docs/users-guide.md`, and `docs/developers-guide.md`.
+   This is a recurring design claim in `docs/design.md`, `docs/users-guide.md`,
+   and `docs/developers-guide.md`.
 
 2. Claim: `pg-embed-setup-unpriv` supports developer and test coverage for the
    PostgreSQL path.
@@ -318,8 +320,8 @@ these:
    Benchmark: `Partially supported`.
 
    The broader design rationale around recursive CTEs and portable SQL is well
-   supported in `docs/design.md`, but the site phrases the startup validation as
-   a settled operational behaviour more strongly than the reference set does.
+   supported in `docs/design.md`, but the site phrases the startup validation
+   as a settled operational behaviour more strongly than the reference set does.
 
 ## `mxd/deployment/index.html`
 
@@ -353,8 +355,8 @@ these:
    Benchmark: `Partially supported`.
 
    The concepts are right, but the page uses paths like `specs/handshake.tla`
-   and `verify/session_gate.rs`, while `docs/verification-strategy.md` points
-   to `crates/mxd-verification/tla/` and
+   and `verify/session_gate.rs`, while `docs/verification-strategy.md` points to
+   `crates/mxd-verification/tla/` and
    `crates/mxd-verification/src/session_model`.
 
 ## `mxd/roadmap/index.html`
