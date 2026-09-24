@@ -11,7 +11,19 @@ accepted = ["FILP", "TRAK"]
 [words.corrections]
 
 [patterns]
-ignore = ["DataFlavor"]
+ignore = [
+  "DataFlavor",
+  # Upstream identifiers that keep their US spelling. Each pattern is one
+  # exact inline code span, so the same spelling anywhere else, including
+  # any other code span, is still checked.
+  # mxd news schema column and command handler signature.
+  '`data_flavor`',
+  '`handle_post_article\(path, title, flags, flavor, data\)`',
+  # CSS declarations quoted from the design system badge colour mapping.
+  '`background: #E8F5EC; color: var\(--mint-tea\); border: #C4E5CC`',
+  '`background: #FFF4E0; color: var\(--saffron-muted\); border: #F2DCA8`',
+  '`background: #E8EAF6; color: var\(--indigo\); border: #C5CAE9`',
+]
 
 [files]
 exclude = []
