@@ -47,6 +47,20 @@ Run `make spelling` after changing Markdown. The tracked `typos.toml` is
 generated from the shared en-GB-oxendict dictionary plus narrow exceptions in
 `typos.local.toml`; do not edit the generated file by hand.
 
+## Markdown Formatting
+
+Run `make fmt` after changing Markdown. It rewrites the Markdown Git tracks,
+plus untracked Markdown Git does not ignore, with
+`mdtablefix --in-place --git --include-untracked --wrap --renumber --breaks
+--ellipsis --fences`,
+then runs `markdownlint-cli2 --fix "**/*.md"`. `make check-fmt` runs the same
+mdtablefix command with `--check` and fails when a file would change. Install
+mdtablefix 0.6.0 or later with `cargo binstall --no-confirm mdtablefix@0.6.0`
+(or `cargo install --locked mdtablefix@0.6.0`). `.markdownlint-cli2.jsonc`
+carries the estate's canonical markdownlint configuration, and CI lints
+Markdown with the pinned `DavidAnson/markdownlint-cli2-action` in
+`markdownlint.yml`.
+
 ## CSS Debugging
 
 The `css-view` command is available for debugging. It produces a JSON dump of
