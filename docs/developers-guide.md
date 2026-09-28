@@ -87,12 +87,14 @@ Run the full suite from the repository root after making changes:
 
 ```sh
 make fmt
-make markdownlint
-make nixie
 make check-fmt
-make lint
+make spelling
+markdownlint-cli2 "**/*.md"
 make test
 ```
+
+The `Makefile` has no `markdownlint`, `nixie` or `lint` target, so markdownlint
+runs directly; CI runs the same lint through the `markdownlint.yml` workflow.
 
 ## Markdown formatting
 
