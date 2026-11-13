@@ -831,8 +831,8 @@ scenarios in `tests/features/wireframe_compat_guardrails.feature` cover banner
 field inclusion for Hotline 1.9, banner omission for SynHX, XOR login, and file
 list after login.
 
-See [ADR-002](adr-002-compatibility-guardrails-and-augmentation.md) (Option C,
-accepted) for the architectural rationale.
+See [ADR-002](adrs/adr-0002-compatibility-guardrails-and-augmentation.md)
+(Option C, accepted) for the architectural rationale.
 
 ### CLI, Environment, and File Configuration (OrthoConfig)
 
