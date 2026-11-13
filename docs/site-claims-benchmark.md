@@ -88,8 +88,8 @@ these:
    Benchmark: `Confirmed`.
 
    This is exactly the accepted direction in
-   `docs/adr-002-compatibility-guardrails-and-augmentation.md` and is restated
-   in `docs/users-guide.md`.
+   `docs/adrs/adr-0002-compatibility-guardrails-and-augmentation.md` and is
+   restated in `docs/users-guide.md`.
 
 3. Claim: `AuthStrategy` and `LoginReplyAugmenter` split login authentication
    and reply decoration.
