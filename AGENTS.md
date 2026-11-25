@@ -41,12 +41,6 @@ shared before it is incorporated into the larger website.
 - When using Playwright for previewing, point it at the existing server on port
   `2018`.
 
-## Spelling
-
-Run `make spelling` after changing Markdown. The tracked `typos.toml` is
-generated from the shared en-GB-oxendict dictionary plus narrow exceptions in
-`typos.local.toml`; do not edit the generated file by hand.
-
 ## Markdown Formatting
 
 Run `make fmt` after changing Markdown. It rewrites the Markdown Git tracks,
@@ -65,3 +59,19 @@ Markdown with the pinned `DavidAnson/markdownlint-cli2-action` in
 
 The `css-view` command is available for debugging. It produces a JSON dump of
 the computed and de-duped CSS cascade for the site.
+
+<!-- typos-config-builder:agents-md:start -->
+
+## Spelling
+
+- `make spelling` runs the pinned `typos-config-builder gate`, which
+  regenerates `typos.toml` from the shared en-GB-oxendict dictionary and
+  `typos.local.toml`, then checks spelling and the shared phrase corrections.
+- `typos.toml` is generated: never edit it by hand. Put narrow
+  repository-specific exceptions in `typos.local.toml`, as exact or full-line
+  patterns rather than bare accepted words.
+- When `make spelling` changes `typos.toml`, commit the regenerated file. If
+  the change is unrelated to your work, commit it in a separate base pull
+  request and stack your branch on it, so each review diff stays focused.
+
+<!-- typos-config-builder:agents-md:end -->

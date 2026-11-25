@@ -11,8 +11,10 @@ MDTABLEFIX_RULES = --wrap --renumber --breaks --ellipsis --fences
 
 .PHONY: all dev clean fmt spelling test check-fmt
 
-TYPOS_VERSION ?= 1.48.0
-TYPOS := uv tool run typos@$(TYPOS_VERSION)
+TYPOS_CONFIG_BUILDER_VERSION ?= v0.1.4
+TYPOS_CONFIG_BUILDER = uv tool run --python 3.14 --from \
+	"git+https://github.com/leynos/typos-config-builder.git@$(TYPOS_CONFIG_BUILDER_VERSION)" \
+	typos-config-builder
 
 all: dev
 
@@ -30,10 +32,10 @@ fmt:
 test:
 	@:
 
-spelling: ## Enforce en-GB-oxendict spelling in Markdown prose
-	uv run scripts/generate_typos_config.py
-	find . -type f -name '*.md' -print0 | \
-		xargs -0 -r $(TYPOS) --config typos.toml --force-exclude
+# The gate reads tracked files only, so stage new Markdown files before running
+# this target; untracked files are not checked.
+spelling: ## Enforce en-GB-oxendict spelling in prose
+	$(TYPOS_CONFIG_BUILDER) gate --repository .
 
 check-fmt: ## Verify Markdown formatting
 	$(MDTABLEFIX) --check $(MDTABLEFIX_SELECT) $(MDTABLEFIX_RULES)
